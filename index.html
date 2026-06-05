@@ -20,8 +20,8 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111827;overflow-x:hid
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
 nav.scrolled{background:rgba(11,17,32,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
-.nav-logo-icon{background:#1A3A8F;border-radius:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
-.nav-logo-text{font-size:20px;font-weight:800;letter-spacing:-1px}
+.nav-logo-icon{background:linear-gradient(135deg,#1A3A8F,#1A56DB);border-radius:10px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(26,86,219,.4)}
+.nav-logo-text{font-size:22px;font-weight:900;letter-spacing:-1.2px}
 .nav-logo-text span{color:#fff}
 .nav-logo-text .sol{color:#60A5FA}
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -107,7 +107,7 @@ nav.scrolled{background:rgba(11,17,32,.95);backdrop-filter:blur(12px);border-bot
 
 /* PLANOS */
 .plans{background:#F8FAFC;padding:80px 24px}
-.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:940px;margin:0 auto}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto;align-items:start}
 .plan{background:#fff;border:1.5px solid #E2E8F0;border-radius:20px;padding:28px 24px;position:relative;transition:transform .2s,box-shadow .2s}
 .plan:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.1)}
 .plan.featured{border-color:#1A56DB;border-width:2px}
@@ -180,8 +180,12 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
   .nav-links{display:none}
   .hamburger{display:flex}
   .dual{grid-template-columns:1fr}
+  .plans-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .hero-stats{gap:24px}
+}
+@media(max-width:768px){
+  #quem-somos > div{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
   .footer-grid{grid-template-columns:1fr}
@@ -216,8 +220,9 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
     <a href="#como-funciona">Como funciona</a>
     <a href="#para-quem">Para quem</a>
     <a href="#planos">Planos</a>
+    <a href="#quem-somos">Quem somos</a>
     <a href="#faq">FAQ</a>
-    <a href="#" class="nav-cta">Começar grátis</a>
+    <a href="acheisol_v7.html" class="nav-cta">Começar grátis</a>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -231,15 +236,26 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
     Plataforma solar brasileira
   </div>
   <h1>Encontre a melhor<br><span>empresa solar</span><br>da sua região</h1>
-  <p>Conectamos quem quer energia solar com as melhores instaladoras certificadas. Economia, backup com bateria e manutenção — tudo em um lugar.</p>
+  <p>Conectamos quem quer energia solar com as melhores instaladoras certificadas.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;margin-top:-8px">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:600;color:#93C5FD">
+      <i class="ti ti-trending-down" style="font-size:14px;color:#60A5FA"></i> Economia na conta
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:600;color:#FCD34D">
+      <i class="ti ti-battery-charging" style="font-size:14px;color:#F59E0B"></i> Backup com baterias
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:600;color:#6EE7B7">
+      <i class="ti ti-tool" style="font-size:14px;color:#10B981"></i> Manutenção de sistemas
+    </div>
+  </div>
   <div class="hero-btns">
-    <a href="#" class="btn-hero-primary">
+    <a href="acheisol_v7.html" class="btn-hero-primary">
       <i class="ti ti-solar-panel" style="font-size:18px"></i>
-      Quero energia solar
+      Sou cliente, quero energia solar
     </a>
     <a href="#planos" class="btn-hero-secondary">
       <i class="ti ti-building-store" style="font-size:18px"></i>
-      Sou instalador
+      Sou integrador / instalador
     </a>
   </div>
   <div class="hero-stats">
@@ -388,7 +404,7 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Contato em até 2 horas</li>
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Compare múltiplas empresas</li>
       </ul>
-      <a href="#" class="btn-dual-blue">
+      <a href="acheisol_v7.html" class="btn-dual-blue">
         <i class="ti ti-solar-panel" style="font-size:16px"></i> Quero meu sistema solar
       </a>
     </div>
@@ -405,7 +421,7 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-check"></i> Destaque no ranking de busca</li>
         <li><i class="ti ti-circle-check"></i> Painel de gestão de leads</li>
       </ul>
-      <a href="#planos" class="btn-dual-white">
+      <a href="acheisol_v7.html" class="btn-dual-white">
         <i class="ti ti-rocket" style="font-size:16px"></i> Ver planos para empresas
       </a>
     </div>
@@ -422,7 +438,7 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
   <div class="plans-grid">
     <div class="plan">
       <div class="plan-name">Básico</div>
-      <div class="plan-price">R$197<span>/mês</span></div>
+      <div class="plan-price">R$59,90<span>/mês</span></div>
       <div class="plan-desc">Ideal para começar a receber leads</div>
       <ul class="plan-features">
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Até 10 leads por mês</li>
@@ -432,12 +448,12 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-x" style="color:#CBD5E1"></i> Sem badge "Verificada"</li>
         <li><i class="ti ti-circle-x" style="color:#CBD5E1"></i> Sem destaque no ranking</li>
       </ul>
-      <a href="#" class="btn-plan btn-plan-outline">Começar grátis</a>
+      <a href="acheisol_v7.html#integrador" class="btn-plan btn-plan-outline">Começar grátis — 7 dias</a>
     </div>
     <div class="plan featured">
       <div class="plan-popular">Mais popular</div>
       <div class="plan-name" style="color:#1A56DB">Pro</div>
-      <div class="plan-price">R$397<span>/mês</span></div>
+      <div class="plan-price">R$199,90<span>/mês</span></div>
       <div class="plan-desc">Para empresas em crescimento</div>
       <ul class="plan-features">
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Até 30 leads por mês</li>
@@ -447,11 +463,11 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Suporte prioritário</li>
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Perfil completo com fotos</li>
       </ul>
-      <a href="#" class="btn-plan btn-plan-blue">Começar grátis</a>
+      <a href="acheisol_v7.html#integrador" class="btn-plan btn-plan-blue">Começar grátis — 7 dias</a>
     </div>
     <div class="plan dark">
       <div class="plan-name">Enterprise</div>
-      <div class="plan-price">R$797<span>/mês</span></div>
+      <div class="plan-price">R$399,00<span>/mês</span></div>
       <div class="plan-desc" style="color:rgba(255,255,255,.45)">Para grandes instaladoras</div>
       <ul class="plan-features">
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Leads <strong style="color:#fff">ilimitados</strong></li>
@@ -461,7 +477,7 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> API + relatórios</li>
         <li><i class="ti ti-circle-check" style="color:#10B981"></i> Gerente dedicado</li>
       </ul>
-      <a href="#" class="btn-plan btn-plan-dark">Falar com vendas</a>
+      <a href="mailto:contato@acheisol.com.br" class="btn-plan btn-plan-dark">Falar com vendas</a>
     </div>
   </div>
   <div class="trial-note">
@@ -514,6 +530,89 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
   </div>
 </section>
 
+
+<!-- QUEM SOMOS -->
+<section class="section" id="quem-somos" style="background:#fff">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+    <div>
+      <div class="section-tag" style="background:#EFF6FF;color:#1A56DB"><i class="ti ti-users" style="font-size:13px"></i> Quem somos</div>
+      <h2 style="font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:16px">Nascemos para <span style="color:#1A56DB">simplificar</span> a energia solar no Brasil</h2>
+      <p style="font-size:15px;color:#64748B;line-height:1.8;margin-bottom:20px">O Brasil tem um dos maiores potenciais solares do mundo, mas ainda é difícil encontrar uma empresa instaladora confiável. Criamos o AcheiSol para resolver isso — conectando clientes a instaladoras verificadas de forma simples, transparente e gratuita.</p>
+      <p style="font-size:15px;color:#64748B;line-height:1.8;margin-bottom:28px">Para as instaladoras, somos o canal mais eficiente de geração de leads qualificados — clientes que já sabem o que querem e estão prontos para contratar.</p>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <div style="font-size:28px;font-weight:900;color:#1A56DB;letter-spacing:-1px">2025</div>
+          <div style="font-size:12px;color:#94A3B8;margin-top:2px">Fundação</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:28px;font-weight:900;color:#1A56DB;letter-spacing:-1px">27</div>
+          <div style="font-size:12px;color:#94A3B8;margin-top:2px">Estados</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:28px;font-weight:900;color:#1A56DB;letter-spacing:-1px">100%</div>
+          <div style="font-size:12px;color:#94A3B8;margin-top:2px">Digital</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="background:linear-gradient(135deg,#0B1729,#1A3A8F);border-radius:18px;padding:22px;grid-column:span 2">
+        <i class="ti ti-quote" style="font-size:24px;color:#60A5FA;margin-bottom:12px;display:block"></i>
+        <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;font-style:italic">"Acreditamos que energia limpa e acessível começa pela transparência — clientes informados, empresas honestas e tecnologia conectando os dois."</p>
+        <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:12px;font-weight:600">— Fundadores do AcheiSol</div>
+      </div>
+      <div style="background:#F0FDF4;border-radius:14px;padding:18px;text-align:center">
+        <i class="ti ti-solar-panel" style="font-size:28px;color:#16A34A;margin-bottom:8px;display:block"></i>
+        <div style="font-size:22px;font-weight:800;color:#111827">1.2k+</div>
+        <div style="font-size:12px;color:#64748B;margin-top:2px">Empresas parceiras</div>
+      </div>
+      <div style="background:#EFF6FF;border-radius:14px;padding:18px;text-align:center">
+        <i class="ti ti-star" style="font-size:28px;color:#1A56DB;margin-bottom:8px;display:block"></i>
+        <div style="font-size:22px;font-weight:800;color:#111827">4.8/5</div>
+        <div style="font-size:12px;color:#64748B;margin-top:2px">Avaliação média</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="section" style="background:#F8FAFC">
+  <div class="section-center">
+    <div class="section-tag"><i class="ti ti-heart" style="font-size:13px"></i> Nossos valores</div>
+    <h2>O que guia <span style="color:#1A56DB">tudo que fazemos</span></h2>
+    <p class="sub">Construímos o AcheiSol sobre princípios que nunca abrimos mão.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1000px;margin:0 auto">
+    <div style="background:#fff;border:1px solid #E2E8F0;border-radius:18px;padding:26px 22px;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:13px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <i class="ti ti-shield-check" style="font-size:24px;color:#1A56DB"></i>
+      </div>
+      <h3 style="font-size:16px;font-weight:700;color:#111827;margin-bottom:8px">Transparência total</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.65">Avaliações reais, preços claros e informações honestas. Sem letra miúda, sem surpresas.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E2E8F0;border-radius:18px;padding:26px 22px;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:13px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <i class="ti ti-leaf" style="font-size:24px;color:#16A34A"></i>
+      </div>
+      <h3 style="font-size:16px;font-weight:700;color:#111827;margin-bottom:8px">Impacto ambiental</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.65">Cada instalação que facilitamos é um passo a menos na dependência de combustíveis fósseis.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E2E8F0;border-radius:18px;padding:26px 22px;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:13px;background:#FEF3C7;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <i class="ti ti-users" style="font-size:24px;color:#D97706"></i>
+      </div>
+      <h3 style="font-size:16px;font-weight:700;color:#111827;margin-bottom:8px">Cliente em primeiro</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.65">O serviço é sempre gratuito para quem quer instalar. Jamais venderemos dados ou interesses do cliente.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E2E8F0;border-radius:18px;padding:26px 22px;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:48px;height:48px;border-radius:13px;background:#FDF2F8;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <i class="ti ti-rosette-discount-check" style="font-size:24px;color:#C026D3"></i>
+      </div>
+      <h3 style="font-size:16px;font-weight:700;color:#111827;margin-bottom:8px">Qualidade garantida</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.65">Só empresas verificadas e certificadas participam. Avaliações são imutáveis para garantir autenticidade.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="section-center">
@@ -521,34 +620,69 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
     <h2>Perguntas <span>frequentes</span></h2>
     <p class="sub">Tudo o que você precisa saber antes de começar.</p>
   </div>
-  <div class="faq-list">
+  <!-- FAQ TABS -->
+  <div style="display:flex;gap:8px;justify-content:center;margin-bottom:32px">
+    <button id="faq-tab-cliente" onclick="switchFaq('cliente')" style="padding:10px 22px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;background:#1A56DB;color:#fff;border:2px solid #1A56DB;transition:all .2s">
+      <i class="ti ti-user" style="font-size:14px"></i> Para clientes
+    </button>
+    <button id="faq-tab-int" onclick="switchFaq('int')" style="padding:10px 22px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;background:#fff;color:#64748B;border:2px solid #E2E8F0;transition:all .2s">
+      <i class="ti ti-building-store" style="font-size:14px"></i> Para instaladoras
+    </button>
+  </div>
+
+  <!-- FAQ CLIENTES -->
+  <div id="faq-cliente" class="faq-list">
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">É realmente gratuito para o cliente? <i class="ti ti-chevron-down"></i></div>
       <div class="faq-a">Sim, 100% gratuito. O cliente nunca paga nada para usar o AcheiSol. A plataforma é mantida pelas assinaturas das empresas instaladoras.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">As avaliações são reais? <i class="ti ti-chevron-down"></i></div>
-      <div class="faq-a">Sim. Todas as avaliações são feitas por clientes reais que contrataram os serviços. As empresas não podem alterar, remover ou responder às avaliações de forma a modificá-las. Qualquer tentativa de manipulação resulta em banimento permanente da plataforma.</div>
+      <div class="faq-a">Sim. Todas as avaliações são feitas por clientes reais que contrataram os serviços. As empresas não podem alterar nem remover avaliações — qualquer tentativa resulta em banimento permanente.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Como sei que a empresa é confiável? <i class="ti ti-chevron-down"></i></div>
-      <div class="faq-a">Empresas com badge "Verificada" passaram por verificação de CNPJ, certificações técnicas e histórico de atendimento. Além disso, você pode ver a nota, o número de projetos realizados e os comentários reais de clientes anteriores.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Sou instalador. Como funciona o trial? <i class="ti ti-chevron-down"></i></div>
-      <div class="faq-a">Você tem 7 dias gratuitos em qualquer plano. Nesse período recebe leads reais da sua região e testa todas as funcionalidades. Se cancelar antes do 7º dia, não há nenhuma cobrança.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Posso cancelar quando quiser? <i class="ti ti-chevron-down"></i></div>
-      <div class="faq-a">Sim. Você pode cancelar a qualquer momento pelo painel do integrador. O acesso permanece ativo até o fim do período pago e não há multa ou taxa de cancelamento.</div>
+      <div class="faq-a">Empresas com badge "Verificada" passaram por verificação de CNPJ e certificações técnicas. Além disso, você vê a nota, número de projetos e comentários reais de clientes anteriores.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">O que é sistema on-grid e sistema híbrido? <i class="ti ti-chevron-down"></i></div>
-      <div class="faq-a"><strong>On-grid:</strong> conectado à rede elétrica. Gera energia durante o dia e injeta o excedente na rede, gerando créditos. Reduz a conta em até 95%. Sem bateria — não funciona em blecautes.<br><br><strong>Híbrido:</strong> inclui bateria de armazenamento. Funciona 24h por dia, mesmo sem rede elétrica. Ideal para quem quer independência total e proteção contra blecautes.</div>
+      <div class="faq-a"><strong>On-grid:</strong> conectado à rede elétrica. Reduz a conta em até 95%. Sem bateria — não funciona em blecautes.<br><br><strong>Híbrido:</strong> tem bateria de armazenamento. Funciona 24h, mesmo sem rede elétrica. Ideal para independência total.<br><br><strong>Manutenção:</strong> para quem já tem sistema instalado e precisa de limpeza, revisão ou reparo.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Em quanto tempo a empresa entra em contato? <i class="ti ti-chevron-down"></i></div>
-      <div class="faq-a">As empresas têm até 24 horas para entrar em contato após receber seu lead. Na prática, a maioria responde em menos de 2 horas durante o horário comercial.</div>
+      <div class="faq-a">As empresas têm até 24 horas para entrar em contato. Na prática, a maioria responde em menos de 2 horas durante o horário comercial.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Posso contatar mais de uma empresa? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Sim! Você pode pedir contato de quantas empresas quiser e comparar os orçamentos sem nenhum compromisso. Recomendamos pedir ao menos 3 orçamentos antes de decidir.</div>
+    </div>
+  </div>
+
+  <!-- FAQ INTEGRADORES -->
+  <div id="faq-int" class="faq-list" style="display:none">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Como funciona o período de trial? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Você tem 7 dias gratuitos em qualquer plano. Nesse período recebe leads reais da sua região e testa todas as funcionalidades. Se cancelar antes do 7º dia, não há nenhuma cobrança.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Como os leads chegam até mim? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Quando um cliente da sua região se cadastra e escolhe o tipo de sistema que sua empresa atende, você recebe uma notificação com os dados de contato dele no seu painel. Os leads já chegam qualificados — o cliente já sabe o que quer.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Posso cancelar quando quiser? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Sim. Cancele a qualquer momento pelo painel. O acesso permanece ativo até o fim do período pago e não há multa ou taxa de cancelamento.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">O que é a badge "Verificada"? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">A badge "Verificada" é concedida a empresas do plano Pro e Enterprise que passaram por verificação de CNPJ e certificações técnicas. Ela aumenta a confiança do cliente e dá destaque no ranking de busca.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Posso alterar as avaliações dos clientes? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Não. As avaliações são imutáveis e não podem ser alteradas ou removidas. Qualquer tentativa de manipulação resulta em banimento permanente da plataforma. Você pode responder publicamente de forma profissional e solicitar revisão em casos de abuso.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Leads não utilizados acumulam? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Não. O limite de leads é por mês e o contador é zerado a cada período de faturamento. Leads não utilizados não acumulam para o mês seguinte.</div>
     </div>
   </div>
 </section>
@@ -558,13 +692,13 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
   <h2>Comece hoje.<br>É gratuito para o cliente.</h2>
   <p>Mais de 1.200 empresas certificadas esperando para te atender.</p>
   <div class="cta-btns">
-    <a href="#" class="btn-hero-primary">
+    <a href="acheisol_v7.html" class="btn-hero-primary">
       <i class="ti ti-solar-panel" style="font-size:18px"></i>
-      Quero energia solar grátis
+      Sou cliente, quero energia solar
     </a>
-    <a href="#planos" class="btn-hero-secondary">
+    <a href="acheisol_v7.html" class="btn-hero-secondary">
       <i class="ti ti-building-store" style="font-size:18px"></i>
-      Cadastrar minha empresa
+      Sou integrador / instalador
     </a>
   </div>
 </section>
@@ -586,7 +720,8 @@ footer{background:#060D1F;padding:48px 24px 32px;border-top:1px solid rgba(255,2
       <a href="#">Como funciona</a>
       <a href="#">Para instaladoras</a>
       <a href="#planos">Planos</a>
-      <a href="#faq">FAQ</a>
+      <a href="#quem-somos">Quem somos</a>
+    <a href="#faq">FAQ</a>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
@@ -619,6 +754,19 @@ window.addEventListener('scroll',()=>{
 });
 
 // FAQ
+function switchFaq(tab){
+  document.getElementById('faq-cliente').style.display=tab==='cliente'?'block':'none';
+  document.getElementById('faq-int').style.display=tab==='int'?'block':'none';
+  const btnC=document.getElementById('faq-tab-cliente');
+  const btnI=document.getElementById('faq-tab-int');
+  if(tab==='cliente'){
+    btnC.style.background='#1A56DB';btnC.style.color='#fff';btnC.style.borderColor='#1A56DB';
+    btnI.style.background='#fff';btnI.style.color='#64748B';btnI.style.borderColor='#E2E8F0';
+  } else {
+    btnI.style.background='#1A56DB';btnI.style.color='#fff';btnI.style.borderColor='#1A56DB';
+    btnC.style.background='#fff';btnC.style.color='#64748B';btnC.style.borderColor='#E2E8F0';
+  }
+}
 function toggleFaq(el){
   const a=el.nextElementSibling;
   const isOpen=a.classList.contains('open');
