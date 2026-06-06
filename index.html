@@ -6,7 +6,609 @@
 <title>AcheiSol — Encontre a melhor empresa solar da sua região</title>
 <meta name="description" content="Conectamos quem quer energia solar com as melhores empresas instaladoras certificadas. Economia, backup com bateria e manutenção. Gratuito para o cliente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AcheiSol — Encontre a melhor empresa solar da sua região</title>
+<meta name="description" content="Conectamos quem quer energia solar com as melhores empresas instaladoras certificadas. Economia, backup com bateria e manutenção. Gratuito para o cliente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#111827;overflow-x:hidden}
+nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,17,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.nav-logo-icon{background:linear-gradient(135deg,#1A3A8F,#1A56DB);border-radius:12px;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.nav-logo-text{font-size:22px;font-weight:900;letter-spacing:-1.5px}
+.nav-logo-text span{color:#fff}
+.nav-logo-text .sol{color:#60A5FA}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff!important;padding:7px 16px;border-radius:18px;font-weight:600!important;font-size:13px!important}
+.hero{background:linear-gradient(160deg,#060D1F 0%,#0B1120 50%,#0D1B3E 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 24px 56px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(26,86,219,.18) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,86,219,.2);border:1px solid rgba(26,86,219,.35);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#93C5FD;margin-bottom:20px}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#10B981;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(32px,5vw,62px);font-weight:900;color:#fff;letter-spacing:-2px;line-height:1.05;margin-bottom:18px;max-width:700px}
+.hero h1 span{color:#60A5FA}
+.hero p{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,.55);line-height:1.7;max-width:520px;margin:0 auto 14px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:44px;margin-top:18px}
+.btn-hero-primary{background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff;padding:14px 28px;border-radius:13px;font-size:15px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(26,86,219,.4);transition:all .2s}
+.btn-hero-primary:hover{transform:translateY(-2px)}
+.btn-hero-secondary{background:rgba(255,255,255,.07);color:#fff;padding:14px 28px;border-radius:13px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+.btn-hero-secondary:hover{background:rgba(255,255,255,.13)}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;justify-content:center}
+.hero-stat .num{font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px}
+.hero-stat .lbl{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px}
+.hero-mockup{margin-top:48px;max-width:300px;margin-left:auto;margin-right:auto}
+.phone-frame{background:linear-gradient(160deg,#0D1B3E,#0B1120);border-radius:32px;border:1px solid rgba(255,255,255,.1);padding:14px;box-shadow:0 32px 64px rgba(0,0,0,.6)}
+.phone-screen{background:#0B1120;border-radius:22px;overflow:hidden}
+.section{padding:72px 24px}
+.section-center{text-align:center;margin-bottom:40px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;color:#1A56DB;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;margin-bottom:12px}
+.section h2{font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:14px}
+.section h2 span{color:#1A56DB}
+.section p.sub{font-size:15px;color:#64748B;line-height:1.7;max-width:520px;margin:0 auto 40px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;max-width:960px;margin:0 auto}
+.step{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:18px;padding:24px 20px;position:relative}
+.step-num{position:absolute;top:18px;right:18px;width:26px;height:26px;border-radius:13px;background:#E2E8F0;color:#94A3B8;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.step-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{font-size:16px;font-weight:700;color:#111827;margin-bottom:7px}
+.step p{font-size:13px;color:#64748B;line-height:1.65}
+.dual{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dual-card{border-radius:22px;padding:32px 28px}
+.dual-card.blue{background:linear-gradient(135deg,#0B1729,#1A3A8F);border:1px solid rgba(255,255,255,.1)}
+.dual-card.white{background:#F8FAFC;border:2px solid #E2E8F0}
+.dual-card h3{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:9px}
+.dual-card.blue h3{color:#fff}
+.dual-card.white h3{color:#111827}
+.dual-card .sub{font-size:13px;line-height:1.65;margin-bottom:20px}
+.dual-card.blue .sub{color:rgba(255,255,255,.5)}
+.dual-card.white .sub{color:#64748B}
+.dual-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.dual-list li{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500}
+.dual-card.blue .dual-list li{color:rgba(255,255,255,.8)}
+.dual-card.white .dual-list li{color:#374151}
+.dual-list li i{font-size:15px;flex-shrink:0;color:#10B981}
+.btn-dual-blue{background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff;padding:12px 22px;border-radius:11px;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.btn-dual-white{background:#111827;color:#fff;padding:12px 22px;border-radius:11px;font-size:13px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.plans{background:#F8FAFC;padding:72px 24px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:940px;margin:0 auto;align-items:start}
+.plan{background:#fff;border:1.5px solid #E2E8F0;border-radius:18px;padding:24px 20px;position:relative}
+.plan.featured{border-color:#1A56DB;border-width:2px}
+.plan.dark{background:linear-gradient(135deg,#0B1729,#0F2A5E);border-color:rgba(255,255,255,.1)}
+.plan-popular{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#1A56DB;color:#fff;font-size:11px;font-weight:700;padding:3px 13px;border-radius:18px;white-space:nowrap}
+.plan-name{font-size:17px;font-weight:800;margin-bottom:5px;color:#111827}
+.plan.dark .plan-name{color:#fff}
+.plan-price{font-size:32px;font-weight:900;letter-spacing:-1.5px;margin-bottom:3px}
+.plan.featured .plan-price{color:#1A56DB}
+.plan.dark .plan-price{color:#60A5FA}
+.plan-price span{font-size:13px;font-weight:400;color:#94A3B8}
+.plan-desc{font-size:12px;color:#64748B;margin-bottom:18px}
+.plan.dark .plan-desc{color:rgba(255,255,255,.4)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.plan-features li{display:flex;align-items:center;gap:7px;font-size:12px;color:#374151}
+.plan.dark .plan-features li{color:rgba(255,255,255,.75)}
+.btn-plan{width:100%;padding:12px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;transition:all .2s;border:none}
+.btn-plan-blue{background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff}
+.btn-plan-outline{background:transparent;color:#374151;border:1.5px solid #E2E8F0}
+.btn-plan-dark{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.15)}
+.trial-note{text-align:center;font-size:12px;color:#94A3B8;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:5px}
+.testimonials{padding:72px 24px;background:#fff}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:960px;margin:0 auto}
+.test-card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;padding:20px}
+.test-stars{color:#F59E0B;font-size:13px;margin-bottom:8px}
+.test-text{font-size:13px;color:#374151;line-height:1.7;margin-bottom:14px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:9px}
+.test-avatar{width:36px;height:36px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.test-name{font-size:12px;font-weight:700;color:#111827}
+.test-role{font-size:11px;color:#94A3B8;margin-top:1px}
+.faq{padding:72px 24px;background:#F8FAFC}
+.faq-list{max-width:660px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid #E2E8F0;border-radius:13px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:16px 18px;font-size:14px;font-weight:600;color:#111827;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.faq-q i{font-size:16px;color:#94A3B8;flex-shrink:0;transition:transform .25s}
+.faq-q.open i{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 18px 16px;font-size:13px;color:#64748B;line-height:1.7}
+.faq-a.open{display:block}
+.cta-final{background:linear-gradient(135deg,#0B1729 0%,#1A3A8F 100%);padding:72px 24px;text-align:center;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(26,86,219,.3) 0%,transparent 70%);pointer-events:none}
+.cta-final h2{font-size:clamp(26px,4vw,44px);font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px;position:relative}
+.cta-final p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:28px;position:relative}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative}
+footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,.3);line-height:1.7;margin-top:10px;max-width:240px}
+.footer-col h4{font-size:12px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;margin-bottom:7px}
+.footer-bottom{max-width:1060px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.2)}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:32px;height:32px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);text-decoration:none;font-size:15px}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .dual{grid-template-columns:1fr}
+  .plans-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:20px}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg width="24" height="24" viewBox="0 0 96 96" fill="none">
+        <circle cx="72" cy="22" r="13" stroke="#F59E0B" stroke-width="2.8" fill="none"/>
+        <line x1="72" y1="5" x2="72" y2="2" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="72" y1="39" x2="72" y2="42" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="55" y1="22" x2="52" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="89" y1="22" x2="92" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/>
+        <path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/>
+        <circle cx="18" cy="70" r="4" fill="white" opacity=".9"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text"><span>Achei</span><span class="sol">Sol</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#para-quem">Para quem</a>
+    <a href="#planos">Planos</a>
+    <a href="#quem-somos">Quem somos</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" class="nav-cta">Começar grátis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><div class="dot"></div>Transparência e seriedade no solar</div>
+  <h1>Encontre a melhor<br><span>empresa solar</span><br>da sua região</h1>
+  <p>Conectamos quem quer energia solar com as melhores instaladoras verificadas da sua região.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);border-radius:20px;padding:6px 13px;font-size:12px;font-weight:600;color:#93C5FD">
+      <i class="ti ti-trending-down" style="font-size:13px;color:#60A5FA"></i> Economia na conta
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:20px;padding:6px 13px;font-size:12px;font-weight:600;color:#FCD34D">
+      <i class="ti ti-bolt" style="font-size:13px;color:#F59E0B"></i> Kit anti apagão
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:6px 13px;font-size:12px;font-weight:600;color:#6EE7B7">
+      <i class="ti ti-tool" style="font-size:13px;color:#10B981"></i> Manutenção de sistemas
+    </div>
+  </div>
+  <div class="hero-btns">
+    <a href="acheisol_v7.html?flow=cliente" target="_blank" class="btn-hero-primary"><i class="ti ti-solar-panel" style="font-size:17px"></i>Sou cliente, quero energia solar</a>
+    <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-hero-secondary"><i class="ti ti-building-store" style="font-size:17px"></i>Sou integrador / instalador</a>
+  </div>
+  <div style="background:rgba(16,185,129,.12);border:1.5px solid rgba(16,185,129,.35);border-radius:15px;padding:13px 20px;margin-bottom:36px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;max-width:520px">
+    <div style="font-size:24px;line-height:1">🎁</div>
+    <div style="text-align:left">
+      <div style="font-size:13px;font-weight:800;color:#6EE7B7;letter-spacing:-.2px">Ganhe 5% de desconto na sua primeira instalação</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px">Cupom gerado automaticamente ao se cadastrar gratuitamente.</div>
+    </div>
+    <button onclick="localStorage.setItem('acheisol_cupom','5pct');mostrarPopupDesconto()" style="background:linear-gradient(135deg,#10B981,#059669);color:#fff;padding:8px 16px;border-radius:9px;font-size:12px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0">Quero meu cupom →</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">1.200+</div><div class="lbl">Empresas cadastradas</div></div>
+    <div class="hero-stat"><div class="num">4.8 ⭐</div><div class="lbl">Avaliação média</div></div>
+    <div class="hero-stat"><div class="num">100%</div><div class="lbl">Gratuito para o cliente</div></div>
+    <div class="hero-stat"><div class="num">27</div><div class="lbl">Estados cobertos</div></div>
+  </div>
+  <div class="hero-mockup">
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div style="background:#0B1120;padding:10px 13px 9px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:7px">
+          <div style="background:#1A3A8F;border-radius:6px;width:20px;height:20px;display:flex;align-items:center;justify-content:center">
+            <svg width="12" height="12" viewBox="0 0 96 96" fill="none"><path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="4" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/><path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/></svg>
+          </div>
+          <span style="font-size:12px;font-weight:800;color:#fff">Achei<span style="color:#60A5FA">Sol</span></span>
+        </div>
+        <div style="padding:11px;background:#0B1120">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 11px;margin-bottom:6px;display:flex;align-items:center;gap:9px">
+            <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1A56DB,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0">ST</div>
+            <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px">SolarTech Soluções</div><div style="font-size:9px;color:#F59E0B">★★★★★ <span style="color:rgba(255,255,255,.3)">2,1 km</span></div></div>
+            <div style="font-size:8px;font-weight:600;color:#6EE7B7;background:rgba(16,185,129,.15);border-radius:4px;padding:2px 5px">✓ Verificada</div>
+          </div>
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 11px;margin-bottom:6px;display:flex;align-items:center;gap:9px">
+            <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#7C3AED,#A78BFA);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0">LS</div>
+            <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px">Luz Solar MG</div><div style="font-size:9px;color:#F59E0B">★★★★★ <span style="color:rgba(255,255,255,.3)">4,7 km</span></div></div>
+            <div style="font-size:8px;font-weight:600;color:#6EE7B7;background:rgba(16,185,129,.15);border-radius:4px;padding:2px 5px">✓ Verificada</div>
+          </div>
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 11px;margin-bottom:9px;display:flex;align-items:center;gap:9px">
+            <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0">SM</div>
+            <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px">SunMax Energia</div><div style="font-size:9px;color:#F59E0B">★★★★☆ <span style="color:rgba(255,255,255,.3)">7,8 km</span></div></div>
+            <div style="font-size:8px;font-weight:600;color:#6EE7B7;background:rgba(16,185,129,.15);border-radius:4px;padding:2px 5px">✓ Verificada</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#1A56DB,#1341B0);border-radius:8px;padding:10px;text-align:center;color:#fff;font-size:11px;font-weight:700">Quero receber contato →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="section-center">
+    <div class="section-tag"><i class="ti ti-bolt" style="font-size:12px"></i> Simples e rápido</div>
+    <h2>Como funciona para<br><span>quem quer energia solar</span></h2>
+    <p class="sub">Em menos de 2 minutos você está conectado com as melhores empresas da sua região.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-icon" style="background:linear-gradient(135deg,#1A56DB,#3B82F6)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></svg></div><h3>Faça seu cadastro</h3><p>Informe seu nome, telefone, cidade e valor da conta. Leva menos de 1 minuto e é 100% gratuito.</p></div>
+    <div class="step"><div class="step-num">2</div><div class="step-icon" style="background:linear-gradient(135deg,#F59E0B,#FBBF24)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><h3>Escolha o sistema</h3><p>On-grid para máxima economia, híbrido para independência total com bateria, ou manutenção.</p></div>
+    <div class="step"><div class="step-num">3</div><div class="step-icon" style="background:linear-gradient(135deg,#10B981,#34D399)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div><h3>Veja empresas próximas</h3><p>Empresas certificadas ordenadas por distância, nota e número de projetos realizados.</p></div>
+    <div class="step"><div class="step-num">4</div><div class="step-icon" style="background:linear-gradient(135deg,#C026D3,#E879F9)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Receba contato</h3><p>Clique em "Quero receber contato" e a empresa entra em contato em até 2 horas pelo WhatsApp.</p></div>
+  </div>
+</section>
+
+<!-- FAIXA CONFIANÇA -->
+<section style="background:linear-gradient(135deg,#0B1729,#0F2A5E);padding:36px 24px">
+  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px">
+    <div style="display:flex;align-items:flex-start;gap:13px">
+      <div style="width:40px;height:40px;border-radius:11px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Chega de orçamento inflado</div><div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6">Muitos integradores embutem margem no equipamento. Aqui quem cobra caro sem qualidade aparece mal ranqueado.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:13px">
+      <div style="width:40px;height:40px;border-radius:11px;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+      <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Empresas verificadas e sérias</div><div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6">Só entram empresas com CNPJ ativo, certificações técnicas e histórico comprovado.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:13px">
+      <div style="width:40px;height:40px;border-radius:11px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Avaliações que ninguém apaga</div><div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6">Qualquer cliente pode avaliar. Nenhuma empresa pode remover a nota — por contrato.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- VALORES -->
+<section style="background:#fff;padding:72px 24px" id="valores">
+  <div style="text-align:center;margin-bottom:48px">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:#FEF3C7;color:#92400E;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;margin-bottom:12px"><i class="ti ti-heart" style="font-size:12px"></i> Nossos valores</div>
+    <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;color:#111827">Transparência e informação<br><span style="color:#1A56DB">para quem mais precisa</span></h2>
+    <p style="font-size:15px;color:#64748B;line-height:1.7;max-width:560px;margin:0 auto">O mercado solar é complexo. Nossa missão é garantir que cada cliente — atual ou futuro — tome decisões com informação real, sem letra miúda e sem surpresas.</p>
+  </div>
+
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+
+    <!-- Valor 1 -->
+    <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:20px;padding:28px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1A56DB,#3B82F6)"></div>
+      <div style="width:48px;height:48px;border-radius:14px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A56DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3 style="font-size:17px;font-weight:700;color:#111827;margin-bottom:8px">Transparência total</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.75">Você sabe exatamente o que está contratando — equipamentos, prazos, garantias e valor total. Nenhum integrador pode esconder informações ou cobrar taxas extras sem aviso.</p>
+    </div>
+
+    <!-- Valor 2 -->
+    <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:20px;padding:28px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10B981,#34D399)"></div>
+      <div style="width:48px;height:48px;border-radius:14px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <h3 style="font-size:17px;font-weight:700;color:#111827;margin-bottom:8px">Informação antes da decisão</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.75">Antes de falar com qualquer empresa, você já sabe o que esperar: média de preços na sua região, tipos de sistema adequados ao seu consumo e avaliações reais de quem já instalou.</p>
+    </div>
+
+    <!-- Valor 3 -->
+    <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:20px;padding:28px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#FBBF24)"></div>
+      <div style="width:48px;height:48px;border-radius:14px;background:#FEF3C7;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3 style="font-size:17px;font-weight:700;color:#111827;margin-bottom:8px">Avaliações que ninguém apaga</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.75">Cada nota deixada por um cliente é permanente e verificada. As empresas não podem remover, alterar ou contestar avaliações negativas — isso está em contrato. Reputação real, sem filtros.</p>
+    </div>
+
+    <!-- Valor 4 -->
+    <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:20px;padding:28px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C026D3,#E879F9)"></div>
+      <div style="width:48px;height:48px;border-radius:14px;background:#FDF4FF;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C026D3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3 style="font-size:17px;font-weight:700;color:#111827;margin-bottom:8px">Gratuito para sempre</h3>
+      <p style="font-size:13px;color:#64748B;line-height:1.75">O cliente nunca paga nada. Nem para se cadastrar, nem para comparar empresas, nem para pedir contato. O AcheiSol é sustentado pelas assinaturas das instaladoras — e assim será para sempre.</p>
+    </div>
+
+  </div>
+
+  <!-- Frase destaque -->
+  <div style="max-width:760px;margin:40px auto 0;background:linear-gradient(135deg,#0B1729,#1A3A8F);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <div style="width:44px;height:44px;border-radius:22px;background:rgba(96,165,250,.2);border:1px solid rgba(96,165,250,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <i class="ti ti-quote" style="font-size:20px;color:#60A5FA"></i>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <p style="font-size:15px;color:rgba(255,255,255,.85);line-height:1.7;font-style:italic">"Acreditamos que energia limpa começa pela informação. Um cliente bem informado nunca é enganado."</p>
+      <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:8px;font-weight:600">— Fundadores do AcheiSol</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="section" id="para-quem" style="background:#F8FAFC">
+  <div class="section-center">
+    <div class="section-tag"><i class="ti ti-users" style="font-size:12px"></i> Para quem é</div>
+    <h2>Feito para <span>clientes e empresas</span></h2>
+    <p class="sub">Seja você quem quer instalar ou quem instala, o AcheiSol tem a solução certa.</p>
+  </div>
+  <div class="dual">
+    <div class="dual-card blue">
+      <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:4px 11px;font-size:11px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:14px"><i class="ti ti-home" style="font-size:12px"></i> Para o cliente</div>
+      <h3>Quero energia solar em casa</h3>
+      <p class="sub">Encontre a melhor empresa sem perder tempo pesquisando. Avaliações reais, empresas verificadas.</p>
+      <ul class="dual-list">
+        <li><i class="ti ti-circle-check"></i> Totalmente gratuito para o cliente</li>
+        <li><i class="ti ti-circle-check"></i> Avaliações reais de clientes verificados</li>
+        <li><i class="ti ti-circle-check"></i> Empresas certificadas e verificadas</li>
+        <li><i class="ti ti-circle-check"></i> Contato em até 2 horas</li>
+        <li><i class="ti ti-circle-check"></i> Compare múltiplas empresas</li>
+      </ul>
+      <a href="acheisol_v7.html?flow=cliente" target="_blank" class="btn-dual-blue"><i class="ti ti-solar-panel" style="font-size:15px"></i> Quero meu sistema solar</a>
+    </div>
+    <div class="dual-card white">
+      <div style="display:inline-flex;align-items:center;gap:5px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:18px;padding:4px 11px;font-size:11px;font-weight:600;color:#1A56DB;margin-bottom:14px"><i class="ti ti-building-store" style="font-size:12px"></i> Para a instaladora</div>
+      <h3>Quero mais clientes qualificados</h3>
+      <p class="sub">Receba leads de clientes prontos para contratar.</p>
+      <ul class="dual-list">
+        <li><i class="ti ti-circle-check"></i> Leads qualificados na sua região</li>
+        <li><i class="ti ti-circle-check"></i> 7 dias grátis em qualquer plano</li>
+        <li><i class="ti ti-circle-check"></i> Badge "Verificada" para empresas Pro</li>
+        <li><i class="ti ti-circle-check"></i> Destaque no ranking de busca</li>
+        <li><i class="ti ti-circle-check"></i> Painel de gestão de leads</li>
+      </ul>
+      <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-dual-white"><i class="ti ti-rocket" style="font-size:15px"></i> Ver planos para empresas</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="plans" id="planos">
+  <div class="section-center">
+    <div class="section-tag" style="background:#EFF6FF;color:#1A56DB"><i class="ti ti-currency-dollar" style="font-size:12px"></i> Planos para integradores / instaladores</div>
+    <h2>Invista no crescimento<br><span>da sua empresa</span></h2>
+    <p class="sub">Escolha o plano ideal. Todos incluem 7 dias grátis.</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan">
+      <div class="plan-name">Básico</div>
+      <div class="plan-price">R$59,90<span>/mês</span></div>
+      <div class="plan-desc">Para quem quer dar os primeiros passos e testar a plataforma</div>
+      <ul class="plan-features">
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Receba até <strong>10 clientes/mês</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Raio de até <strong>50 km</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Perfil na plataforma</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Suporte por e-mail</li>
+        <li style="color:#94A3B8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sem badge "Verificada"</li>
+        <li style="color:#94A3B8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sem destaque no ranking</li>
+      </ul>
+      <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-plan btn-plan-outline">Testar grátis por 7 dias</a>
+      <div style="text-align:center;font-size:11px;color:#94A3B8;margin-top:7px">Sem cartão. Cancele quando quiser.</div>
+    </div>
+    <div class="plan featured">
+      <div class="plan-popular">Mais popular</div>
+      <div class="plan-name" style="color:#1A56DB;margin-top:5px">Pro</div>
+      <div class="plan-price">R$199,90<span>/mês</span></div>
+      <div class="plan-desc">Para instaladoras que querem crescer de verdade</div>
+      <ul class="plan-features">
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Até <strong>30 clientes/mês</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Raio de até <strong>100 km</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Badge <strong>"Verificada"</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> <strong>Destaque</strong> no ranking</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Perfil completo com fotos</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Suporte prioritário WhatsApp</li>
+      </ul>
+      <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-plan btn-plan-blue">Testar grátis por 7 dias</a>
+      <div style="text-align:center;font-size:11px;color:#64748B;margin-top:7px">Sem cartão. Cancele quando quiser.</div>
+    </div>
+    <div class="plan dark">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price">R$399,00<span>/mês</span></div>
+      <div class="plan-desc">Para grandes instaladoras e redes com múltiplas filiais</div>
+      <ul class="plan-features">
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Clientes <strong style="color:#fff">ilimitados</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Todo o <strong style="color:#fff">Brasil</strong></li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> <strong style="color:#fff">Topo</strong> do ranking</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Múltiplos usuários</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> API + relatórios</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Gerente dedicado</li>
+      </ul>
+      <a href="mailto:contato@acheisol.com.br" class="btn-plan btn-plan-dark">Falar com nossa equipe</a>
+      <div style="text-align:center;font-size:11px;color:rgba(255,255,255,.3);margin-top:7px">Plano personalizado disponível</div>
+    </div>
+  </div>
+  <div class="trial-note"><i class="ti ti-gift" style="color:#10B981;font-size:14px"></i> Todos os planos incluem 7 dias gratuitos. Cancele antes sem cobrança.</div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials">
+  <div class="section-center">
+    <div class="section-tag" style="background:#F0FDF4;color:#16A34A"><i class="ti ti-star" style="font-size:12px"></i> Depoimentos</div>
+    <h2>Quem já usa o <span>AcheiSol</span></h2>
+    <p class="sub">Veja o que clientes e instaladoras falam sobre a plataforma.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><div class="test-text">"Recebi 3 orçamentos pela plataforma e ficou muito claro qual empresa estava cobrando justo. Um deles veio com valor 40% acima dos outros. Fechei com a melhor avaliada e não me arrependi."</div><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,#1A56DB,#3B82F6)">JM</div><div><div class="test-name">João Mendes</div><div class="test-role">Cliente · Belo Horizonte, MG</div></div></div></div>
+    <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><div class="test-text">"Como integradores, triplicamos o número de clientes no primeiro mês. Os leads chegam qualificados e já sabendo o que querem — sem perda de tempo."</div><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,#10B981,#34D399)">RS</div><div><div class="test-name">Roberto Silva</div><div class="test-role">Diretor · SolarTech Soluções</div></div></div></div>
+    <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><div class="test-text">"Aqui consegui ver o histórico real da empresa, fotos dos projetos e avaliações de outros clientes. Fechei com total segurança."</div><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,#F59E0B,#FBBF24)">CS</div><div><div class="test-name">Carla Santos</div><div class="test-role">Cliente · São Paulo, SP</div></div></div></div>
+    <div class="test-card"><div class="test-stars">⭐⭐⭐⭐⭐</div><div class="test-text">"Escolhi uma empresa com 4.9 de média. O serviço foi impecável e a conta caiu 78% no primeiro mês."</div><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">MR</div><div><div class="test-name">Marcos Rodrigues</div><div class="test-role">Cliente · Campinas, SP</div></div></div></div>
+  </div>
+</section>
+
+<!-- QUEM SOMOS -->
+<section class="section" id="quem-somos" style="background:#fff">
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+    <div>
+      <div class="section-tag" style="background:#EFF6FF;color:#1A56DB"><i class="ti ti-users" style="font-size:12px"></i> Quem somos</div>
+      <h2 style="font-size:clamp(24px,3.5vw,36px);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:14px">Nascemos para <span style="color:#1A56DB">simplificar, desburocratizar</span> e ser totalmente transparentes no mercado solar</h2>
+      <p style="font-size:14px;color:#374151;line-height:1.8;margin-bottom:14px">A verdade é que o mercado de energia solar no Brasil ainda é confuso para quem quer instalar. Orçamentos sem clareza, empresas que embutem margem sem avisar, promessas que não se cumprem.</p>
+      <p style="font-size:14px;color:#374151;line-height:1.8;margin-bottom:14px"><strong>Criamos o AcheiSol para mudar isso.</strong> As avaliações são feitas por clientes reais e <strong>nenhuma empresa pode alterar ou remover sua nota</strong> — isso está no contrato.</p>
+      <p style="font-size:14px;color:#374151;line-height:1.8;margin-bottom:20px">O serviço é <strong>100% gratuito para o cliente</strong> — sempre foi e sempre será.</p>
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:11px;padding:13px 15px;margin-bottom:24px;display:flex;align-items:flex-start;gap:9px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div style="font-size:13px;color:#166534;line-height:1.65"><strong>Nosso compromisso:</strong> se você se sentir enganado por qualquer empresa, nos avise. Investigamos e, se comprovado, a empresa é banida permanentemente.</div>
+      </div>
+      <div style="display:flex;gap:22px;flex-wrap:wrap">
+        <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#1A56DB;letter-spacing:-1px">2025</div><div style="font-size:11px;color:#94A3B8;margin-top:2px">Fundação</div></div>
+        <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#1A56DB;letter-spacing:-1px">27</div><div style="font-size:11px;color:#94A3B8;margin-top:2px">Estados</div></div>
+        <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#1A56DB;letter-spacing:-1px">100%</div><div style="font-size:11px;color:#94A3B8;margin-top:2px">Digital</div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:linear-gradient(135deg,#0B1729,#1A3A8F);border-radius:16px;padding:20px;grid-column:span 2">
+        <i class="ti ti-quote" style="font-size:22px;color:#60A5FA;margin-bottom:10px;display:block"></i>
+        <p style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.7;font-style:italic">"Acreditamos que energia limpa começa pela transparência — clientes informados, empresas honestas e tecnologia conectando os dois."</p>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;font-weight:600">— Fundadores do AcheiSol</div>
+      </div>
+      <div style="background:#F0FDF4;border-radius:12px;padding:16px;text-align:center"><i class="ti ti-solar-panel" style="font-size:26px;color:#16A34A;margin-bottom:7px;display:block"></i><div style="font-size:20px;font-weight:800;color:#111827">1.2k+</div><div style="font-size:11px;color:#64748B;margin-top:2px">Empresas parceiras</div></div>
+      <div style="background:#EFF6FF;border-radius:12px;padding:16px;text-align:center"><i class="ti ti-star" style="font-size:26px;color:#1A56DB;margin-bottom:7px;display:block"></i><div style="font-size:20px;font-weight:800;color:#111827">4.8/5</div><div style="font-size:11px;color:#64748B;margin-top:2px">Avaliação média</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-center">
+    <div class="section-tag"><i class="ti ti-help" style="font-size:12px"></i> Dúvidas frequentes</div>
+    <h2>Perguntas <span>frequentes</span></h2>
+    <p class="sub">Tudo o que você precisa saber antes de começar.</p>
+  </div>
+  <div style="display:flex;gap:8px;justify-content:center;margin-bottom:28px">
+    <button id="faq-tab-cliente" onclick="switchFaq('cliente')" style="padding:9px 20px;border-radius:18px;font-size:13px;font-weight:600;cursor:pointer;background:#1A56DB;color:#fff;border:2px solid #1A56DB"><i class="ti ti-user" style="font-size:13px"></i> Para clientes</button>
+    <button id="faq-tab-int" onclick="switchFaq('int')" style="padding:9px 20px;border-radius:18px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#64748B;border:2px solid #E2E8F0"><i class="ti ti-building-store" style="font-size:13px"></i> Para instaladoras</button>
+  </div>
+  <div id="faq-cliente" class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">É realmente gratuito para o cliente? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Sim, 100% gratuito. O cliente nunca paga nada para usar o AcheiSol. A plataforma é mantida pelas assinaturas das empresas instaladoras.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">As avaliações são reais? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Sim. Todas as avaliações são feitas por clientes reais. As empresas não podem alterar nem remover avaliações — qualquer tentativa resulta em banimento permanente.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">O que é on-grid, híbrido e manutenção? <i class="ti ti-chevron-down"></i></div><div class="faq-a"><strong>On-grid:</strong> conectado à rede. Reduz a conta em até 95%. Sem bateria.<br><br><strong>Híbrido:</strong> com bateria. Funciona 24h, mesmo sem rede. Ideal para independência total.<br><br><strong>Manutenção:</strong> para quem já tem sistema e precisa de limpeza, revisão ou reparo.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Em quanto tempo a empresa entra em contato? <i class="ti ti-chevron-down"></i></div><div class="faq-a">As empresas têm até 24 horas. Na prática, a maioria responde em menos de 2 horas no horário comercial.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Posso contatar mais de uma empresa? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Sim! Você pode pedir contato de quantas empresas quiser e comparar orçamentos sem compromisso. Recomendamos ao menos 3 orçamentos.</div></div>
+  </div>
+  <div id="faq-int" class="faq-list" style="display:none">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Como funciona o trial de 7 dias? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Você tem 7 dias gratuitos em qualquer plano com leads reais da sua região. Se cancelar antes do 7º dia, não há cobrança.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Como os leads chegam até mim? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Quando um cliente da sua região se cadastra, você recebe os dados de contato no painel. Os leads já chegam qualificados — o cliente já sabe o que quer.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Posso cancelar quando quiser? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Sim. Cancele a qualquer momento pelo painel. Sem multa ou taxa de cancelamento.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">O que é a badge "Verificada"? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Concedida a empresas Pro e Enterprise que passaram por verificação de CNPJ e certificações técnicas. Aumenta a confiança e dá destaque no ranking.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Posso alterar avaliações dos clientes? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Não. As avaliações são imutáveis. Qualquer tentativa de manipulação resulta em banimento permanente.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Leads não usados acumulam? <i class="ti ti-chevron-down"></i></div><div class="faq-a">Não. O limite é por mês e o contador zera a cada período de faturamento.</div></div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Comece hoje.<br>É gratuito para o cliente.</h2>
+  <p>Mais de 1.200 empresas certificadas esperando para te atender.</p>
+  <div class="cta-btns">
+    <a href="acheisol_v7.html?flow=cliente" target="_blank" class="btn-hero-primary"><i class="ti ti-solar-panel" style="font-size:17px"></i>Sou cliente, quero energia solar</a>
+    <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-hero-secondary"><i class="ti ti-building-store" style="font-size:17px"></i>Sou integrador / instalador</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+        <div style="background:#1A3A8F;border-radius:8px;width:28px;height:28px;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 96 96" fill="none"><path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/><path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/></svg></div>
+        <span style="font-size:17px;font-weight:800;letter-spacing:-0.8px"><span style="color:#fff">Achei</span><span style="color:#60A5FA">Sol</span></span>
+      </div>
+      <p>Conectamos quem quer energia solar com as melhores instaladoras certificadas do Brasil.</p>
+    </div>
+    <div class="footer-col"><h4>Produto</h4><a href="#como-funciona">Como funciona</a><a href="#para-quem">Para instaladoras</a><a href="#planos">Planos</a><a href="#quem-somos">Quem somos</a><a href="#faq">FAQ</a></div>
+    <div class="footer-col"><h4>Legal</h4><a href="#">Termos de uso</a><a href="#">Privacidade</a><a href="#">Termos do integrador</a><a href="#">LGPD</a></div>
+    <div class="footer-col"><h4>Contato</h4><a href="mailto:contato@acheisol.com.br">contato@acheisol.com.br</a><a href="#">Suporte</a><a href="#">Imprensa</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 AcheiSol Tecnologia. Todos os direitos reservados.</p>
+    <div class="footer-social">
+      <a href="#" class="social-btn"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#" class="social-btn"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="#" class="social-btn"><i class="ti ti-brand-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchFaq(tab){
+  document.getElementById('faq-cliente').style.display=tab==='cliente'?'block':'none';
+  document.getElementById('faq-int').style.display=tab==='int'?'block':'none';
+  const bC=document.getElementById('faq-tab-cliente'),bI=document.getElementById('faq-tab-int');
+  if(tab==='cliente'){bC.style.background='#1A56DB';bC.style.color='#fff';bC.style.borderColor='#1A56DB';bI.style.background='#fff';bI.style.color='#64748B';bI.style.borderColor='#E2E8F0';}
+  else{bI.style.background='#1A56DB';bI.style.color='#fff';bI.style.borderColor='#1A56DB';bC.style.background='#fff';bC.style.color='#64748B';bC.style.borderColor='#E2E8F0';}
+}
+function toggleFaq(el){
+  const a=el.nextElementSibling;const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(x=>x.classList.remove('open'));
+  if(!isOpen){a.classList.add('open');el.classList.add('open');}
+}
+</script>
+
+<!-- POPUP DESCONTO 5% -->
+<div id="popup-desconto" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:24px">
+  <div style="background:#fff;border-radius:24px;padding:36px 32px;max-width:420px;width:100%;text-align:center;position:relative;animation:popIn .4s cubic-bezier(.34,1.56,.64,1)">
+    <button onclick="fecharPopup()" style="position:absolute;top:14px;right:14px;background:#F1F5F9;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:#94A3B8">✕</button>
+    
+    <div style="font-size:52px;margin-bottom:16px">🎁</div>
+    
+    <div style="display:inline-flex;align-items:center;gap:6px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:#16A34A;margin-bottom:16px">
+      <i class="ti ti-check" style="font-size:13px"></i> Cupom aplicado com sucesso!
+    </div>
+    
+    <h2 style="font-size:26px;font-weight:900;color:#111827;letter-spacing:-0.8px;margin-bottom:8px">5% de desconto<br>garantido!</h2>
+    <p style="font-size:14px;color:#64748B;line-height:1.65;margin-bottom:24px">Seu cupom foi registrado automaticamente. Apresente o código abaixo para a empresa instaladora no momento do fechamento do contrato.</p>
+    
+    <div style="background:#F8FAFC;border:2px dashed #1A56DB;border-radius:14px;padding:16px 20px;margin-bottom:24px">
+      <div style="font-size:11px;font-weight:600;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Seu cupom</div>
+      <div style="font-size:28px;font-weight:900;color:#1A56DB;letter-spacing:2px">SOLAR5</div>
+      <div style="font-size:12px;color:#64748B;margin-top:4px">Válido para sua primeira instalação</div>
+    </div>
+    
+    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px 16px;margin-bottom:24px;display:flex;align-items:flex-start;gap:8px;text-align:left">
+      <i class="ti ti-info-circle" style="font-size:16px;color:#D97706;flex-shrink:0;margin-top:1px"></i>
+      <p style="font-size:12px;color:#92400E;line-height:1.55">Lembre-se de mencionar o cupom <strong>antes de assinar o contrato</strong>. O desconto não pode ser aplicado retroativamente.</p>
+    </div>
+    
+    <a href="acheisol_v7.html?flow=cliente" target="_blank" style="display:block;background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff;padding:14px;border-radius:13px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(26,86,219,.35)">
+      <i class="ti ti-solar-panel" style="font-size:17px;vertical-align:-3px;margin-right:6px"></i> Continuar e encontrar empresa
+    </a>
+    
+    <button onclick="fecharPopup()" style="display:block;width:100%;background:transparent;border:none;color:#94A3B8;font-size:13px;margin-top:12px;cursor:pointer;padding:6px">Fechar</button>
+  </div>
+</div>
+
+<style>
+@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+</style>
+
+<script>
+function mostrarPopupDesconto(){
+  const popup = document.getElementById('popup-desconto');
+  popup.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function fecharPopup(){
+  document.getElementById('popup-desconto').style.display = 'none';
+  document.body.style.overflow = '';
+}
+// Fechar clicando fora
+document.getElementById('popup-desconto').addEventListener('click', function(e){
+  if(e.target === this) fecharPopup();
+});
+</script>
+</body>
+</html>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css"><!DOCTYPE html>
 <html lang="pt-BR">
 <head><!DOCTYPE html>
