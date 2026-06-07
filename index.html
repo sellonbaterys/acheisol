@@ -274,9 +274,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 /* App wrapper ocupa tela toda quando ativo */
 #app-wrapper {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
+  background: #0B1120;
+  z-index: 1000;
 }
 #lp-wrapper {
   display: block;
@@ -2542,17 +2549,15 @@ document.getElementById('popup-desconto').addEventListener('click', function(e){
 // TRANSIÇÃO LP → APP
 // ══════════════════════════════════════════════
 function mostrarLP(){
-  document.getElementById('lp-wrapper').style.display = 'block';
   document.getElementById('app-wrapper').style.display = 'none';
-  document.body.style.overflow = '';
+  document.getElementById('lp-wrapper').style.display = 'block';
   window.scrollTo(0, 0);
 }
 
 async function entrarNoApp(flow){
-  // Esconde LP, mostra app
+  // Esconde LP, mostra app (fixed overlay)
   document.getElementById('lp-wrapper').style.display = 'none';
   document.getElementById('app-wrapper').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
   
   if(flow === 'cliente'){
     ir('s-home');
