@@ -150,12 +150,14 @@ body{background:#0B1120;min-height:100vh;display:flex;align-items:flex-start;jus
 
 .app{
   width:100%;
-  max-width:430px;
+  max-width:100%;
+  height:100vh;
   min-height:100vh;
   position:relative;
   background:#0B1120;
   display:flex;
   flex-direction:column;
+  overflow:hidden;
 }
 
 /* DESKTOP: layout responsivo — tela toda */
@@ -209,7 +211,7 @@ body{background:#0B1120;min-height:100vh;display:flex;align-items:flex-start;jus
 }
 
 /* Telas — fluxo normal, não absolute */
-.screen{flex-direction:column}
+.screen{flex-direction:column;overflow-y:auto;height:100vh;}
 
 /* Modal — overlay sobre tudo, scroll interno */
 .modal-wrap{
@@ -284,6 +286,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   overflow: hidden;
   background: #0B1120;
   z-index: 1000;
+  align-items: center;
+  justify-content: center;
 }
 #lp-wrapper {
   display: block;
@@ -1570,14 +1574,19 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
      TELA 4 — ÁREA DO INTEGRADOR (hub)
 ══════════════════════════════ -->
 <div class="screen" id="s-integrador" style="display:none">
-  <div style="background:#0B1120;padding:22px 20px 0">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-      <button class="back-btn" onclick="ir('s-home')"><i class="ti ti-arrow-left" style="color:#94A3B8;font-size:16px"></i></button>
+  <div style="background:#0B1120;padding:18px 20px 14px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="background:#1A3A8F;border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/><path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/></svg>
+      </div>
       <div>
-        <div style="font-size:17px;font-weight:800;color:#fff">Área do Integrador</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:1px">Faça parte da rede AcheiSol</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-.3px">Área do <span style="color:#60A5FA">Integrador</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35)">Faça parte da rede AcheiSol</div>
       </div>
     </div>
+    <button onclick="mostrarLP()" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:7px 13px;font-size:12px;font-weight:600;color:rgba(255,255,255,.65);cursor:pointer">
+      <i class="ti ti-arrow-left" style="font-size:13px"></i> Voltar
+    </button>
   </div>
 
   <div style="background:#F8FAFC;padding:24px 18px 32px;flex:1;overflow-y:auto">
