@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AcheiSol — Encontre a melhor empresa solar da sua região</title>
 <meta name="description" content="Conectamos quem quer energia solar com as melhores empresas instaladoras certificadas. Economia, backup com bateria e manutenção. Gratuito para o cliente.">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AcheiSol — Encontre a melhor empresa solar da sua região</title>
+<meta name="description" content="Conectamos quem quer energia solar com as melhores empresas instaladoras certificadas. Economia, backup com bateria e manutenção. Gratuito para o cliente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css">
@@ -134,9 +139,158 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
   .footer-grid{grid-template-columns:1fr}
 }
 </style>
+
+<!-- APP CSS -->
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+
+/* MOBILE: centralizado tipo app */
+body{background:#0B1120;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:0}
+
+.app{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  position:relative;
+  background:#0B1120;
+  display:flex;
+  flex-direction:column;
+}
+
+/* DESKTOP: layout responsivo — tela toda */
+@media(min-width:768px){
+  body{
+    background:#060D1A;
+    display:block;
+    padding:0;
+  }
+  .app{
+    max-width:100%;
+    width:100%;
+    min-height:100vh;
+  }
+  /* Modal arredondado e centralizado */
+  .modal-box{
+    max-width:480px !important;
+    border-radius:22px !important;
+    margin-bottom:40px !important;
+  }
+  /* Header das telas (dark): padding responsivo */
+  #s-tipo > div:first-child,
+  #s-emp > div:first-child,
+  #s-integrador > div:first-child,
+  #s-cad-int > div:first-child,
+  #s-login-int > div:first-child,
+  #s-dashboard > div:first-child {
+    padding-left:max(24px, calc(50% - 430px));
+    padding-right:max(24px, calc(50% - 430px));
+  }
+  /* Body das telas (fundo claro): centraliza conteúdo */
+  #s-tipo > div:nth-child(2),
+  #s-emp > div:nth-child(2),
+  #s-integrador > div:nth-child(2),
+  #s-cad-int > div:nth-child(2),
+  #s-login-int > div:nth-child(2),
+  #s-dashboard > div:nth-child(2) {
+    padding-left:max(24px, calc(50% - 430px)) !important;
+    padding-right:max(24px, calc(50% - 430px)) !important;
+  }
+  /* Home: conteúdo centralizado, max-width */
+  #s-home > div:first-child {
+    padding-left:max(24px, calc(50% - 430px)) !important;
+    padding-right:max(24px, calc(50% - 430px)) !important;
+  }
+  /* Map + hero text area: max width */
+  #s-home .home-map {
+    max-width:860px;
+    margin:0 auto;
+  }
+}
+
+/* Telas — fluxo normal, não absolute */
+.screen{flex-direction:column}
+
+/* Modal — overlay sobre tudo, scroll interno */
+.modal-wrap{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:100;
+  align-items:flex-end;
+  justify-content:center;
+  padding:0;
+}
+.modal-wrap.open{display:flex}
+.modal-box{
+  background:#fff;
+  border-radius:26px 26px 0 0;
+  width:100%;
+  max-width:430px;
+  max-height:90vh;
+  overflow-y:auto;
+  padding:22px 20px 36px;
+  animation:slideUp .3s cubic-bezier(.34,1.56,.64,1);
+}
+@media(min-width:500px){
+  .modal-box{max-width:390px;border-radius:26px;margin-bottom:40px}
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes pinDrop{from{opacity:0;transform:translate(-50%,-70%)}to{opacity:1;transform:translate(-50%,-100%)}}
+@keyframes pulseRing{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.22);opacity:.1}}
+
+/* Utilitários */
+.back-btn{width:36px;height:36px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s}
+.back-btn:hover{background:rgba(255,255,255,.12)}
+.field{display:flex;align-items:center;gap:10px;background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:13px;padding:0 14px;height:52px;margin-bottom:12px;transition:border-color .2s}
+.field:focus-within{border-color:#1A56DB;background:#fff}
+.field input,.field select{flex:1;border:none;outline:none;background:transparent;font-size:14px;color:#111827;min-width:0}
+.btn{width:100%;padding:16px;background:linear-gradient(135deg,#1A56DB,#1341B0);border:none;border-radius:14px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 18px rgba(26,86,219,.35);transition:opacity .15s}
+.btn:hover{opacity:.92}
+.btn:active{opacity:.82}
+.btn-ghost{width:100%;padding:13px;background:transparent;border:1px solid #E2E8F0;border-radius:13px;color:#64748B;font-size:14px;font-weight:600;cursor:pointer;margin-top:10px;transition:background .15s}
+.btn-ghost:hover{background:#F8FAFC}
+.lbl{font-size:11px;font-weight:600;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:18px;margin-bottom:10px;overflow:hidden}
+.card-hd{padding:15px;cursor:pointer;transition:background .15s}
+.card-hd:hover{background:#FAFAFA}
+.stat{background:#F8FAFC;border:1px solid #F1F5F9;border-radius:9px;padding:8px;text-align:center}
+.rev{padding-bottom:11px;margin-bottom:11px;border-bottom:1px solid #F8FAFC}
+.rev:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.ava{width:28px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.cl{display:flex;align-items:center;gap:10px;text-decoration:none;padding:10px 12px;background:#F8FAFC;border-radius:11px;border:1px solid #F1F5F9;margin-bottom:8px;transition:background .15s}
+.cl:hover{background:#F1F5F9}
+.ci{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ord{flex-shrink:0;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08);transition:all .2s}
+.ord.on{background:#1A56DB;color:#fff;border-color:#1A56DB}
+.tipo-card{border-radius:18px;padding:20px;cursor:pointer;border:2px solid transparent;transition:all .2s;position:relative;margin-bottom:14px}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:#1E3A6E;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#1A56DB;cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(26,86,219,.4)}
+
+/* Toast */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#111827;color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);z-index:9999;pointer-events:none;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+
+/* App wrapper ocupa tela toda quando ativo */
+#app-wrapper {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+#lp-wrapper {
+  display: block;
+}
+</style>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.js"></script>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- LANDING PAGE                           -->
+<!-- ═══════════════════════════════════════ -->
+<div id="lp-wrapper">
 <nav id="nav">
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
@@ -242,9 +396,12 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
     </div>
   </div>
   <div class="hero-btns">
-    <a href="acheisol_v7.html?flow=cliente" target="_blank" class="btn-hero-primary"><i class="ti ti-solar-panel" style="font-size:26px"></i>Sou cliente, quero energia solar</a>
-    <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-hero-secondary"><i class="ti ti-building-store" style="font-size:26px"></i>Sou integrador / instalador</a>
+    <a href="#" onclick="entrarNoApp('cliente');return false;" class="btn-hero-primary"><i class="ti ti-solar-panel" style="font-size:26px"></i>Sou cliente, quero energia solar</a>
+    <a href="#" onclick="entrarNoApp('integrador');return false;" class="btn-hero-secondary"><i class="ti ti-building-store" style="font-size:26px"></i>Sou integrador / instalador</a>
   </div>
+  <a href="#simulador" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(245,158,11,.08));border:1.5px solid rgba(245,158,11,.4);border-radius:22px;padding:11px 26px;font-size:15px;font-weight:700;color:#FCD34D;text-decoration:none;margin-bottom:16px;transition:all .2s">
+    <i class="ti ti-calculator" style="font-size:17px"></i> Simule aqui sua economia ☀️
+  </a>
   <div style="background:rgba(16,185,129,.12);border:1.5px solid rgba(16,185,129,.35);border-radius:15px;padding:13px 20px;margin-bottom:36px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;max-width:520px">
     <div style="font-size:24px;line-height:1">🎁</div>
     <div style="text-align:left">
@@ -433,7 +590,7 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-check"></i> Contato em até 2 horas</li>
         <li><i class="ti ti-circle-check"></i> Compare múltiplas empresas</li>
       </ul>
-      <a href="acheisol_v7.html?flow=cliente" target="_blank" class="btn-dual-blue"><i class="ti ti-solar-panel" style="font-size:15px"></i> Quero meu sistema solar</a>
+      <a href="#" onclick="entrarNoApp('cliente');return false;" class="btn-dual-blue"><i class="ti ti-solar-panel" style="font-size:15px"></i> Quero meu sistema solar</a>
     </div>
     <div class="dual-card white">
       <div style="display:inline-flex;align-items:center;gap:5px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:18px;padding:4px 11px;font-size:11px;font-weight:600;color:#1A56DB;margin-bottom:14px"><i class="ti ti-building-store" style="font-size:12px"></i> Para a instaladora</div>
@@ -446,7 +603,7 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
         <li><i class="ti ti-circle-check"></i> Destaque no ranking de busca</li>
         <li><i class="ti ti-circle-check"></i> Painel de gestão de leads</li>
       </ul>
-      <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-dual-white"><i class="ti ti-rocket" style="font-size:15px"></i> Ver planos para empresas</a>
+      <a href="#" onclick="entrarNoApp('integrador');return false;" class="btn-dual-white"><i class="ti ti-rocket" style="font-size:15px"></i> Ver planos para empresas</a>
     </div>
   </div>
 </section>
@@ -471,7 +628,7 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
         <li style="color:#94A3B8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sem badge "Verificada"</li>
         <li style="color:#94A3B8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sem destaque no ranking</li>
       </ul>
-      <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-plan btn-plan-outline">Testar grátis por 7 dias</a>
+      <a href="#" onclick="entrarNoApp('integrador');return false;" class="btn-plan btn-plan-outline">Testar grátis por 7 dias</a>
       <div style="text-align:center;font-size:11px;color:#94A3B8;margin-top:7px">Sem cartão. Cancele quando quiser.</div>
     </div>
     <div class="plan featured">
@@ -487,7 +644,7 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Perfil completo com fotos</li>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Suporte prioritário WhatsApp</li>
       </ul>
-      <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-plan btn-plan-blue">Testar grátis por 7 dias</a>
+      <a href="#" onclick="entrarNoApp('integrador');return false;" class="btn-plan btn-plan-blue">Testar grátis por 7 dias</a>
       <div style="text-align:center;font-size:11px;color:#64748B;margin-top:7px">Sem cartão. Cancele quando quiser.</div>
     </div>
     <div class="plan dark">
@@ -555,6 +712,151 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
   </div>
 </section>
 
+
+<!-- SIMULADOR DE ECONOMIA -->
+<section style="background:linear-gradient(160deg,#060D1F 0%,#0B1120 60%,#0D1B3E 100%);padding:72px 24px" id="simulador">
+  <div style="max-width:860px;margin:0 auto">
+    
+    <div style="text-align:center;margin-bottom:40px">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.35);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:#FCD34D;margin-bottom:14px">
+        <i class="ti ti-calculator" style="font-size:12px"></i> Simulador gratuito
+      </div>
+      <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:12px">Simule sua <span style="color:#60A5FA">economia com solar</span></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.5);max-width:520px;margin:0 auto">Descubra quanto você pode economizar por mês — já considerando o impacto do FIO B (TUSD) na sua conta.</p>
+    </div>
+
+    <!-- Card do simulador -->
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:36px 32px">
+      
+      <!-- Inputs -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px">
+        
+        <div>
+          <label style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);display:block;margin-bottom:8px">💡 Valor da sua conta de luz</label>
+          <div style="position:relative">
+            <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4);font-size:14px;font-weight:600">R$</span>
+            <input type="number" id="sim-conta" placeholder="450" min="100" max="99999"
+              style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 14px 13px 40px;color:#fff;font-size:16px;font-weight:700;outline:none"
+              oninput="calcularEconomia()">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);display:block;margin-bottom:8px">☀️ Tipo de sistema</label>
+          <select id="sim-tipo" onchange="calcularEconomia()"
+            style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 14px;color:#fff;font-size:14px;font-weight:600;outline:none;cursor:pointer;appearance:none">
+            <option value="ongrid" style="background:#0B1120">☀️ On-grid (sem bateria)</option>
+            <option value="hibrido" style="background:#0B1120">🔋 Híbrido (com bateria)</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);display:block;margin-bottom:8px">📍 Estado</label>
+          <select id="sim-estado" onchange="calcularEconomia()"
+            style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 14px;color:#fff;font-size:14px;font-weight:600;outline:none;cursor:pointer;appearance:none">
+            <option value="0.95" style="background:#0B1120">SP — São Paulo</option>
+            <option value="0.92" style="background:#0B1120">MG — Minas Gerais</option>
+            <option value="0.98" style="background:#0B1120">RJ — Rio de Janeiro</option>
+            <option value="1.05" style="background:#0B1120">CE — Ceará</option>
+            <option value="1.08" style="background:#0B1120">BA — Bahia</option>
+            <option value="1.02" style="background:#0B1120">GO — Goiás</option>
+            <option value="0.97" style="background:#0B1120">RS — Rio Grande do Sul</option>
+            <option value="0.94" style="background:#0B1120">PR — Paraná</option>
+            <option value="1.10" style="background:#0B1120">MT — Mato Grosso</option>
+            <option value="1.03" style="background:#0B1120">PE — Pernambuco</option>
+            <option value="0.96" style="background:#0B1120">Outro estado</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size:13px;font-weight:600;color:rgba(255,255,255,.6);display:block;margin-bottom:8px">📅 Ano de instalação</label>
+          <select id="sim-ano" onchange="calcularEconomia()"
+            style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 14px;color:#fff;font-size:14px;font-weight:600;outline:none;cursor:pointer;appearance:none">
+            <option value="0.45" style="background:#0B1120">2025 — FIO B 45%</option>
+            <option value="0.60" style="background:#0B1120" selected>2026 — FIO B 60%</option>
+            <option value="0.75" style="background:#0B1120">2027 — FIO B 75%</option>
+            <option value="0.90" style="background:#0B1120">2028 — FIO B 90%</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Aviso FIO B -->
+      <div style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:12px;padding:12px 16px;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px">
+        <i class="ti ti-info-circle" style="font-size:16px;color:#F59E0B;flex-shrink:0;margin-top:1px"></i>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.6">
+          <strong style="color:#FCD34D">O que é o FIO B?</strong> É uma taxa sobre o uso da rede elétrica (TUSD), obrigatória para quem tem solar. Em 2026 representa 60% do valor da TUSD — mas sua economia ainda chega a <strong style="color:#6EE7B7">mais de 80% da conta!</strong>
+        </div>
+      </div>
+
+      <!-- Resultados -->
+      <div id="sim-resultado" style="display:none">
+        <div style="height:1px;background:rgba(255,255,255,.08);margin-bottom:24px"></div>
+        
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+          
+          <div style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.25);border-radius:14px;padding:18px;text-align:center">
+            <div style="font-size:11px;font-weight:600;color:#6EE7B7;letter-spacing:.3px;text-transform:uppercase;margin-bottom:6px">💰 Economia/mês</div>
+            <div id="res-mensal" style="font-size:26px;font-weight:900;color:#10B981;letter-spacing:-1px">R$ 0</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">já com FIO B</div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,rgba(96,165,250,.15),rgba(96,165,250,.05));border:1px solid rgba(96,165,250,.25);border-radius:14px;padding:18px;text-align:center">
+            <div style="font-size:11px;font-weight:600;color:#93C5FD;letter-spacing:.3px;text-transform:uppercase;margin-bottom:6px">📅 Economia/ano</div>
+            <div id="res-anual" style="font-size:26px;font-weight:900;color:#60A5FA;letter-spacing:-1px">R$ 0</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">projeção 12 meses</div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(245,158,11,.05));border:1px solid rgba(245,158,11,.25);border-radius:14px;padding:18px;text-align:center">
+            <div style="font-size:11px;font-weight:600;color:#FCD34D;letter-spacing:.3px;text-transform:uppercase;margin-bottom:6px">⚡ % redução</div>
+            <div id="res-pct" style="font-size:26px;font-weight:900;color:#F59E0B;letter-spacing:-1px">0%</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">da sua conta atual</div>
+          </div>
+
+        </div>
+
+        <!-- Barra de economia -->
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:16px;margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+            <span style="font-size:12px;color:rgba(255,255,255,.5)">Conta atual</span>
+            <span style="font-size:12px;color:rgba(255,255,255,.5)">Nova conta estimada</span>
+          </div>
+          <div style="background:rgba(255,255,255,.08);border-radius:6px;height:10px;overflow:hidden">
+            <div id="barra-fio" style="height:100%;background:linear-gradient(90deg,#10B981,#60A5FA);border-radius:6px;transition:width .8s ease;width:0%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px">
+            <span style="font-size:11px;color:#10B981;font-weight:700" id="label-economia">Você economiza</span>
+            <span style="font-size:11px;color:#F87171;font-weight:700" id="label-fiob">FIO B</span>
+          </div>
+        </div>
+
+        <!-- Info bateria (aparece quando híbrido) -->
+        <div id="info-bateria" style="display:none;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:12px;padding:12px 16px;margin-bottom:20px">
+          <div style="font-size:13px;font-weight:700;color:#A78BFA;margin-bottom:4px">🔋 Sistema Híbrido com Bateria</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.6">Com bateria você armazena o excedente e usa à noite — <strong style="color:#C4B5FD">independência total da rede</strong>, mesmo durante blecautes. O FIO B não se aplica à energia que você consome da própria bateria!</div>
+        </div>
+
+        <!-- CTA -->
+        <a href="#" onclick="entrarNoApp('cliente');return false;"
+          style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff;padding:16px;border-radius:14px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 28px rgba(26,86,219,.4)">
+          <i class="ti ti-solar-panel" style="font-size:18px"></i>
+          Quero receber orçamentos gratuitos agora
+        </a>
+        <div style="text-align:center;font-size:11px;color:rgba(255,255,255,.3);margin-top:8px">Gratuito · Sem compromisso · Empresas verificadas</div>
+      </div>
+
+      <!-- Estado inicial -->
+      <div id="sim-inicial" style="text-align:center;padding:20px 0">
+        <div style="font-size:32px;margin-bottom:10px">☀️</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.4)">Digite o valor da sua conta de luz para simular</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="section-center">
@@ -588,8 +890,8 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
   <h2>Comece hoje.<br>É gratuito para o cliente.</h2>
   <p>Mais de 1.200 empresas certificadas esperando para te atender.</p>
   <div class="cta-btns">
-    <a href="acheisol_v7.html?flow=cliente" target="_blank" class="btn-hero-primary"><i class="ti ti-solar-panel" style="font-size:17px"></i>Sou cliente, quero energia solar</a>
-    <a href="acheisol_v7.html?flow=integrador" target="_blank" class="btn-hero-secondary"><i class="ti ti-building-store" style="font-size:17px"></i>Sou integrador / instalador</a>
+    <a href="#" onclick="entrarNoApp('cliente');return false;" class="btn-hero-primary"><i class="ti ti-solar-panel" style="font-size:17px"></i>Sou cliente, quero energia solar</a>
+    <a href="#" onclick="entrarNoApp('integrador');return false;" class="btn-hero-secondary"><i class="ti ti-building-store" style="font-size:17px"></i>Sou integrador / instalador</a>
   </div>
 </section>
 
@@ -617,21 +919,7 @@ footer{background:#060D1F;padding:40px 24px 28px;border-top:1px solid rgba(255,2
   </div>
 </footer>
 
-<script>
-function switchFaq(tab){
-  document.getElementById('faq-cliente').style.display=tab==='cliente'?'block':'none';
-  document.getElementById('faq-int').style.display=tab==='int'?'block':'none';
-  const bC=document.getElementById('faq-tab-cliente'),bI=document.getElementById('faq-tab-int');
-  if(tab==='cliente'){bC.style.background='#1A56DB';bC.style.color='#fff';bC.style.borderColor='#1A56DB';bI.style.background='#fff';bI.style.color='#64748B';bI.style.borderColor='#E2E8F0';}
-  else{bI.style.background='#1A56DB';bI.style.color='#fff';bI.style.borderColor='#1A56DB';bC.style.background='#fff';bC.style.color='#64748B';bC.style.borderColor='#E2E8F0';}
-}
-function toggleFaq(el){
-  const a=el.nextElementSibling;const isOpen=a.classList.contains('open');
-  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
-  document.querySelectorAll('.faq-q.open').forEach(x=>x.classList.remove('open'));
-  if(!isOpen){a.classList.add('open');el.classList.add('open');}
-}
-</script>
+
 
 <!-- POPUP DESCONTO 5% -->
 <div id="popup-desconto" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:24px">
@@ -658,7 +946,7 @@ function toggleFaq(el){
       <p style="font-size:12px;color:#92400E;line-height:1.55">Lembre-se de mencionar o cupom <strong>antes de assinar o contrato</strong>. O desconto não pode ser aplicado retroativamente.</p>
     </div>
     
-    <a href="acheisol_v7.html?flow=cliente" target="_blank" style="display:block;background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff;padding:14px;border-radius:13px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(26,86,219,.35)">
+    <a href="#" onclick="entrarNoApp('cliente');return false;" style="display:block;background:linear-gradient(135deg,#1A56DB,#1341B0);color:#fff;padding:14px;border-radius:13px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(26,86,219,.35)">
       <i class="ti ti-solar-panel" style="font-size:17px;vertical-align:-3px;margin-right:6px"></i> Continuar e encontrar empresa
     </a>
     
@@ -669,8 +957,1568 @@ function toggleFaq(el){
 <style>
 @keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
 </style>
+</div>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- APP (escondido inicialmente)           -->
+<!-- ═══════════════════════════════════════ -->
+<div id="app-wrapper">
+<div class="app">
+  <!-- BOTÃO VOLTAR HOME — aparece em todas as telas menos a home -->
+  <div id="btn-voltar-home" style="display:none;position:fixed;bottom:24px;right:24px;z-index:500">
+    <button onclick="ir('s-home')" style="width:48px;height:48px;border-radius:24px;background:linear-gradient(135deg,#1A56DB,#1341B0);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(26,86,219,.5);transition:transform .2s" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      <i class="ti ti-home" style="font-size:20px;color:#fff"></i>
+    </button>
+  </div>
+
+<!-- ══════════════════════════════
+     TELA 1 — HOME
+══════════════════════════════ -->
+<div class="screen active" id="s-home" style="display:flex">
+  <div style="background:#0B1120;padding-bottom:28px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:26px 22px 0">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div style="background:#1A3A8F;border-radius:11px;width:38px;height:38px;display:flex;align-items:center;justify-content:center">
+          <svg width="24" height="24" viewBox="0 0 96 96" fill="none">
+            <circle cx="72" cy="22" r="13" stroke="#F59E0B" stroke-width="2.8" fill="none"/>
+            <line x1="72" y1="5" x2="72" y2="2" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="72" y1="39" x2="72" y2="42" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="55" y1="22" x2="52" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="89" y1="22" x2="92" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="61.5" y1="10.5" x2="59.4" y2="8.4" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+            <line x1="82.5" y1="10.5" x2="84.6" y2="8.4" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+            <line x1="61.5" y1="33.5" x2="59.4" y2="35.6" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+            <line x1="82.5" y1="33.5" x2="84.6" y2="35.6" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+            <path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/>
+            <path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/>
+            <circle cx="18" cy="70" r="4" fill="white" opacity=".9"/>
+          </svg>
+        </div>
+        <span style="font-size:22px;font-weight:800;letter-spacing:-1.2px"><span style="color:#fff">Achei</span><span style="color:#60A5FA">Sol</span></span>
+      </div>
+      <a href="#" onclick="mostrarLP();return false;" style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);border-radius:22px;padding:8px 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);text-decoration:none;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.15)';this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.4)'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.85)';this.style.borderColor='rgba(255,255,255,.2)'">
+        <i class="ti ti-arrow-left" style="font-size:15px"></i> Voltar ao site
+      </a>
+    </div>
+
+    <div style="padding:20px 22px 0">
+      <div style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-.8px;line-height:1.2;margin-bottom:10px">Encontre a <span style="color:#60A5FA">melhor empresa</span> solar da sua região</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.48);line-height:1.7;margin-bottom:14px">Contrate com confiança — empresas certificadas para <span style="color:#fff;font-weight:600">economia</span>, <span style="color:#fff;font-weight:600">backup com bateria</span> e <span style="color:#fff;font-weight:600">manutenção</span> de sistemas existentes.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);border-radius:20px;padding:5px 10px;font-size:12px;font-weight:600;color:#93C5FD"><i class="ti ti-trending-down" style="color:#60A5FA;font-size:13px"></i>Economia</div>
+        <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);border-radius:20px;padding:5px 10px;font-size:12px;font-weight:600;color:#FCD34D"><i class="ti ti-battery-charging" style="color:#F59E0B;font-size:13px"></i>Backup bateria</div>
+        <div style="display:inline-flex;align-items:center;gap:5px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:20px;padding:5px 10px;font-size:12px;font-weight:600;color:#6EE7B7"><i class="ti ti-rosette-discount-check" style="color:#10B981;font-size:13px"></i>Certificadas</div>
+      </div>
+    </div>
+
+    <!-- MAPA -->
+    <div style="margin:16px 18px 0;border-radius:20px;height:192px;position:relative;overflow:hidden">
+      <svg width="100%" height="100%" viewBox="0 0 356 192" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0D1B3E"/><stop offset="100%" stop-color="#0B1427"/></linearGradient></defs>
+        <rect width="356" height="192" fill="url(#mg)"/>
+        <rect x="8" y="8" width="80" height="42" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="98" y="8" width="68" height="42" rx="5" fill="#1A2744"/>
+        <rect x="176" y="8" width="68" height="42" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="254" y="8" width="94" height="42" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="8" y="62" width="80" height="56" rx="5" fill="#152238" opacity=".9"/>
+        <rect x="98" y="62" width="68" height="56" rx="5" fill="#192040" opacity=".95"/>
+        <rect x="176" y="62" width="68" height="56" rx="5" fill="#152238" opacity=".9"/>
+        <rect x="254" y="62" width="94" height="56" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="8" y="130" width="80" height="54" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="98" y="130" width="68" height="54" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="176" y="130" width="68" height="54" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="254" y="130" width="94" height="54" rx="5" fill="#1A2744" opacity=".9"/>
+        <rect x="0" y="52" width="356" height="10" fill="#0B1427" opacity=".95"/>
+        <rect x="0" y="120" width="356" height="10" fill="#0B1427" opacity=".95"/>
+        <rect x="88" y="0" width="10" height="192" fill="#0B1427" opacity=".95"/>
+        <rect x="166" y="0" width="10" height="192" fill="#0B1427" opacity=".95"/>
+        <rect x="244" y="0" width="10" height="192" fill="#0B1427" opacity=".95"/>
+        <circle cx="178" cy="92" r="30" fill="none" stroke="#1A56DB" stroke-width="1.5" stroke-dasharray="6 5" opacity=".4"/>
+        <circle cx="178" cy="92" r="54" fill="none" stroke="#1A56DB" stroke-width="1" stroke-dasharray="3 7" opacity=".18"/>
+        <rect x="98" y="62" width="68" height="56" rx="5" fill="#1A56DB" opacity=".07"/>
+      </svg>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(11,17,32,.98) 100%);pointer-events:none;z-index:2"></div>
+      <div style="position:absolute;left:178px;top:92px;transform:translate(-50%,-50%);z-index:9">
+        <div style="position:absolute;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(26,86,219,.4);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulseRing 2.5s ease-in-out infinite"></div>
+        <div style="width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(26,86,219,.5);display:flex;align-items:center;justify-content:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(26,86,219,.18);display:flex;align-items:center;justify-content:center">
+            <div style="width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid #1A56DB"></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;left:44px;top:48px;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;z-index:8;animation:pinDrop .5s .3s both">
+        <div style="background:rgba(10,18,36,.96);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:5px 8px;display:flex;align-items:center;gap:5px;white-space:nowrap;position:relative">
+          <div style="width:18px;height:18px;border-radius:4px;background:#1A56DB;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#fff">ST</div>
+          <div><div style="font-size:11px;font-weight:700;color:#fff">SolarTech</div><div style="font-size:10px;color:rgba(255,255,255,.4)">2,1km ⭐4.9</div></div>
+          <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid rgba(10,18,36,.96)"></div>
+        </div>
+        <div style="width:2px;height:5px;background:#1A56DB;opacity:.4"></div><div style="width:5px;height:5px;border-radius:50%;background:#1A56DB"></div>
+      </div>
+      <div style="position:absolute;left:296px;top:42px;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;z-index:8;animation:pinDrop .5s .45s both">
+        <div style="background:rgba(10,18,36,.96);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:5px 8px;display:flex;align-items:center;gap:5px;white-space:nowrap;position:relative">
+          <div style="width:18px;height:18px;border-radius:4px;background:#7C3AED;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#fff">LS</div>
+          <div><div style="font-size:11px;font-weight:700;color:#fff">Luz Solar</div><div style="font-size:10px;color:rgba(255,255,255,.4)">4,7km ⭐4.7</div></div>
+          <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid rgba(10,18,36,.96)"></div>
+        </div>
+        <div style="width:2px;height:5px;background:#7C3AED;opacity:.4"></div><div style="width:5px;height:5px;border-radius:50%;background:#7C3AED"></div>
+      </div>
+      <div style="position:absolute;left:296px;top:158px;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;z-index:8;animation:pinDrop .5s .6s both">
+        <div style="background:rgba(10,18,36,.96);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:5px 8px;display:flex;align-items:center;gap:5px;white-space:nowrap;position:relative">
+          <div style="width:18px;height:18px;border-radius:4px;background:#F59E0B;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#fff">ES</div>
+          <div><div style="font-size:11px;font-weight:700;color:#fff">EcoSol</div><div style="font-size:10px;color:rgba(255,255,255,.4)">6,3km ⭐4.6</div></div>
+          <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid rgba(10,18,36,.96)"></div>
+        </div>
+        <div style="width:2px;height:5px;background:#F59E0B;opacity:.4"></div><div style="width:5px;height:5px;border-radius:50%;background:#F59E0B"></div>
+      </div>
+      <div style="position:absolute;left:42px;top:160px;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;z-index:8;animation:pinDrop .5s .75s both">
+        <div style="background:rgba(10,18,36,.96);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:5px 8px;display:flex;align-items:center;gap:5px;white-space:nowrap;position:relative">
+          <div style="width:18px;height:18px;border-radius:4px;background:#10B981;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#fff">SM</div>
+          <div><div style="font-size:11px;font-weight:700;color:#fff">SunMax</div><div style="font-size:10px;color:rgba(255,255,255,.4)">7,8km ⭐4.5</div></div>
+          <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid rgba(10,18,36,.96)"></div>
+        </div>
+        <div style="width:2px;height:5px;background:#10B981;opacity:.4"></div><div style="width:5px;height:5px;border-radius:50%;background:#10B981"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;padding:13px 18px 0">
+      <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px;text-align:center">
+        <div style="font-size:15px;font-weight:800;color:#fff">1.2k+</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px">Empresas</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px;text-align:center">
+        <div style="font-size:15px;font-weight:800;color:#fff">4.8 ⭐</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px">Avaliação média</div>
+      </div>
+      <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px;text-align:center">
+        <div style="font-size:15px;font-weight:800;color:#60A5FA">Free</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:2px">Simulação</div>
+      </div>
+    </div>
+
+    <div style="padding:14px 18px 0">
+      <button class="btn" onclick="abrirLead()">
+        <i class="ti ti-solar-panel" style="font-size:18px"></i> Quero meu sistema solar
+      </button>
+    </div>
+    <div style="padding:10px 18px 0">
+      <button onclick="ir('s-integrador')" style="width:100%;padding:13px 18px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;color:rgba(255,255,255,.85);font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.12)';this.style.borderColor='rgba(255,255,255,.35)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.06)';this.style.borderColor='rgba(255,255,255,.2)';this.style.color='rgba(255,255,255,.85)'">
+        <i class="ti ti-building-store" style="font-size:17px"></i> Sou integrador / instalador
+      </button>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;padding:10px 18px 0">
+      <span style="font-size:11px;color:rgba(255,255,255,.2);display:flex;align-items:center;gap:3px"><i class="ti ti-bolt" style="font-size:11px"></i> Gratuito</span>
+      <span style="font-size:11px;color:rgba(255,255,255,.2);display:flex;align-items:center;gap:3px"><i class="ti ti-shield-check" style="font-size:11px"></i> 100% seguro</span>
+      <span style="font-size:11px;color:rgba(255,255,255,.2);display:flex;align-items:center;gap:3px"><i class="ti ti-clock" style="font-size:11px"></i> &lt; 1 minuto</span>
+    </div>
+    <!-- Badge de usuário retornando — só aparece via JS -->
+    <div id="retorno-badge" style="display:none;margin:10px 18px 0;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:12px;padding:10px 14px;display:none;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:28px;height:28px;border-radius:14px;background:rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center">
+          <i class="ti ti-user-check" style="font-size:14px;color:#10B981"></i>
+        </div>
+        <div>
+          <div id="retorno-nome" style="font-size:12px;font-weight:700;color:#6EE7B7">Olá, André!</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:1px">Cadastro salvo · não é você?</div>
+        </div>
+      </div>
+      <button onclick="sairSessaoCliente()" style="background:transparent;border:none;font-size:11px;color:rgba(255,255,255,.3);cursor:pointer;text-decoration:underline">Sair</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TELA 2 — TIPO DE SISTEMA
+══════════════════════════════ -->
+<div class="screen" id="s-tipo" style="display:none">
+  <div style="background:#0B1120;padding:22px 20px 0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+      <button class="back-btn" onclick="ir('s-home')"><i class="ti ti-arrow-left" style="color:#94A3B8;font-size:16px"></i></button>
+      <span style="font-size:17px;font-weight:800;letter-spacing:-.7px"><span style="color:#fff">Achei</span><span style="color:#60A5FA">Sol</span></span>
+    </div>
+    <div style="display:flex;gap:5px;padding:14px 0 16px">
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+    </div>
+  </div>
+
+  <div style="background:#F8FAFC;padding:22px 18px 32px">
+    <div style="font-size:22px;font-weight:800;color:#111827;letter-spacing:-.5px;line-height:1.2;margin-bottom:6px">Qual é o seu objetivo?</div>
+    <div style="font-size:13px;color:#64748B;margin-bottom:22px;line-height:1.65">Escolha o tipo de sistema. O integrador vai detalhar tudo depois.</div>
+
+    <div class="tipo-card" id="card-on" style="background:#EFF6FF;border-color:#1A56DB" onclick="selTipo('on')">
+      <div style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:11px;background:#1A56DB;display:flex;align-items:center;justify-content:center" id="chk-on">
+        <i class="ti ti-check" style="font-size:11px;color:#fff"></i>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:13px">
+        <div style="width:50px;height:50px;border-radius:14px;background:#1A56DB;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <i class="ti ti-solar-panel" style="font-size:26px;color:#fff"></i>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:800;color:#1D4ED8">On-grid</div>
+          <div style="font-size:12px;color:#3B82F6;font-weight:500">Conectado à rede elétrica</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:#1E40AF;line-height:1.65;margin-bottom:12px">Produz energia solar e injeta o excedente na rede. Ideal para quem quer <strong>máxima economia</strong> na conta.</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#1D4ED8;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Reduz até 95% da conta</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#1D4ED8;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Menor investimento inicial</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#94A3B8;font-weight:500"><i class="ti ti-circle-x" style="font-size:15px;color:#CBD5E1"></i> Sem energia em blecautes</div>
+      </div>
+      <div style="margin-top:11px;padding:8px 12px;background:rgba(26,86,219,.1);border-radius:9px;font-size:12px;color:#1D4ED8;font-weight:600;display:flex;align-items:center;gap:6px">
+        <i class="ti ti-currency-dollar" style="font-size:14px"></i> Retorno em 3 a 5 anos
+      </div>
+    </div>
+
+    <div class="tipo-card" id="card-hi" style="background:#fff;border-color:#E2E8F0" onclick="selTipo('hi')">
+      <div style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:11px;background:#E2E8F0;display:flex;align-items:center;justify-content:center" id="chk-hi">
+        <i class="ti ti-check" style="font-size:11px;color:#94A3B8"></i>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:13px">
+        <div style="width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#FBBF24);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <i class="ti ti-battery-charging" style="font-size:26px;color:#fff"></i>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:800;color:#92400E">Híbrido</div>
+          <div style="font-size:12px;color:#D97706;font-weight:500">Com bateria de armazenamento</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:#78350F;line-height:1.65;margin-bottom:12px">Produz, armazena e usa quando quiser. <strong>Independência total</strong> — mesmo à noite e em blecautes.</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#92400E;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Energia 24h mesmo sem rede</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#92400E;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Proteção total contra blecautes</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#92400E;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Reduz até 100% da conta</div>
+      </div>
+      <div style="margin-top:11px;padding:8px 12px;background:rgba(245,158,11,.1);border-radius:9px;font-size:12px;color:#92400E;font-weight:600;display:flex;align-items:center;gap:6px">
+        <i class="ti ti-currency-dollar" style="font-size:14px"></i> Maior investimento, retorno total
+      </div>
+    </div>
+
+    <!-- CARD MANUTENÇÃO -->
+    <div class="tipo-card" id="card-mn" style="background:#fff;border-color:#E2E8F0" onclick="selTipo('mn')">
+      <div style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:11px;background:#E2E8F0;display:flex;align-items:center;justify-content:center" id="chk-mn">
+        <i class="ti ti-check" style="font-size:11px;color:#94A3B8"></i>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:13px">
+        <div style="width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <i class="ti ti-tool" style="font-size:26px;color:#fff"></i>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:800;color:#065F46">Manutenção</div>
+          <div style="font-size:12px;color:#10B981;font-weight:500">Limpeza, preventiva e corretiva</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:#064E3B;line-height:1.65;margin-bottom:12px">Já tem um sistema instalado? Mantenha ele funcionando no <strong>máximo desempenho</strong> com manutenção especializada.</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#065F46;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Limpeza de painéis fotovoltaicos</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#065F46;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Manutenção preventiva e corretiva</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#065F46;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Revisão de inversor e cabos</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:#065F46;font-weight:500"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981"></i> Diagnóstico e relatório de desempenho</div>
+      </div>
+      <div style="margin-top:11px;padding:8px 12px;background:rgba(16,185,129,.1);border-radius:9px;font-size:12px;color:#065F46;font-weight:600;display:flex;align-items:center;gap:6px">
+        <i class="ti ti-chart-line" style="font-size:14px"></i> Recupere até 30% da geração perdida
+      </div>
+    </div>
+
+    <button class="btn" onclick="ir('s-emp')">
+      Ver empresas próximas <i class="ti ti-arrow-right" style="font-size:16px"></i>
+    </button>
+    <button class="btn-ghost" onclick="ir('s-home')">← Voltar ao início</button>
+    
+    <!-- LINK INTEGRADOR -->
+    <div style="margin-top:20px;padding:14px 16px;background:#F1F5F9;border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#374151">Você é instalador solar?</div>
+        <div style="font-size:12px;color:#94A3B8;margin-top:2px">Receba leads qualificados na sua região</div>
+      </div>
+      <button onclick="ir('s-integrador')" style="background:linear-gradient(135deg,#1A56DB,#1341B0);border:none;border-radius:10px;padding:9px 14px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0">
+        <i class="ti ti-building-store" style="font-size:13px"></i> Sou integrador
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TELA 3 — EMPRESAS
+══════════════════════════════ -->
+<div class="screen" id="s-emp" style="display:none">
+  <div style="background:#0B1120;padding:20px 18px 0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+      <button class="back-btn" onclick="ir('s-tipo')"><i class="ti ti-arrow-left" style="color:#94A3B8;font-size:16px"></i></button>
+      <div style="flex:1">
+        <div style="font-size:17px;font-weight:800;color:#fff">Empresas próximas</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:1px;display:flex;align-items:center;gap:4px">
+          <i class="ti ti-map-pin" style="font-size:11px;color:#60A5FA"></i>
+          <span id="emp-cidade">Belo Horizonte, MG</span>
+          <span style="color:rgba(255,255,255,.2)">·</span>
+          <span id="emp-tipo" style="color:#60A5FA;font-weight:600">On-grid</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:5px;margin-bottom:12px">
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB"></div>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:11px 13px;margin-bottom:11px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px"><i class="ti ti-radar" style="font-size:13px;color:#60A5FA"></i> Raio de busca</div>
+        <div style="font-size:13px;font-weight:800;color:#fff"><span id="raio-val">100</span> <span style="font-size:11px;opacity:.4">km</span></div>
+      </div>
+      <input type="range" min="10" max="300" value="100" step="10" oninput="updRaio(this.value)">
+      <div style="display:flex;justify-content:space-between;margin-top:4px">
+        <span style="font-size:10px;color:rgba(255,255,255,.2)">10 km</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.2)">300 km</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;padding-bottom:14px;overflow-x:auto;scrollbar-width:none">
+      <div class="ord on" id="ord-dist" onclick="setOrd('dist')"><i class="ti ti-navigation" style="font-size:12px"></i> Distância</div>
+      <div class="ord" id="ord-nota" onclick="setOrd('nota')"><i class="ti ti-star" style="font-size:12px"></i> Melhor nota</div>
+      <div class="ord" id="ord-proj" onclick="setOrd('proj')"><i class="ti ti-tool" style="font-size:12px"></i> Mais projetos</div>
+    </div>
+  </div>
+
+  <div style="background:#F8FAFC;padding:14px 16px">
+
+    <!-- EMPRESA 1 -->
+    <div class="card">
+      <div class="card-hd" onclick="tog(1)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#1A56DB,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0">ST</div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:2px">
+              <span style="font-size:14px;font-weight:800;color:#111827">SolarTech Soluções</span>
+              <span style="background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px">✓ Verificada</span>
+            </div>
+            <div style="font-size:12px;color:#94A3B8;display:flex;align-items:center;gap:3px"><i class="ti ti-map-pin" style="font-size:11px;color:#60A5FA"></i> 2,1 km · BH, MG</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:15px;font-weight:800;color:#111827">4.9 ⭐</div>
+            <div style="font-size:11px;color:#94A3B8">127 proj.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">127</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Projetos</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">4.9</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Nota</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">48</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Avaliações</div></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#EFF6FF;color:#1D4ED8">On-grid</span>
+            <span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#EFF6FF;color:#1D4ED8">Híbrido</span>
+            <span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#F0FDF4;color:#166534">Financiamento</span>
+          </div>
+          <i class="ti ti-chevron-down" style="font-size:16px;color:#CBD5E1;transition:transform .25s;flex-shrink:0;margin-left:4px" id="cv1"></i>
+        </div>
+      </div>
+      <div id="d1" style="display:none;border-top:1px solid #F1F5F9">
+        <div style="padding:13px 14px 0">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:11px">Avaliações recentes</div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#EFF6FF;color:#1A56DB">JM</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">João Mendes</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Instalação impecável, prazo cumprido. Equipe muito profissional!"</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 2 semanas</div></div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#FEF3C7;color:#92400E">CS</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">Carla Silva</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Minha conta caiu 80% no primeiro mês!"</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 1 mês</div></div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#ECFDF5;color:#065F46">RL</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">Roberto Lima</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Bom serviço. Demorou um pouco mais que o previsto, mas recomendo."</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 2 meses</div></div>
+        </div>
+        <div style="padding:13px 14px;border-top:1px solid #F1F5F9;margin-top:11px">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Contato & links</div>
+          <a href="tel:+553133334444" class="cl"><div class="ci" style="background:#EFF6FF"><i class="ti ti-phone" style="color:#1A56DB;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Telefone</div><div style="font-size:13px;font-weight:600;color:#1A56DB">(31) 3333-4444</div></div></a>
+          <a href="https://instagram.com/solartechbh" target="_blank" class="cl"><div class="ci" style="background:#FDF2F8"><i class="ti ti-brand-instagram" style="color:#C026D3;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Instagram</div><div style="font-size:13px;font-weight:600;color:#C026D3">@solartechbh</div></div></a>
+          <a href="https://solartech.com.br" target="_blank" class="cl" style="margin-bottom:13px"><div class="ci" style="background:#F0FDF4"><i class="ti ti-world" style="color:#16A34A;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Site</div><div style="font-size:13px;font-weight:600;color:#16A34A">solartech.com.br</div></div></a>
+          <button class="btn" onclick="abrirContato('SolarTech Soluções','ST','#1A56DB')"><i class="ti ti-phone-call" style="font-size:16px"></i> Quero receber contato</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPRESA 2 -->
+    <div class="card">
+      <div class="card-hd" onclick="tog(2)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#7C3AED,#A78BFA);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0">LS</div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:2px">
+              <span style="font-size:14px;font-weight:800;color:#111827">Luz Solar MG</span>
+              <span style="background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px">✓ Verificada</span>
+            </div>
+            <div style="font-size:12px;color:#94A3B8;display:flex;align-items:center;gap:3px"><i class="ti ti-map-pin" style="font-size:11px;color:#60A5FA"></i> 4,7 km · Contagem, MG</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:15px;font-weight:800;color:#111827">4.7 ⭐</div>
+            <div style="font-size:11px;color:#94A3B8">84 proj.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">84</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Projetos</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">4.7</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Nota</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">31</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Avaliações</div></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+          <div style="display:flex;gap:5px"><span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#EFF6FF;color:#1D4ED8">On-grid</span><span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#F5F3FF;color:#5B21B6">Industrial</span></div>
+          <i class="ti ti-chevron-down" style="font-size:16px;color:#CBD5E1;transition:transform .25s;flex-shrink:0" id="cv2"></i>
+        </div>
+      </div>
+      <div id="d2" style="display:none;border-top:1px solid #F1F5F9">
+        <div style="padding:13px 14px 0">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:11px">Avaliações recentes</div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#F5F3FF;color:#5B21B6">AF</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">Ana Ferreira</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Ótima empresa! Instalaram em 2 dias sem bagunça."</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 3 semanas</div></div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#EFF6FF;color:#1A56DB">MO</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">Marcos Oliveira</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Economizei R$ 380 no primeiro mês!"</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 1 mês</div></div>
+        </div>
+        <div style="padding:13px 14px;border-top:1px solid #F1F5F9;margin-top:11px">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Contato & links</div>
+          <a href="tel:+553199998888" class="cl"><div class="ci" style="background:#EFF6FF"><i class="ti ti-phone" style="color:#1A56DB;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Telefone</div><div style="font-size:13px;font-weight:600;color:#1A56DB">(31) 9999-8888</div></div></a>
+          <a href="https://instagram.com/luzsolar.mg" target="_blank" class="cl" style="margin-bottom:13px"><div class="ci" style="background:#FDF2F8"><i class="ti ti-brand-instagram" style="color:#C026D3;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Instagram</div><div style="font-size:13px;font-weight:600;color:#C026D3">@luzsolar.mg</div></div></a>
+          <button class="btn" onclick="abrirContato('Luz Solar MG','LS','#7C3AED')"><i class="ti ti-phone-call" style="font-size:16px"></i> Quero receber contato</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPRESA 3 -->
+    <div class="card">
+      <div class="card-hd" onclick="tog(3)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#F59E0B,#FBBF24);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0">ES</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:#111827;margin-bottom:2px">EcoSol Energia</div>
+            <div style="font-size:12px;color:#94A3B8;display:flex;align-items:center;gap:3px"><i class="ti ti-map-pin" style="font-size:11px;color:#60A5FA"></i> 6,3 km · Betim, MG</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:15px;font-weight:800;color:#111827">4.6 ⭐</div>
+            <div style="font-size:11px;color:#94A3B8">56 proj.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">56</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Projetos</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">4.6</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Nota</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">19</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Avaliações</div></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+          <div style="display:flex;gap:5px"><span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#FEF9C3;color:#854D0E">Híbrido</span><span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#FEF3C7;color:#92400E">Rural</span></div>
+          <i class="ti ti-chevron-down" style="font-size:16px;color:#CBD5E1;transition:transform .25s;flex-shrink:0" id="cv3"></i>
+        </div>
+      </div>
+      <div id="d3" style="display:none;border-top:1px solid #F1F5F9">
+        <div style="padding:13px 14px 0">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:11px">Avaliações recentes</div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#FEF3C7;color:#92400E">PR</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">Pedro Rocha</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Instalaram no meu sítio, longe de tudo. Muito competentes!"</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 5 dias</div></div>
+        </div>
+        <div style="padding:13px 14px;border-top:1px solid #F1F5F9;margin-top:11px">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Contato & links</div>
+          <a href="tel:+553188887777" class="cl"><div class="ci" style="background:#EFF6FF"><i class="ti ti-phone" style="color:#1A56DB;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Telefone</div><div style="font-size:13px;font-weight:600;color:#1A56DB">(31) 8888-7777</div></div></a>
+          <a href="https://instagram.com/ecosolenergia" target="_blank" class="cl"><div class="ci" style="background:#FDF2F8"><i class="ti ti-brand-instagram" style="color:#C026D3;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Instagram</div><div style="font-size:13px;font-weight:600;color:#C026D3">@ecosolenergia</div></div></a>
+          <a href="https://ecosol.com.br" target="_blank" class="cl" style="margin-bottom:13px"><div class="ci" style="background:#F0FDF4"><i class="ti ti-world" style="color:#16A34A;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Site</div><div style="font-size:13px;font-weight:600;color:#16A34A">ecosol.com.br</div></div></a>
+          <button class="btn" onclick="abrirContato('EcoSol Energia','ES','#F59E0B')"><i class="ti ti-phone-call" style="font-size:16px"></i> Quero receber contato</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPRESA 4 -->
+    <div class="card">
+      <div class="card-hd" onclick="tog(4)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0">SM</div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:2px"><span style="font-size:14px;font-weight:800;color:#111827">SunMax Solar</span><span style="background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px">✓ Verificada</span></div>
+            <div style="font-size:12px;color:#94A3B8;display:flex;align-items:center;gap:3px"><i class="ti ti-map-pin" style="font-size:11px;color:#60A5FA"></i> 7,8 km · Nova Lima, MG</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:15px;font-weight:800;color:#111827">4.5 ⭐</div>
+            <div style="font-size:11px;color:#94A3B8">43 proj.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">43</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Projetos</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">4.5</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Nota</div></div>
+          <div class="stat"><div style="font-size:14px;font-weight:800;color:#111827">15</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Avaliações</div></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px">
+          <div style="display:flex;gap:5px"><span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#EFF6FF;color:#1D4ED8">On-grid</span><span style="font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;background:#FEF9C3;color:#854D0E">Híbrido</span></div>
+          <i class="ti ti-chevron-down" style="font-size:16px;color:#CBD5E1;transition:transform .25s;flex-shrink:0" id="cv4"></i>
+        </div>
+      </div>
+      <div id="d4" style="display:none;border-top:1px solid #F1F5F9">
+        <div style="padding:13px 14px 0">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:11px">Avaliações recentes</div>
+          <div class="rev"><div style="display:flex;align-items:center;gap:7px;margin-bottom:4px"><div class="ava" style="background:#ECFDF5;color:#065F46">LB</div><div style="font-size:12px;font-weight:700;color:#111827;flex:1">Lúcia Barbosa</div><div style="font-size:11px;color:#F59E0B">⭐⭐⭐⭐⭐</div></div><div style="font-size:12px;color:#64748B;line-height:1.6;padding-left:35px">"Empresa jovem e dedicada. Atendimento excelente!"</div><div style="font-size:10px;color:#CBD5E1;margin-top:2px;padding-left:35px">há 1 semana</div></div>
+        </div>
+        <div style="padding:13px 14px;border-top:1px solid #F1F5F9;margin-top:11px">
+          <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Contato & links</div>
+          <a href="tel:+553177776666" class="cl"><div class="ci" style="background:#EFF6FF"><i class="ti ti-phone" style="color:#1A56DB;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Telefone</div><div style="font-size:13px;font-weight:600;color:#1A56DB">(31) 7777-6666</div></div></a>
+          <a href="https://instagram.com/sunmaxsolar" target="_blank" class="cl"><div class="ci" style="background:#FDF2F8"><i class="ti ti-brand-instagram" style="color:#C026D3;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Instagram</div><div style="font-size:13px;font-weight:600;color:#C026D3">@sunmaxsolar</div></div></a>
+          <a href="https://sunmax.com.br" target="_blank" class="cl" style="margin-bottom:13px"><div class="ci" style="background:#F0FDF4"><i class="ti ti-world" style="color:#16A34A;font-size:15px"></i></div><div><div style="font-size:11px;color:#94A3B8">Site</div><div style="font-size:13px;font-weight:600;color:#16A34A">sunmax.com.br</div></div></a>
+          <button class="btn" onclick="abrirContato('SunMax Solar','SM','#10B981')"><i class="ti ti-phone-call" style="font-size:16px"></i> Quero receber contato</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:8px 0 24px">
+      <span style="font-size:12px;color:#94A3B8" id="contador">4 empresas em até 100 km</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     MODAL — CADASTRO LEAD
+══════════════════════════════ -->
+<div class="modal-wrap" id="m-lead" onclick="if(event.target===this)fecharModal('m-lead')">
+  <div class="modal-box">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div style="width:36px;height:4px;border-radius:2px;background:#E2E8F0"></div>
+      <button onclick="fecharModal('m-lead')" style="background:#F1F5F9;border:none;border-radius:20px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <i class="ti ti-x" style="font-size:14px;color:#94A3B8"></i>
+      </button>
+    </div>
+    <div style="display:flex;gap:5px;margin-bottom:20px">
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB;transition:background .3s" id="pb1"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:#E2E8F0;transition:background .3s" id="pb2"></div>
+    </div>
+
+    <div id="step1">
+      <div id="modal-lead-titulo" style="font-size:19px;font-weight:800;color:#111827;margin-bottom:4px">Quero energia solar</div>
+      <div id="modal-lead-sub" style="font-size:13px;color:#64748B;margin-bottom:20px">Rápido e gratuito — menos de 1 minuto.</div>
+      <div class="lbl">Nome completo</div>
+      <div class="field"><i class="ti ti-user" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="l-nome" type="text" placeholder="Seu nome completo" autocomplete="name"></div>
+      <div class="lbl">Telefone (WhatsApp)</div>
+      <div class="field"><i class="ti ti-phone" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="l-tel" type="tel" placeholder="(00) 00000-0000" oninput="mTel(this)" autocomplete="tel"></div>
+      <div class="lbl">E-mail</div>
+      <div class="field" style="margin-bottom:24px"><i class="ti ti-mail" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="l-email" type="email" placeholder="seu@email.com" autocomplete="email"></div>
+      <button class="btn" type="button" onclick="proximoPasso()">Continuar <i class="ti ti-arrow-right" style="font-size:15px"></i></button>
+    </div>
+
+    <div id="step2" style="display:none">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <button type="button" onclick="voltarPasso()" style="width:32px;height:32px;border-radius:16px;background:#F8FAFC;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><i class="ti ti-arrow-left" style="font-size:14px;color:#94A3B8"></i></button>
+        <div><div style="font-size:19px;font-weight:800;color:#111827">Quase lá!</div><div style="font-size:13px;color:#64748B">Só mais duas informações.</div></div>
+      </div>
+      <div class="lbl">Estado</div>
+      <div class="field" style="margin-bottom:12px">
+        <i class="ti ti-map" style="color:#CBD5E1;font-size:14px;flex-shrink:0"></i>
+        <select id="l-estado" style="font-size:14px;cursor:pointer;width:100%;background:transparent;border:none;outline:none;color:#111827;appearance:none;-webkit-appearance:none" onchange="carregarCidades(this.options[this.selectedIndex].getAttribute('data-sigla'), this.value)">
+          <option value="">Selecione o estado...</option>
+        </select>
+        <i class="ti ti-chevron-down" style="color:#CBD5E1;font-size:15px;flex-shrink:0;pointer-events:none"></i>
+      </div>
+      <div class="lbl">Cidade</div>
+      <div class="field">
+        <i class="ti ti-building" style="color:#CBD5E1;font-size:14px;flex-shrink:0"></i>
+        <select id="l-cidade" style="font-size:14px;cursor:pointer;width:100%;background:transparent;border:none;outline:none;color:#111827;appearance:none;-webkit-appearance:none" disabled>
+          <option value="">Selecione o estado primeiro</option>
+        </select>
+        <i class="ti ti-chevron-down" style="color:#CBD5E1;font-size:15px;flex-shrink:0;pointer-events:none" id="cidade-chev"></i>
+      </div>
+      <div class="lbl">Valor médio da conta de luz</div>
+      <div class="field"><span style="font-size:14px;color:#94A3B8;font-weight:500;flex-shrink:0">R$</span><input id="l-conta" type="number" placeholder="Ex: 450" min="50"></div>
+      <div style="font-size:11px;color:#CBD5E1;margin-bottom:24px">Valor mensal da fatura de energia</div>
+      <button class="btn" type="button" onclick="enviarLead()">Continuar <i class="ti ti-arrow-right" style="font-size:15px"></i></button>
+      <div style="text-align:center;font-size:11px;color:#CBD5E1;margin-top:9px;display:flex;align-items:center;justify-content:center;gap:4px">
+        <i class="ti ti-lock" style="font-size:11px"></i> Dados privados e seguros
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA FIXA QUERO SER CONTATADO -->
+  <div style="position:sticky;bottom:0;left:0;right:0;background:#fff;border-top:1.5px solid #E2E8F0;padding:12px 16px;z-index:50;flex-shrink:0">
+    <button onclick="abrirContatoGeral()" style="width:100%;padding:14px;background:linear-gradient(135deg,#1A56DB,#1341B0);border:none;border-radius:13px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
+      <i class="ti ti-phone-call" style="font-size:17px"></i> Quero ser contatado
+    </button>
+    <div style="text-align:center;font-size:11px;color:#94A3B8;margin-top:6px">Ou escolha uma empresa específica acima</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     MODAL — QUERO CONTATO
+══════════════════════════════ -->
+<div class="modal-wrap" id="m-contato" onclick="if(event.target===this)fecharModal('m-contato')">
+  <div class="modal-box">
+    <div style="width:36px;height:4px;border-radius:2px;background:#E2E8F0;margin:0 auto 18px"></div>
+    <div style="font-size:18px;font-weight:800;color:#111827;margin-bottom:3px">Quero receber contato</div>
+    <div style="font-size:13px;color:#64748B;margin-bottom:16px">A empresa entrará em contato em até 2h pelo WhatsApp.</div>
+    <div style="display:flex;align-items:center;gap:10px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:13px;padding:12px;margin-bottom:18px">
+      <div id="c-av" style="width:40px;height:40px;border-radius:11px;background:#1A56DB;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0">ST</div>
+      <div>
+        <div id="c-nome" style="font-size:14px;font-weight:700;color:#111827">SolarTech Soluções</div>
+        <div style="font-size:11px;color:#94A3B8;margin-top:2px;display:flex;align-items:center;gap:4px"><i class="ti ti-clock" style="font-size:11px"></i> Responde em até 2 horas</div>
+      </div>
+    </div>
+    <div class="lbl">Seu nome</div>
+    <div class="field"><i class="ti ti-user" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="c-cnome" type="text" placeholder="Nome completo" autocomplete="name"></div>
+    <div class="lbl">Telefone (WhatsApp)</div>
+    <div class="field" style="margin-bottom:24px"><i class="ti ti-phone" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="c-tel" type="tel" placeholder="(00) 00000-0000" oninput="mTel(this)" autocomplete="tel"></div>
+    <button class="btn" type="button" onclick="enviarContato()">
+      <i class="ti ti-phone-call" style="font-size:16px"></i> Confirmar interesse
+    </button>
+    <div style="text-align:center;font-size:11px;color:#CBD5E1;margin-top:9px;display:flex;align-items:center;justify-content:center;gap:4px">
+      <i class="ti ti-lock" style="font-size:11px"></i> Dados privados e seguros
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <i class="ti ti-check" style="font-size:16px" id="t-ico"></i>
+  <span id="t-msg">Enviado!</span>
+</div>
+
+
+<!-- ══════════════════════════════
+     TELA 4 — ÁREA DO INTEGRADOR (hub)
+══════════════════════════════ -->
+<div class="screen" id="s-integrador" style="display:none">
+  <div style="background:#0B1120;padding:22px 20px 0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <button class="back-btn" onclick="ir('s-home')"><i class="ti ti-arrow-left" style="color:#94A3B8;font-size:16px"></i></button>
+      <div>
+        <div style="font-size:17px;font-weight:800;color:#fff">Área do Integrador</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:1px">Faça parte da rede AcheiSol</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#F8FAFC;padding:24px 18px 32px;flex:1;overflow-y:auto">
+
+    <!-- HERO INTEGRADOR -->
+    <div style="background:linear-gradient(135deg,#0B1729,#1A3A8F);border-radius:20px;padding:22px 20px;margin-bottom:22px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,.25),transparent 70%)"></div>
+      <div style="font-size:11px;font-weight:600;color:#93C5FD;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:5px"><i class="ti ti-bolt" style="font-size:12px"></i> Para empresas instaladoras</div>
+      <div style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-.4px;line-height:1.25;margin-bottom:8px">Receba leads qualificados na sua região</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:16px">Clientes que já escolheram o tipo de sistema e estão prontos para contratar.</div>
+      <div style="display:flex;gap:10px">
+        <div style="flex:1;background:rgba(255,255,255,.08);border-radius:11px;padding:10px;text-align:center">
+          <div style="font-size:18px;font-weight:800;color:#fff">1.2k+</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:2px">Leads/mês</div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,.08);border-radius:11px;padding:10px;text-align:center">
+          <div style="font-size:18px;font-weight:800;color:#60A5FA">R$0</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:2px">Comissão</div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,.08);border-radius:11px;padding:10px;text-align:center">
+          <div style="font-size:18px;font-weight:800;color:#10B981">100km</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:2px">Raio padrão</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANOS -->
+    <div style="font-size:13px;font-weight:700;color:#111827;letter-spacing:-.2px;margin-bottom:14px">Escolha seu plano</div>
+
+    <!-- PLANO BÁSICO -->
+    <div style="background:#fff;border:2px solid #E2E8F0;border-radius:18px;padding:18px;margin-bottom:12px;cursor:pointer;transition:border-color .2s" onclick="selPlano('basico')" id="pl-basico">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px">
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#111827">Básico</div>
+          <div style="font-size:12px;color:#64748B;margin-top:2px">Ideal para começar</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:22px;font-weight:800;color:#111827;letter-spacing:-.5px">R$59,90<span style="font-size:12px;font-weight:400;color:#94A3B8">/mês</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Até <strong>10 leads/mês</strong></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Raio de até <strong>50 km</strong></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Perfil básico na plataforma</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#94A3B8"><i class="ti ti-circle-x" style="font-size:15px;color:#CBD5E1;flex-shrink:0"></i> Sem badge "Verificada"</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#94A3B8"><i class="ti ti-circle-x" style="font-size:15px;color:#CBD5E1;flex-shrink:0"></i> Sem destaque no ranking</div>
+      </div>
+      <div id="sel-basico" style="display:none;text-align:center;font-size:12px;font-weight:600;color:#1A56DB;padding:7px;background:#EFF6FF;border-radius:8px"><i class="ti ti-check"></i> Selecionado</div>
+    </div>
+
+    <!-- PLANO PRO -->
+    <div style="background:#fff;border:2px solid #1A56DB;border-radius:18px;padding:18px;margin-bottom:12px;cursor:pointer;position:relative;overflow:hidden" onclick="selPlano('pro')" id="pl-pro">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1A56DB,#3B82F6)"></div>
+      <div style="position:absolute;top:12px;right:14px;background:#1A56DB;color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px">MAIS POPULAR</div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;margin-top:4px">
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#111827">Pro</div>
+          <div style="font-size:12px;color:#64748B;margin-top:2px">Para crescer rápido</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:22px;font-weight:800;color:#1A56DB;letter-spacing:-.5px">R$199,90<span style="font-size:12px;font-weight:400;color:#94A3B8">/mês</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Até <strong>30 leads/mês</strong></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Raio de até <strong>100 km</strong></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Badge <strong>"Verificada"</strong> no perfil</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> <strong>Destaque</strong> no ranking de busca</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Suporte prioritário</div>
+      </div>
+      <div id="sel-pro" style="text-align:center;font-size:12px;font-weight:600;color:#1A56DB;padding:7px;background:#EFF6FF;border-radius:8px"><i class="ti ti-check"></i> Selecionado</div>
+    </div>
+
+    <!-- PLANO ENTERPRISE -->
+    <div style="background:linear-gradient(135deg,#0B1729,#0F2A5E);border:2px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;margin-bottom:22px;cursor:pointer" onclick="selPlano('enterprise')" id="pl-enterprise">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px">
+        <div>
+          <div style="font-size:16px;font-weight:800;color:#fff">Enterprise</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Para grandes instaladoras</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:22px;font-weight:800;color:#60A5FA;letter-spacing:-.5px">R$399,00<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.4)">/mês</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.8)"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Leads <strong style="color:#fff">ilimitados</strong></div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.8)"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Raio <strong style="color:#fff">ilimitado</strong> (todo Brasil)</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.8)"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> <strong style="color:#fff">Topo</strong> do ranking garantido</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.8)"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Múltiplos usuários / filiais</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.8)"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> API de integração + relatórios</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.8)"><i class="ti ti-circle-check" style="font-size:15px;color:#10B981;flex-shrink:0"></i> Gerente de conta dedicado</div>
+      </div>
+      <div id="sel-enterprise" style="display:none;text-align:center;font-size:12px;font-weight:600;color:#60A5FA;padding:7px;background:rgba(96,165,250,.1);border-radius:8px;border:1px solid rgba(96,165,250,.2)"><i class="ti ti-check"></i> Selecionado</div>
+    </div>
+
+    <!-- CTA CADASTRO -->
+    <button class="btn" onclick="ir('s-cad-int')">
+      <i class="ti ti-building-store" style="font-size:17px"></i> Cadastrar minha empresa
+    </button>
+    <div style="text-align:center;margin-top:10px">
+      <span style="font-size:13px;color:#64748B">Já tem conta? </span>
+      <span onclick="ir('s-login-int')" style="font-size:13px;color:#1A56DB;font-weight:600;cursor:pointer">Fazer login</span>
+    </div>
+    <div style="margin-top:12px;padding:12px;background:#F1F5F9;border-radius:12px;text-align:center">
+      <div style="font-size:12px;color:#64748B;display:flex;align-items:center;justify-content:center;gap:5px"><i class="ti ti-shield-check" style="color:#10B981;font-size:14px"></i> 7 dias grátis em qualquer plano. Cancele quando quiser.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TELA 5 — CADASTRO INTEGRADOR
+══════════════════════════════ -->
+<div class="screen" id="s-cad-int" style="display:none">
+  <div style="background:#0B1120;padding:22px 20px 0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+      <button class="back-btn" onclick="ir('s-integrador')"><i class="ti ti-arrow-left" style="color:#94A3B8;font-size:16px"></i></button>
+      <div>
+        <div style="font-size:17px;font-weight:800;color:#fff">Cadastro da empresa</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:1px" id="plano-selecionado-label">Plano Pro — 7 dias grátis</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:5px;padding:14px 0 16px">
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:#1A56DB" id="cad-pb2"></div>
+      <div style="flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.1)" id="cad-pb3"></div>
+    </div>
+  </div>
+
+  <div style="background:#F8FAFC;padding:22px 18px 32px;flex:1;overflow-y:auto">
+
+    <!-- STEP A: DADOS DA EMPRESA -->
+    <div id="cad-step1">
+      <div style="font-size:20px;font-weight:800;color:#111827;margin-bottom:4px">Dados da empresa</div>
+      <div style="font-size:13px;color:#64748B;margin-bottom:20px">Suas informações no perfil público.</div>
+
+      <div class="lbl">Nome da empresa</div>
+      <div class="field"><i class="ti ti-building-store" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-nome" type="text" placeholder="Ex: SolarTech Soluções"></div>
+
+      <div class="lbl">CNPJ</div>
+      <div class="field"><i class="ti ti-id-badge" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-cnpj" type="text" placeholder="00.000.000/0001-00" oninput="mCnpj(this)"></div>
+
+      <div class="lbl">Telefone comercial (WhatsApp)</div>
+      <div class="field"><i class="ti ti-phone" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-tel" type="tel" placeholder="(00) 00000-0000" oninput="mTel(this)"></div>
+
+      <div class="lbl">Site da empresa (opcional)</div>
+      <div class="field"><i class="ti ti-world" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-site" type="url" placeholder="https://suaempresa.com.br"></div>
+
+      <div class="lbl">Instagram (opcional)</div>
+      <div class="field" style="margin-bottom:22px"><i class="ti ti-brand-instagram" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-insta" type="text" placeholder="@suaempresa"></div>
+
+      <button class="btn" onclick="cadStep2()">Continuar <i class="ti ti-arrow-right" style="font-size:15px"></i></button>
+    </div>
+
+    <!-- STEP B: LOCALIZAÇÃO + TIPOS -->
+    <div id="cad-step2" style="display:none">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <button onclick="document.getElementById('cad-step2').style.display='none';document.getElementById('cad-step1').style.display='block';document.getElementById('cad-pb2').style.background='#1A56DB';document.getElementById('cad-pb3').style.background='rgba(255,255,255,.1)'" style="width:32px;height:32px;border-radius:16px;background:#F1F5F9;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><i class="ti ti-arrow-left" style="font-size:14px;color:#94A3B8"></i></button>
+        <div><div style="font-size:20px;font-weight:800;color:#111827">Área de atuação</div><div style="font-size:13px;color:#64748B">Onde você instala?</div></div>
+      </div>
+
+      <div class="lbl">Estado de atuação principal</div>
+      <div class="field" style="margin-bottom:12px">
+        <i class="ti ti-map" style="color:#CBD5E1;font-size:14px;flex-shrink:0"></i>
+        <select id="ci-estado" style="font-size:14px;cursor:pointer;width:100%;background:transparent;border:none;outline:none;color:#111827;appearance:none;-webkit-appearance:none" onchange="carregarCidadesInt(this.value)">
+          <option value="">Selecione o estado...</option>
+          <option>Acre (AC)</option><option>Alagoas (AL)</option><option>Amapá (AP)</option><option>Amazonas (AM)</option><option>Bahia (BA)</option><option>Ceará (CE)</option><option>Distrito Federal (DF)</option><option>Espírito Santo (ES)</option><option>Goiás (GO)</option><option>Maranhão (MA)</option><option>Mato Grosso (MT)</option><option>Mato Grosso do Sul (MS)</option><option>Minas Gerais (MG)</option><option>Pará (PA)</option><option>Paraíba (PB)</option><option>Paraná (PR)</option><option>Pernambuco (PE)</option><option>Piauí (PI)</option><option>Rio de Janeiro (RJ)</option><option>Rio Grande do Norte (RN)</option><option>Rio Grande do Sul (RS)</option><option>Rondônia (RO)</option><option>Roraima (RR)</option><option>Santa Catarina (SC)</option><option>São Paulo (SP)</option><option>Sergipe (SE)</option><option>Tocantins (TO)</option>
+        </select>
+        <i class="ti ti-chevron-down" style="color:#CBD5E1;font-size:15px;flex-shrink:0;pointer-events:none"></i>
+      </div>
+
+      <div class="lbl">Cidade sede</div>
+      <div class="field">
+        <i class="ti ti-building" style="color:#CBD5E1;font-size:14px;flex-shrink:0"></i>
+        <select id="ci-cidade" style="font-size:14px;cursor:pointer;width:100%;background:transparent;border:none;outline:none;color:#111827;appearance:none;-webkit-appearance:none" disabled>
+          <option value="">Selecione o estado primeiro</option>
+        </select>
+        <i class="ti ti-chevron-down" style="color:#CBD5E1;font-size:15px;flex-shrink:0;pointer-events:none"></i>
+      </div>
+
+      <div class="lbl" style="margin-top:4px">Raio de atendimento</div>
+      <div style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:13px;padding:14px 16px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div style="font-size:13px;color:#64748B;display:flex;align-items:center;gap:6px">
+            <i class="ti ti-radar" style="font-size:15px;color:#1A56DB"></i>
+            Distância máxima que você atende
+          </div>
+          <div style="font-size:16px;font-weight:800;color:#1A56DB"><span id="raio-int-val">100</span> <span style="font-size:12px;font-weight:400;color:#94A3B8">km</span></div>
+        </div>
+        <input type="range" min="10" max="500" value="100" step="10" id="raio-int-slider"
+          oninput="document.getElementById('raio-int-val').textContent=this.value;atualizarDescricaoRaio(this.value)"
+          style="width:100%;margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:10px;color:#CBD5E1">10 km</span>
+          <span style="font-size:10px;color:#CBD5E1">500 km</span>
+        </div>
+        <div id="raio-int-desc" style="background:#EFF6FF;border-radius:9px;padding:8px 12px;font-size:12px;color:#1D4ED8;font-weight:500;display:flex;align-items:center;gap:6px">
+          <i class="ti ti-map-pin" style="font-size:13px"></i>
+          <span>Cobre cidades num raio de 100 km da sua sede</span>
+        </div>
+      </div>
+
+      <div class="lbl">Tipos de sistema que instala</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+        <div id="tp-on" onclick="toggleTipo('on')" style="background:#EFF6FF;border:2px solid #1A56DB;border-radius:12px;padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s">
+          <i class="ti ti-solar-panel" style="font-size:20px;color:#1A56DB;display:block;margin-bottom:4px"></i>
+          <div style="font-size:12px;font-weight:700;color:#1D4ED8">On-grid</div>
+        </div>
+        <div id="tp-hi" onclick="toggleTipo('hi')" style="background:#fff;border:2px solid #E2E8F0;border-radius:12px;padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s">
+          <i class="ti ti-battery-charging" style="font-size:20px;color:#CBD5E1;display:block;margin-bottom:4px"></i>
+          <div style="font-size:12px;font-weight:700;color:#94A3B8">Híbrido</div>
+        </div>
+        <div id="tp-mn" onclick="toggleTipo('mn')" style="background:#fff;border:2px solid #E2E8F0;border-radius:12px;padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s">
+          <i class="ti ti-tool" style="font-size:20px;color:#CBD5E1;display:block;margin-bottom:4px"></i>
+          <div style="font-size:12px;font-weight:700;color:#94A3B8">Manutenção</div>
+        </div>
+        <div id="tp-ru" onclick="toggleTipo('ru')" style="background:#fff;border:2px solid #E2E8F0;border-radius:12px;padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s">
+          <i class="ti ti-tractor" style="font-size:20px;color:#CBD5E1;display:block;margin-bottom:4px"></i>
+          <div style="font-size:12px;font-weight:700;color:#94A3B8">Rural</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#CBD5E1;margin-bottom:20px">Selecione um ou mais tipos</div>
+
+      <button class="btn" onclick="cadStep3()">Continuar <i class="ti ti-arrow-right" style="font-size:15px"></i></button>
+    </div>
+
+    <!-- STEP C: ACESSO -->
+    <div id="cad-step3" style="display:none">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+        <button onclick="document.getElementById('cad-step3').style.display='none';document.getElementById('cad-step2').style.display='block'" style="width:32px;height:32px;border-radius:16px;background:#F1F5F9;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><i class="ti ti-arrow-left" style="font-size:14px;color:#94A3B8"></i></button>
+        <div><div style="font-size:20px;font-weight:800;color:#111827">Criar acesso</div><div style="font-size:13px;color:#64748B">E-mail e senha para entrar.</div></div>
+      </div>
+
+      <div class="lbl">E-mail</div>
+      <div class="field"><i class="ti ti-mail" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-email" type="email" placeholder="contato@suaempresa.com.br"></div>
+
+      <div class="lbl">Senha</div>
+      <div class="field" style="margin-bottom:20px"><i class="ti ti-lock" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="ci-senha" type="password" placeholder="Mínimo 8 caracteres"></div>
+
+      <!-- RESUMO DO PLANO -->
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:20px">
+        <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Resumo do plano</div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div id="resumo-plano" style="font-size:15px;font-weight:800;color:#111827">Plano Pro</div>
+            <div style="font-size:12px;color:#64748B;margin-top:2px">7 dias grátis, depois cobrança mensal</div>
+          </div>
+          <div id="resumo-preco" style="font-size:18px;font-weight:800;color:#1A56DB">R$199,90/mês</div>
+        </div>
+        <div style="margin-top:10px;padding:8px 10px;background:#F0FDF4;border-radius:8px;font-size:12px;color:#166534;font-weight:500;display:flex;align-items:center;gap:5px">
+          <i class="ti ti-gift" style="font-size:13px"></i> 7 dias grátis — cancele antes sem cobrança
+        </div>
+      </div>
+
+      <!-- TERMOS -->
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:13px;margin-bottom:16px">
+        <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Termos de uso</div>
+        <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;margin-bottom:8px">
+          <input type="checkbox" id="termo1" onchange="checkTermos()" style="width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:#1A56DB;cursor:pointer">
+          <span style="font-size:12px;color:#374151;line-height:1.55">Li e aceito os <span onclick="abrirTermos()" style="color:#1A56DB;font-weight:600;cursor:pointer;text-decoration:underline">Termos e Condições de Uso</span> do Integrador, incluindo as regras sobre avaliações imutáveis.</span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;margin-bottom:8px">
+          <input type="checkbox" id="termo2" onchange="checkTermos()" style="width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:#1A56DB;cursor:pointer">
+          <span style="font-size:12px;color:#374151;line-height:1.55">Declaro que minha empresa possui todas as <strong>certificações necessárias</strong> para instalação de sistemas fotovoltaicos.</span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer">
+          <input type="checkbox" id="termo3" onchange="checkTermos()" style="width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:#1A56DB;cursor:pointer">
+          <span style="font-size:12px;color:#374151;line-height:1.55">Estou ciente de que <strong>avaliações não podem ser alteradas</strong> e que tentativas de manipulação resultam em banimento.</span>
+        </label>
+      </div>
+
+      <button class="btn" id="btn-criar" onclick="finalizarCadastro()" disabled style="opacity:.5;cursor:not-allowed">
+        <i class="ti ti-rocket" style="font-size:16px"></i> Criar conta e começar
+      </button>
+      <div style="text-align:center;font-size:11px;color:#CBD5E1;margin-top:9px">
+        Ao criar sua conta você concorda com nossa <span onclick="abrirTermos()" style="color:#1A56DB;cursor:pointer">Política de Privacidade</span>.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TELA 6 — LOGIN INTEGRADOR
+══════════════════════════════ -->
+<div class="screen" id="s-login-int" style="display:none">
+  <div style="background:#0B1120;padding:22px 20px 0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <button class="back-btn" onclick="ir('s-integrador')"><i class="ti ti-arrow-left" style="color:#94A3B8;font-size:16px"></i></button>
+      <div style="font-size:17px;font-weight:800;color:#fff">Entrar na plataforma</div>
+    </div>
+  </div>
+  <div style="background:#F8FAFC;padding:28px 18px 32px;flex:1">
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="width:60px;height:60px;border-radius:16px;background:#1A3A8F;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+        <svg width="36" height="36" viewBox="0 0 96 96" fill="none">
+          <circle cx="72" cy="22" r="13" stroke="#F59E0B" stroke-width="2.8" fill="none"/>
+          <line x1="72" y1="5" x2="72" y2="2" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+          <line x1="72" y1="39" x2="72" y2="42" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+          <line x1="55" y1="22" x2="52" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+          <line x1="89" y1="22" x2="92" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/>
+          <path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/>
+          <circle cx="18" cy="70" r="4" fill="white" opacity=".9"/>
+        </svg>
+      </div>
+      <div style="font-size:20px;font-weight:800;color:#111827;letter-spacing:-.4px">Bem-vindo de volta</div>
+      <div style="font-size:13px;color:#64748B;margin-top:4px">Acesse o painel do integrador</div>
+    </div>
+
+    <div class="lbl">E-mail</div>
+    <div class="field"><i class="ti ti-mail" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="lg-email" type="email" placeholder="contato@suaempresa.com.br" autocomplete="email"></div>
+
+    <div class="lbl">Senha</div>
+    <div class="field" style="margin-bottom:6px"><i class="ti ti-lock" style="color:#CBD5E1;font-size:15px;flex-shrink:0"></i><input id="lg-senha" type="password" placeholder="Sua senha" autocomplete="current-password"></div>
+
+    <div style="text-align:right;margin-bottom:22px"><span style="font-size:12px;color:#1A56DB;cursor:pointer;font-weight:500">Esqueci minha senha</span></div>
+
+    <button class="btn" onclick="fazerLogin()">
+      <i class="ti ti-login" style="font-size:16px"></i> Entrar
+    </button>
+
+    <div style="text-align:center;margin-top:16px">
+      <span style="font-size:13px;color:#64748B">Não tem conta? </span>
+      <span onclick="ir('s-integrador')" style="font-size:13px;color:#1A56DB;font-weight:600;cursor:pointer">Cadastre sua empresa</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TELA 7 — DASHBOARD INTEGRADOR
+══════════════════════════════ -->
+<div class="screen" id="s-dashboard" style="display:none">
+  <div style="background:#0B1120;padding:20px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <div>
+        <div style="font-size:17px;font-weight:800;color:#fff">Olá, <span id="dash-nome">SolarTech</span> 👋</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:1px;display:flex;align-items:center;gap:4px">
+          <span style="background:#10B981;width:7px;height:7px;border-radius:50%;display:inline-block"></span>
+          Plano Pro · Ativo
+        </div>
+      </div>
+      <button onclick="sairSessaoIntegrador()" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:7px 12px;font-size:12px;color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-logout" style="font-size:13px"></i> Sair</button>
+    </div>
+    <div style="display:flex;gap:5px;padding:14px 0 16px;overflow-x:auto;scrollbar-width:none">
+      <div onclick="dashTab('leads')" id="dt-leads" style="flex-shrink:0;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;background:#1A56DB;color:#fff;border:1px solid #1A56DB">Leads</div>
+      <div onclick="dashTab('perfil')" id="dt-perfil" style="flex-shrink:0;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08)">Perfil</div>
+      <div onclick="dashTab('plano')" id="dt-plano" style="flex-shrink:0;padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08)">Plano</div>
+    </div>
+  </div>
+
+  <div style="background:#F8FAFC;flex:1;padding:16px;overflow-y:auto">
+
+    <!-- ABA LEADS -->
+    <div id="da-leads">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px">
+        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:12px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:#1A56DB">8</div>
+          <div style="font-size:10px;color:#94A3B8;margin-top:2px">Novos</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:12px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:#F59E0B">3</div>
+          <div style="font-size:10px;color:#94A3B8;margin-top:2px">Em contato</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:12px;text-align:center">
+          <div style="font-size:20px;font-weight:800;color:#10B981">2</div>
+          <div style="font-size:10px;color:#94A3B8;margin-top:2px">Fechados</div>
+        </div>
+      </div>
+
+      <!-- LEAD CARDS -->
+      <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Leads recentes</div>
+
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1A56DB,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">JM</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:#111827">João Mendes</div>
+          <div style="font-size:11px;color:#64748B;margin-top:1px">On-grid · BH, MG · Conta: R$450/mês</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
+          <div style="background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;text-align:center">Novo</div>
+          <div style="font-size:10px;color:#94A3B8;text-align:center">há 2h</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#F59E0B,#FBBF24);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">CS</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:#111827">Carla Silva</div>
+          <div style="font-size:11px;color:#64748B;margin-top:1px">Híbrido · Contagem, MG · Conta: R$680/mês</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
+          <div style="background:#FEF9C3;color:#854D0E;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;text-align:center">Contato</div>
+          <div style="font-size:10px;color:#94A3B8;text-align:center">há 5h</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:12px;opacity:.7">
+        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">RL</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:#111827">Roberto Lima</div>
+          <div style="font-size:11px;color:#64748B;margin-top:1px">On-grid · Nova Lima, MG · Conta: R$320/mês</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
+          <div style="background:#ECFDF5;color:#065F46;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;text-align:center">Fechado</div>
+          <div style="font-size:10px;color:#94A3B8;text-align:center">há 2d</div>
+        </div>
+      </div>
+
+      <!-- LEAD BLOQUEADO -->
+      <div style="background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:14px;padding:14px;margin-bottom:9px;position:relative;overflow:hidden">
+        <div style="filter:blur(4px);pointer-events:none;display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:#E2E8F0;flex-shrink:0"></div>
+          <div><div style="width:100px;height:12px;background:#E2E8F0;border-radius:4px;margin-bottom:6px"></div><div style="width:160px;height:10px;background:#E2E8F0;border-radius:4px"></div></div>
+        </div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(248,250,252,.7)">
+          <div style="text-align:center">
+            <i class="ti ti-lock" style="font-size:20px;color:#94A3B8;display:block;margin-bottom:4px"></i>
+            <div style="font-size:11px;color:#64748B;font-weight:600">+5 leads disponíveis</div>
+            <div style="font-size:10px;color:#94A3B8">Upgrade para ver</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA PERFIL -->
+    <div id="da-perfil" style="display:none">
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:16px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#1A56DB,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0">ST</div>
+          <div>
+            <div style="font-size:15px;font-weight:800;color:#111827">SolarTech Soluções</div>
+            <div style="font-size:12px;color:#94A3B8;margin-top:2px">BH, MG · On-grid · Híbrido</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px">
+          <div style="background:#F8FAFC;border-radius:9px;padding:8px;text-align:center;border:1px solid #F1F5F9"><div style="font-size:14px;font-weight:800;color:#111827">4.9</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Nota</div></div>
+          <div style="background:#F8FAFC;border-radius:9px;padding:8px;text-align:center;border:1px solid #F1F5F9"><div style="font-size:14px;font-weight:800;color:#111827">12</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Projetos</div></div>
+          <div style="background:#F8FAFC;border-radius:9px;padding:8px;text-align:center;border:1px solid #F1F5F9"><div style="font-size:14px;font-weight:800;color:#111827">5</div><div style="font-size:10px;color:#94A3B8;margin-top:1px">Avaliações</div></div>
+        </div>
+      </div>
+      <button class="btn" style="background:linear-gradient(135deg,#475569,#334155)"><i class="ti ti-edit" style="font-size:16px"></i> Editar perfil</button>
+    </div>
+
+    <!-- ABA PLANO -->
+    <div id="da-plano" style="display:none">
+      <div style="background:linear-gradient(135deg,#0B1729,#1A3A8F);border-radius:18px;padding:18px;margin-bottom:14px">
+        <div style="font-size:12px;font-weight:600;color:#93C5FD;margin-bottom:6px">PLANO ATUAL</div>
+        <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:4px">Pro</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6)">R$199,90/mês · Próximo vencimento: 05/07/2026</div>
+        <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,.08);border-radius:10px;font-size:12px;color:rgba(255,255,255,.7);display:flex;justify-content:space-between">
+          <span>Leads utilizados</span><span style="font-weight:700;color:#fff">8 / 30</span>
+        </div>
+        <div style="height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:8px;overflow:hidden">
+          <div style="width:27%;height:100%;background:#60A5FA;border-radius:3px"></div>
+        </div>
+      </div>
+      <button class="btn"><i class="ti ti-rocket" style="font-size:16px"></i> Fazer upgrade para Enterprise</button>
+      <button class="btn-ghost" style="color:#EF4444;border-color:#FECACA">Cancelar plano</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     MODAL — TERMOS COMPLETOS
+══════════════════════════════ -->
+<div id="modal-termos" style="display:none;position:fixed;inset:0;background:#fff;z-index:9999;overflow-y:auto;-webkit-overflow-scrolling:touch">
+  <style>
+  *{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:#F8FAFC;color:#111827;line-height:1.7}
+
+.header{background:linear-gradient(135deg,#0B1729,#1A3A8F);padding:32px 24px;text-align:center}
+.logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+.logo-icon{background:#1A3A8F;border-radius:11px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15)}
+.logo-text{font-size:24px;font-weight:800;letter-spacing:-1px}
+.logo-text span{color:#fff}
+.logo-text span.sol{color:#60A5FA}
+.header h1{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
+.header p{font-size:13px;color:rgba(255,255,255,.5)}
+.header .version{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,.5);margin-top:10px}
+
+.container{max-width:760px;margin:0 auto;padding:32px 24px 60px}
+
+.summary-box{background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:20px 22px;margin-bottom:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.summary-item{text-align:center}
+.summary-item .icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:18px}
+.summary-item .label{font-size:11px;color:#94A3B8;margin-bottom:3px}
+.summary-item .value{font-size:13px;font-weight:700;color:#111827}
+
+.section{margin-bottom:28px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #F1F5F9}
+.section-num{width:28px;height:28px;border-radius:14px;background:#1A56DB;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title{font-size:16px;font-weight:800;color:#111827;letter-spacing:-.3px}
+
+.clause{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:14px 16px;margin-bottom:8px}
+.clause-title{font-size:13px;font-weight:700;color:#111827;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.clause-text{font-size:13px;color:#475569;line-height:1.65}
+
+.allowed{border-left:3px solid #10B981}
+.allowed .clause-title{color:#065F46}
+.forbidden{border-left:3px solid #EF4444}
+.forbidden .clause-title{color:#991B1B}
+.warning{border-left:3px solid #F59E0B}
+.warning .clause-title{color:#92400E}
+.info{border-left:3px solid #1A56DB}
+.info .clause-title{color:#1E40AF}
+
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}
+.plan-card{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:14px;text-align:center}
+.plan-card.featured{border-color:#1A56DB;position:relative}
+.plan-card .plan-name{font-size:14px;font-weight:800;color:#111827;margin-bottom:4px}
+.plan-card .plan-price{font-size:18px;font-weight:800;color:#1A56DB;margin-bottom:8px}
+.plan-card .plan-price span{font-size:11px;font-weight:400;color:#94A3B8}
+.plan-card ul{list-style:none;text-align:left}
+.plan-card ul li{font-size:11px;color:#475569;padding:2px 0;display:flex;align-items:flex-start;gap:5px}
+.plan-card ul li::before{content:"✓";color:#10B981;font-weight:700;flex-shrink:0}
+.popular-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#1A56DB;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+
+.highlight-box{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border:1px solid #BFDBFE;border-radius:12px;padding:14px 16px;margin-bottom:8px}
+.highlight-box .title{font-size:13px;font-weight:700;color:#1E40AF;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.highlight-box .text{font-size:13px;color:#1E40AF;line-height:1.65}
+
+.danger-box{background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:14px 16px;margin-bottom:8px}
+.danger-box .title{font-size:13px;font-weight:700;color:#991B1B;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.danger-box .text{font-size:13px;color:#7F1D1D;line-height:1.65}
+
+.accept-box{background:#fff;border:2px solid #1A56DB;border-radius:16px;padding:22px;margin-top:32px;text-align:center}
+.accept-box h3{font-size:16px;font-weight:800;color:#111827;margin-bottom:6px}
+.accept-box p{font-size:13px;color:#64748B;margin-bottom:18px}
+.checkbox-wrap{display:flex;align-items:flex-start;gap:10px;text-align:left;margin-bottom:12px;cursor:pointer}
+.checkbox-wrap input{width:18px;height:18px;margin-top:1px;flex-shrink:0;cursor:pointer;accent-color:#1A56DB}
+.checkbox-wrap label{font-size:13px;color:#374151;line-height:1.55;cursor:pointer}
+.btn-accept{width:100%;padding:16px;background:linear-gradient(135deg,#1A56DB,#1341B0);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;opacity:.5;transition:opacity .2s}
+.btn-accept.active{opacity:1}
+.btn-print{width:100%;padding:12px;background:transparent;border:1px solid #E2E8F0;border-radius:12px;color:#64748B;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px}
+
+.footer-note{text-align:center;font-size:11px;color:#94A3B8;margin-top:20px;line-height:1.7}
+
+@media print{
+  .accept-box,.header .version{display:none}
+  body{background:#fff}
+}
+  </style>
+  <div style="position:sticky;top:0;background:#0B1729;padding:12px 16px;display:flex;align-items:center;gap:10px;z-index:10;box-shadow:0 2px 12px rgba(0,0,0,.3)">
+    <button onclick="fecharTermos()" style="width:34px;height:34px;border-radius:17px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+      <i class="ti ti-arrow-left" style="color:#fff;font-size:16px"></i>
+    </button>
+    <div style="font-size:15px;font-weight:700;color:#fff">Termos de Uso — Integrador</div>
+    <button onclick="window.print()" style="margin-left:auto;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:6px 12px;font-size:12px;color:rgba(255,255,255,.7);cursor:pointer;display:flex;align-items:center;gap:5px">
+      <i class="ti ti-printer" style="font-size:13px"></i> Imprimir
+    </button>
+  </div>
+  <div class="header">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg width="26" height="26" viewBox="0 0 96 96" fill="none">
+        <circle cx="72" cy="22" r="13" stroke="#F59E0B" stroke-width="2.8" fill="none"/>
+        <line x1="72" y1="5" x2="72" y2="2" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="72" y1="39" x2="72" y2="42" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="55" y1="22" x2="52" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="89" y1="22" x2="92" y2="22" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="61.5" y1="10.5" x2="59.4" y2="8.4" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+        <line x1="82.5" y1="10.5" x2="84.6" y2="8.4" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+        <line x1="61.5" y1="33.5" x2="59.4" y2="35.6" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+        <line x1="82.5" y1="33.5" x2="84.6" y2="35.6" stroke="#F59E0B" stroke-width="2.1" stroke-linecap="round"/>
+        <path d="M18 88 C18 76 34 76 34 64 C34 52 18 52 18 40 C18 28 34 28 44 24 C50 22 57 22 60 22" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 5"/>
+        <path d="M18 85 C18 85 11 76 11 70 C11 65.5 14.1 62 18 62 C21.9 62 25 65.5 25 70 C25 76 18 85 18 85Z" fill="#60A5FA"/>
+        <circle cx="18" cy="70" r="4" fill="white" opacity=".9"/>
+      </svg>
+    </div>
+    <div class="logo-text"><span>Achei</span><span class="sol">Sol</span></div>
+  </div>
+  <h1>Termos e Condições de Uso — Integrador</h1>
+  <p>Contrato de Prestação de Serviços de Geração de Leads</p>
+  <div class="version">Versão 1.0 · Vigência a partir de junho de 2025</div>
+</div>
+
+<div class="container">
+
+  <!-- RESUMO RÁPIDO -->
+  <div class="summary-box">
+    <div class="summary-item">
+      <div class="icon" style="background:#DCFCE7;color:#16A34A">✓</div>
+      <div class="label">Leads qualificados</div>
+      <div class="value">Clientes reais</div>
+    </div>
+    <div class="summary-item">
+      <div class="icon" style="background:#EFF6FF;color:#1A56DB">🔒</div>
+      <div class="label">Avaliações</div>
+      <div class="value">Imutáveis</div>
+    </div>
+    <div class="summary-item">
+      <div class="icon" style="background:#FEF3C7;color:#D97706">⚡</div>
+      <div class="label">Cancelamento</div>
+      <div class="value">A qualquer hora</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: PARTES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Das Partes</div>
+    </div>
+    <div class="clause info">
+      <div class="clause-title">📋 Contratante (AcheiSol)</div>
+      <div class="clause-text"><strong>AcheiSol Tecnologia Ltda.</strong>, plataforma digital de conexão entre consumidores e empresas instaladoras de energia solar fotovoltaica, doravante denominada <strong>"Plataforma"</strong>.</div>
+    </div>
+    <div class="clause info">
+      <div class="clause-title">🏢 Contratado (Integrador)</div>
+      <div class="clause-text">Empresa instaladora de energia solar cadastrada na plataforma, identificada pelo CNPJ e e-mail fornecidos no momento do cadastro, doravante denominada <strong>"Integrador"</strong>.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: OBJETO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Do Objeto do Contrato</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">🎯 O que a AcheiSol oferece</div>
+      <div class="clause-text">A Plataforma fornece ao Integrador acesso a <strong>leads qualificados</strong> — clientes que demonstraram interesse ativo em contratar serviços de energia solar —, exibição do perfil da empresa na plataforma, sistema de avaliações e ferramentas de gestão de contatos, conforme o plano contratado.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: PLANOS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Dos Planos e Valores</div>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Básico</div>
+        <div class="plan-price">R$59,90<span>/mês</span></div>
+        <ul>
+          <li>Até 10 leads/mês</li>
+          <li>Raio até 50 km</li>
+          <li>Perfil básico</li>
+          <li>Suporte por e-mail</li>
+        </ul>
+      </div>
+      <div class="plan-card featured">
+        <div class="popular-badge">Mais popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">R$199,90<span>/mês</span></div>
+        <ul>
+          <li>Até 30 leads/mês</li>
+          <li>Raio até 100 km</li>
+          <li>Badge "Verificada"</li>
+          <li>Destaque no ranking</li>
+          <li>Suporte prioritário</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">R$399,00<span>/mês</span></div>
+        <ul>
+          <li>Leads ilimitados</li>
+          <li>Todo o Brasil</li>
+          <li>Topo do ranking</li>
+          <li>Múltiplos usuários</li>
+          <li>API + relatórios</li>
+          <li>Gerente dedicado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="clause warning">
+      <div class="clause-title">⚠️ Período de trial e cobrança</div>
+      <div class="clause-text">Todos os planos incluem <strong>7 dias gratuitos</strong> a partir do cadastro. Após esse período, a cobrança mensal é realizada automaticamente no cartão de crédito ou via Pix cadastrado. O Integrador pode cancelar a qualquer momento antes do vencimento para evitar nova cobrança.</div>
+    </div>
+    <div class="clause warning">
+      <div class="clause-title">💳 Reajuste de valores</div>
+      <div class="clause-text">A AcheiSol poderá reajustar os valores dos planos com aviso mínimo de <strong>30 dias de antecedência</strong> por e-mail. O Integrador poderá cancelar o plano sem ônus caso não concorde com o reajuste.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: OBRIGAÇÕES DO INTEGRADOR -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Das Obrigações do Integrador</div>
+    </div>
+
+    <div class="clause allowed">
+      <div class="clause-title">✅ O Integrador DEVE</div>
+      <div class="clause-text">
+        <strong>4.1</strong> Manter seus dados cadastrais (CNPJ, telefone, endereço) sempre atualizados na plataforma.<br><br>
+        <strong>4.2</strong> Entrar em contato com os leads recebidos em no máximo <strong>24 horas</strong> após o recebimento.<br><br>
+        <strong>4.3</strong> Tratar os clientes com respeito, transparência e ética profissional.<br><br>
+        <strong>4.4</strong> Possuir todas as <strong>certificações e habilitações</strong> exigidas por lei para a instalação de sistemas fotovoltaicos (CREA, CFT, homologação distribuidora).<br><br>
+        <strong>4.5</strong> Cumprir todos os prazos e condições ofertados ao cliente no momento da contratação.<br><br>
+        <strong>4.6</strong> Comunicar à AcheiSol caso o lead recebido seja inválido (número inexistente, duplicado, etc.) em até <strong>48 horas</strong>.
+      </div>
+    </div>
+
+    <div class="clause forbidden">
+      <div class="clause-title">🚫 O Integrador NÃO PODE</div>
+      <div class="clause-text">
+        <strong>4.7</strong> Compartilhar, vender ou repassar dados de leads para terceiros.<br><br>
+        <strong>4.8</strong> Utilizar os dados dos clientes para fins distintos da prestação do serviço solar contratado.<br><br>
+        <strong>4.9</strong> Cadastrar informações falsas, enganosas ou de terceiros sem autorização.<br><br>
+        <strong>4.10</strong> Criar múltiplas contas para obter vantagens indevidas na plataforma.<br><br>
+        <strong>4.11</strong> Solicitar ao cliente que remova ou altere avaliações negativas mediante qualquer tipo de vantagem ou pressão.<br><br>
+        <strong>4.12</strong> Praticar preços abusivos ou condições diferentes das divulgadas no perfil da plataforma.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: AVALIAÇÕES — CLÁUSULA ESPECIAL -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Das Avaliações e Reputação — Cláusula Especial</div>
+    </div>
+
+    <div class="danger-box">
+      <div class="title">🔒 Avaliações são imutáveis e definitivas</div>
+      <div class="text">As avaliações realizadas por clientes na plataforma <strong>não podem ser alteradas, removidas ou contestadas</strong> pelo Integrador sob nenhuma circunstância. A nota média é calculada automaticamente pelo sistema e reflete fielmente a experiência dos clientes atendidos.</div>
+    </div>
+
+    <div class="clause forbidden">
+      <div class="clause-title">🚫 É expressamente proibido</div>
+      <div class="clause-text">
+        <strong>5.1</strong> Solicitar ou induzir clientes a modificarem ou excluírem avaliações negativas.<br><br>
+        <strong>5.2</strong> Oferecer qualquer tipo de benefício (desconto, brinde, serviço gratuito) em troca de avaliações positivas ou remoção de avaliações negativas.<br><br>
+        <strong>5.3</strong> Criar contas falsas de clientes para inserir avaliações fraudulentas.<br><br>
+        <strong>5.4</strong> Pressionar, ameaçar ou assediar clientes por conta de avaliações desfavoráveis.
+      </div>
+    </div>
+
+    <div class="clause allowed">
+      <div class="clause-title">✅ O que o Integrador PODE fazer</div>
+      <div class="clause-text">
+        <strong>5.5</strong> Entrar em contato com o cliente para resolver o problema relatado na avaliação.<br><br>
+        <strong>5.6</strong> Solicitar à AcheiSol a <strong>revisão de uma avaliação</strong> caso acredite que ela viola os termos da plataforma (conteúdo ofensivo, falso ou de terceiros não relacionados ao serviço). A decisão final é da AcheiSol.<br><br>
+        <strong>5.7</strong> Responder publicamente à avaliação de forma profissional e respeitosa através do painel do integrador.
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="title">⚖️ Penalidade por manipulação de avaliações</div>
+      <div class="text">A tentativa de manipulação de avaliações, comprovada pela AcheiSol, resultará no <strong>banimento imediato e permanente</strong> da plataforma, sem direito a reembolso do período pago, e poderá acarretar em ação judicial por danos à plataforma e aos consumidores.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 6: LEADS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Dos Leads e Distribuição</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">📍 Critério de distribuição geográfica</div>
+      <div class="clause-text">Os leads são distribuídos com base no <strong>raio de atendimento</strong> cadastrado pelo Integrador e na localização do cliente. O Integrador receberá apenas leads de clientes dentro do raio definido no cadastro.</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">📊 Limite mensal de leads</div>
+      <div class="clause-text">O número de leads mensais é definido pelo plano contratado. Leads não utilizados em um mês <strong>não acumulam</strong> para o mês seguinte. O contador é zerado no primeiro dia de cada período de faturamento.</div>
+    </div>
+    <div class="clause warning">
+      <div class="clause-title">⚠️ Lead inválido</div>
+      <div class="clause-text">Caso o Integrador identifique um lead com dados inválidos (telefone inexistente, endereço fora do raio, duplicado), deverá reportar em até <strong>48 horas</strong> pelo painel. Leads válidos confirmados não são reembolsados independente do resultado da negociação.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7: PRIVACIDADE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Da Privacidade e LGPD</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">🔐 Tratamento de dados pessoais</div>
+      <div class="clause-text">O Integrador assume o papel de <strong>Operador de Dados</strong> conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018 — LGPD) em relação às informações dos leads recebidos. Os dados dos clientes devem ser utilizados exclusivamente para a prestação do serviço solar e não podem ser compartilhados, vendidos ou utilizados para fins de marketing sem consentimento expresso do titular.</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">🗑️ Exclusão de dados</div>
+      <div class="clause-text">Em caso de cancelamento do plano, os dados de leads recebidos devem ser <strong>excluídos das bases internas</strong> do Integrador no prazo máximo de 30 dias, salvo obrigação legal de retenção.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 8: SUSPENSÃO E CANCELAMENTO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Da Suspensão e Cancelamento</div>
+    </div>
+    <div class="clause allowed">
+      <div class="clause-title">✅ Cancelamento voluntário</div>
+      <div class="clause-text">O Integrador pode cancelar seu plano a qualquer momento pelo painel de controle. O acesso permanece ativo até o fim do período já pago. Não há reembolso proporcional de períodos em curso.</div>
+    </div>
+    <div class="clause forbidden">
+      <div class="clause-title">🚫 Suspensão por violação</div>
+      <div class="clause-text">A AcheiSol reserva-se o direito de <strong>suspender ou cancelar imediatamente</strong> o acesso do Integrador nos seguintes casos:<br><br>
+        • Fraude ou informações falsas no cadastro<br>
+        • Manipulação de avaliações (cláusula 5)<br>
+        • Uso indevido de dados de clientes<br>
+        • Reclamações reiteradas e comprovadas de má prestação de serviço<br>
+        • Inadimplência superior a 15 dias<br>
+        • Qualquer ato que viole estes termos ou a legislação vigente
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9: DISPOSIÇÕES GERAIS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">Disposições Gerais</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">⚖️ Foro</div>
+      <div class="clause-text">Fica eleito o foro da <strong>Comarca de São Paulo/SP</strong> para dirimir quaisquer controvérsias decorrentes deste contrato, com renúncia a qualquer outro, por mais privilegiado que seja.</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">📜 Alterações nos termos</div>
+      <div class="clause-text">A AcheiSol poderá atualizar estes termos com aviso prévio de <strong>15 dias por e-mail</strong>. A continuidade do uso da plataforma após esse prazo implica concordância com os novos termos.</div>
+    </div>
+    <div class="clause">
+      <div class="clause-title">✉️ Contato</div>
+      <div class="clause-text">Dúvidas, contestações ou suporte: <strong>contato@acheisol.com.br</strong> ou pelo painel do integrador, opção "Suporte".</div>
+    </div>
+  </div>
+
+  <!-- ACEITE -->
+  <div class="accept-box" id="accept-box">
+    <h3>Aceite dos Termos de Uso</h3>
+    <p>Leia e confirme sua concordância com todas as cláusulas antes de prosseguir.</p>
+
+    <div class="checkbox-wrap">
+      <input type="checkbox" id="tc1" onchange="checkAllTermos()">
+      <label for="tc1">Li e aceito os <strong>Termos e Condições de Uso do Integrador</strong>, incluindo todas as cláusulas sobre obrigações, avaliações e privacidade.</label>
+    </div>
+
+    <div class="checkbox-wrap">
+      <input type="checkbox" id="tc2" onchange="checkAllTermos()">
+      <label for="tc2">Declaro que os dados da minha empresa são <strong>verdadeiros e atualizados</strong>, e que possuo todas as certificações necessárias para prestação dos serviços.</label>
+    </div>
+
+    <div class="checkbox-wrap">
+      <input type="checkbox" id="tc3" onchange="checkAllTermos()">
+      <label for="tc3">Estou ciente de que <strong>avaliações de clientes são imutáveis</strong> e não podem ser alteradas ou removidas por mim, e que qualquer tentativa de manipulação resultará no banimento da plataforma.</label>
+    </div>
+
+    <div class="checkbox-wrap">
+      <input type="checkbox" id="tc4" onchange="checkAllTermos()">
+      <label for="tc4">Concordo com a <strong>Política de Privacidade</strong> e me comprometo a tratar os dados dos clientes conforme a LGPD.</label>
+    </div>
+
+    <button class="btn-accept" id="btn-accept" disabled onclick="aceitar()">
+      ✅ Entendi — fechar e voltar ao cadastro
+    </button>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ Imprimir / salvar como PDF
+    </button>
+  </div>
+
+  <div class="footer-note">
+    AcheiSol Tecnologia · CNPJ 00.000.000/0001-00<br>
+    Versão 1.0 · Última atualização: Junho de 2025<br>
+    Este documento tem validade jurídica e substitui qualquer acordo verbal anterior.
+  </div>
+
+</div>
+
+
+</div>
+
+</div><!-- /app -->
+</div>
+
+<!-- Scripts LP -->
 <script>
+
+function calcularEconomia(){
+  const conta = parseFloat(document.getElementById('sim-conta').value) || 0;
+  const tipo = document.getElementById('sim-tipo').value;
+  const tarifaFator = parseFloat(document.getElementById('sim-estado').value);
+  const fiobPct = parseFloat(document.getElementById('sim-ano').value);
+
+  if(conta < 50){
+    document.getElementById('sim-resultado').style.display='none';
+    document.getElementById('sim-inicial').style.display='block';
+    return;
+  }
+
+  // Cálculo base
+  // Componentes da conta: ~40% TUSD, ~60% energia
+  // FIO B = 31% da TUSD (média nacional)
+  // On-grid: reduz ~85% da energia + compensa créditos na rede
+  // Híbrido: reduz ~95% (autoconsumo maior, menos FIO B)
+
+  const tusd = conta * 0.40; // 40% da conta é TUSD
+  const energia = conta * 0.60;
+  const fioB_valor = tusd * 0.31; // FIO B = 31% da TUSD
+  const fioB_cobrado = fioB_valor * fiobPct; // % do ano
+
+  let reducaoEnergia, reducaoTusd;
+  if(tipo === 'ongrid'){
+    reducaoEnergia = energia * 0.88 * tarifaFator;
+    reducaoTusd = tusd * 0.40;
+    document.getElementById('info-bateria').style.display='none';
+  } else {
+    // Híbrido: maior autoconsumo, menos injeção na rede, menos FIO B
+    reducaoEnergia = energia * 0.95 * tarifaFator;
+    reducaoTusd = tusd * 0.55;
+    document.getElementById('info-bateria').style.display='block';
+  }
+
+  const economiaTotal = reducaoEnergia + reducaoTusd - fioB_cobrado;
+  const economiaMensal = Math.max(economiaTotal, 0);
+  const economiaAnual = economiaMensal * 12;
+  const pctReducao = Math.min(Math.round((economiaMensal / conta) * 100), 95);
+  const novaContaEst = conta - economiaMensal;
+
+  // Atualiza UI
+  document.getElementById('res-mensal').textContent = 'R$ ' + economiaMensal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  document.getElementById('res-anual').textContent = 'R$ ' + economiaAnual.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  document.getElementById('res-pct').textContent = pctReducao + '%';
+  document.getElementById('barra-fio').style.width = pctReducao + '%';
+  document.getElementById('label-economia').textContent = 'Você economiza R$' + economiaMensal.toFixed(0);
+  document.getElementById('label-fiob').textContent = 'FIO B: R$' + fioB_cobrado.toFixed(0) + '/mês';
+
+  document.getElementById('sim-resultado').style.display='block';
+  document.getElementById('sim-inicial').style.display='none';
+}
+
+
+
+function switchFaq(tab){
+  document.getElementById('faq-cliente').style.display=tab==='cliente'?'block':'none';
+  document.getElementById('faq-int').style.display=tab==='int'?'block':'none';
+  const bC=document.getElementById('faq-tab-cliente'),bI=document.getElementById('faq-tab-int');
+  if(tab==='cliente'){bC.style.background='#1A56DB';bC.style.color='#fff';bC.style.borderColor='#1A56DB';bI.style.background='#fff';bI.style.color='#64748B';bI.style.borderColor='#E2E8F0';}
+  else{bI.style.background='#1A56DB';bI.style.color='#fff';bI.style.borderColor='#1A56DB';bC.style.background='#fff';bC.style.color='#64748B';bC.style.borderColor='#E2E8F0';}
+}
+function toggleFaq(el){
+  const a=el.nextElementSibling;const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(x=>x.classList.remove('open'));
+  if(!isOpen){a.classList.add('open');el.classList.add('open');}
+}
+
+
+
 function mostrarPopupDesconto(){
   const popup = document.getElementById('popup-desconto');
   popup.style.display = 'flex';
@@ -684,6 +2532,715 @@ function fecharPopup(){
 document.getElementById('popup-desconto').addEventListener('click', function(e){
   if(e.target === this) fecharPopup();
 });
+
 </script>
+
+<!-- Scripts APP + Transição LP↔APP -->
+<script>
+
+// ══════════════════════════════════════════════
+// TRANSIÇÃO LP → APP
+// ══════════════════════════════════════════════
+function mostrarLP(){
+  document.getElementById('lp-wrapper').style.display = 'block';
+  document.getElementById('app-wrapper').style.display = 'none';
+  document.body.style.overflow = '';
+  window.scrollTo(0, 0);
+}
+
+async function entrarNoApp(flow){
+  // Esconde LP, mostra app
+  document.getElementById('lp-wrapper').style.display = 'none';
+  document.getElementById('app-wrapper').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  if(flow === 'cliente'){
+    ir('s-home');
+    setTimeout(() => abrirLead(), 300);
+    return;
+  }
+  
+  if(flow === 'integrador'){
+    const mLead = document.getElementById('m-lead');
+    if(mLead) mLead.classList.remove('open');
+    // Verifica sessão ativa de integrador
+    try {
+      const { data: { session } } = await db.auth.getSession();
+      if(session) {
+        const { data: intData } = await db.from('integradores')
+          .select('nome_empresa').eq('user_id', session.user.id).single();
+        if(intData) {
+          document.getElementById('dash-nome').textContent = intData.nome_empresa.split(' ')[0];
+          ir('s-dashboard');
+          return;
+        }
+      }
+    } catch(e) {}
+    ir('s-integrador');
+    return;
+  }
+}
+
+
+const SUPA_URL = 'https://vbwolpmshuzhzhkfxeov.supabase.co';
+const SUPA_KEY = 'sb_publishable_JqutSfnKa34pHMRmcjjKPw_Qw6Wj-6T';
+const db = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+
+// Verificar sessão ativa ao carregar
+window.addEventListener('load', async () => {
+  // Lê parâmetro da URL para saber de onde o usuário veio
+  const params = new URLSearchParams(window.location.search);
+  const flow = params.get('flow');
+
+  if(flow === 'cliente') {
+    entrarNoApp('cliente');
+    return;
+  }
+
+  if(flow === 'integrador') {
+    entrarNoApp('integrador');
+    return;
+  }
+
+  // Sem parâmetro: comportamento normal
+  try {
+    await verificarSessao();
+  } catch(e) {
+    console.log('Sessão não encontrada, exibindo home.');
+  }
+});
+
+
+
+function toggleCheck(id){ /* removed - using direct checkbox */ }
+function checkAllTermos(){
+  const all=['tc1','tc2','tc3','tc4'].every(id=>document.getElementById(id)?.checked);
+  const btn=document.getElementById('btn-accept');
+  if(btn){btn.disabled=!all; btn.classList.toggle('active',all);}
+}
+function aceitar(){ fecharTermos(); }
+
+
+
+// ── NAVEGAÇÃO ──────────────────────────────────────
+function ir(id){
+  // Mostra app-wrapper automaticamente ao navegar para qualquer tela do app
+  const appWrapper = document.getElementById('app-wrapper');
+  const lpWrapper = document.getElementById('lp-wrapper');
+  if(appWrapper && appWrapper.style.display === 'none'){
+    appWrapper.style.display = 'flex';
+    if(lpWrapper) lpWrapper.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.style.display='none';
+    s.classList.remove('active');
+  });
+  const el=document.getElementById(id);
+  el.style.display='flex';
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── TIPO DE SISTEMA ────────────────────────────────
+let tipoSel='on';
+function selTipo(t){
+  tipoSel=t;
+  const cards={
+    on:{card:'card-on',chk:'chk-on',bg:'#EFF6FF',border:'#1A56DB',chkBg:'#1A56DB'},
+    hi:{card:'card-hi',chk:'chk-hi',bg:'#FFFBEB',border:'#F59E0B',chkBg:'#F59E0B'},
+    mn:{card:'card-mn',chk:'chk-mn',bg:'#ECFDF5',border:'#10B981',chkBg:'#10B981'}
+  };
+  Object.keys(cards).forEach(id=>{
+    const c=cards[id];
+    const card=document.getElementById(c.card);
+    const chk=document.getElementById(c.chk);
+    if(id===t){
+      card.style.background=c.bg; card.style.borderColor=c.border;
+      chk.style.background=c.chkBg; chk.querySelector('i').style.color='#fff';
+    } else {
+      card.style.background='#fff'; card.style.borderColor='#E2E8F0';
+      chk.style.background='#E2E8F0'; chk.querySelector('i').style.color='#94A3B8';
+    }
+  });
+  const labels={on:'On-grid',hi:'Híbrido',mn:'Manutenção'};
+  const colors={on:'#60A5FA',hi:'#F59E0B',mn:'#10B981'};
+  document.getElementById('emp-tipo').textContent=labels[t];
+  document.getElementById('emp-tipo').style.color=colors[t];
+}
+
+// ── SLIDER RAIO ────────────────────────────────────
+function updRaio(v){
+  document.getElementById('raio-val').textContent=v;
+  document.getElementById('contador').textContent='4 empresas em até '+v+' km';
+}
+
+// ── ORDENAÇÃO ──────────────────────────────────────
+function setOrd(o){
+  ['dist','nota','proj'].forEach(id=>document.getElementById('ord-'+id).classList.toggle('on',id===o));
+}
+
+// ── CARDS EXPANDÍVEIS ──────────────────────────────
+const abertos={};
+function tog(n){
+  abertos[n]=!abertos[n];
+  document.getElementById('d'+n).style.display=abertos[n]?'block':'none';
+  document.getElementById('cv'+n).style.transform=abertos[n]?'rotate(180deg)':'rotate(0)';
+}
+
+// ── MÁSCARA TELEFONE ───────────────────────────────
+function mTel(el){
+  let v=el.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>6) v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+  else if(v.length>2) v='('+v.slice(0,2)+') '+v.slice(2);
+  el.value=v;
+}
+
+// ── MODAIS ─────────────────────────────────────────
+function abrirModal(id){document.getElementById(id).classList.add('open');}
+function fecharModal(id){document.getElementById(id).classList.remove('open');}
+
+// ── LEAD ───────────────────────────────────────────
+function abrirLead(){
+  // Contexto: cliente
+  const tituloEl = document.getElementById('modal-lead-titulo');
+  const subEl = document.getElementById('modal-lead-sub');
+  if(tituloEl) tituloEl.textContent = 'Quero energia solar';
+  if(subEl) subEl.textContent = 'Rápido e gratuito — menos de 1 minuto.';
+  document.getElementById('step1').style.display='block';
+  document.getElementById('step2').style.display='none';
+  document.getElementById('pb1').style.background='#1A56DB';
+  document.getElementById('pb2').style.background='#E2E8F0';
+  // Popula estados no select sempre (garante carregamento)
+  const estadoSel=document.getElementById('l-estado');
+  if(estadoSel){
+    // Limpa e re-popula para garantir que data-sigla está presente
+    while(estadoSel.options.length > 1) estadoSel.remove(1);
+    const ufs=Object.keys(estadosCidades).sort((a,b)=>estadosCidades[a].nome.localeCompare(estadosCidades[b].nome));
+    ufs.forEach(uf=>{
+      const opt=document.createElement('option');
+      opt.value=estadosCidades[uf].nome;
+      opt.setAttribute('data-sigla',uf);
+      opt.textContent=estadosCidades[uf].nome+' ('+uf+')';
+      estadoSel.appendChild(opt);
+    });
+    // Reset cidade
+    const cidSel=document.getElementById('l-cidade');
+    if(cidSel){ cidSel.innerHTML='<option value="">Selecione o estado primeiro</option>'; cidSel.disabled=true; }
+  }
+  abrirModal('m-lead');
+}
+function proximoPasso(){
+  const n=document.getElementById('l-nome').value.trim();
+  const t=document.getElementById('l-tel').value.trim();
+  const e=document.getElementById('l-email').value.trim();
+  if(!n){toast('Preencha seu nome.','ti-alert-circle','#EF4444');return;}
+  if(t.length<14){toast('Telefone inválido.','ti-alert-circle','#EF4444');return;}
+  if(!e.includes('@')){toast('E-mail inválido.','ti-alert-circle','#EF4444');return;}
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='block';
+  document.getElementById('pb2').style.background='#1A56DB';
+  const mbox2 = document.querySelector('.modal-box');
+  if(mbox2) mbox2.scrollTop = 0;
+}
+function voltarPasso(){
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step1').style.display='block';
+  document.getElementById('pb2').style.background='#E2E8F0';
+  // Reset scroll to top so step1 is visible
+  const mbox = document.querySelector('.modal-box');
+  if(mbox) mbox.scrollTop = 0;
+}
+async function enviarLead(){
+  const estadoEl=document.getElementById('l-estado');
+  const cidadeEl=document.getElementById('l-cidade');
+  const e=estadoEl.value;
+  const eSigla=estadoEl.options[estadoEl.selectedIndex]?.getAttribute('data-sigla')||'';
+  const c=cidadeEl.value;
+  const v=document.getElementById('l-conta').value;
+  const nome=document.getElementById('l-nome').value.trim();
+  const tel=document.getElementById('l-tel').value.trim();
+  const email=document.getElementById('l-email').value.trim();
+  if(!e){toast('Selecione o estado.','ti-alert-circle','#EF4444');return;}
+  if(!c){toast('Selecione a cidade.','ti-alert-circle','#EF4444');return;}
+  if(!v){toast('Informe o valor da conta.','ti-alert-circle','#EF4444');return;}
+
+  const btnEl=document.querySelector('#m-lead .btn');
+  if(btnEl){btnEl.innerHTML='<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Salvando...';btnEl.disabled=true;}
+
+  // Tenta salvar no Supabase (não bloqueia se falhar)
+  let leadId = null;
+  try {
+    const res = await db.from('leads').insert({
+      nome, telefone:tel, email,
+      cidade:c, estado:eSigla||e,
+      valor_conta:parseFloat(v),
+      tipo_sistema: tipoSel||'on-grid',
+      status:'novo',
+      total_acessos:1
+    }).select('id').single();
+    if(res.data) leadId = res.data.id;
+    if(res.error) console.warn('Supabase insert warning:', res.error.message);
+  } catch(err){
+    console.warn('Supabase offline, salvando localmente:', err.message);
+  }
+
+  // Independente do Supabase, salva local e avança
+  const leadLocal = {
+    id: leadId,
+    nome, email,
+    cidade:c, estado:eSigla||e,
+    tipo_sistema: tipoSel||'on',
+    total_acessos:1
+  };
+  localStorage.setItem('acheisol_lead', JSON.stringify(leadLocal));
+
+  if(btnEl){btnEl.innerHTML='Continuar <i class="ti ti-arrow-right" style="font-size:15px"></i>';btnEl.disabled=false;}
+  document.getElementById('emp-cidade').textContent=c+', '+(eSigla||e);
+  fecharModal('m-lead');
+  document.getElementById('l-nome').value='';
+  document.getElementById('l-tel').value='';
+  document.getElementById('l-email').value='';
+  document.getElementById('l-conta').value='';
+  estadoEl.selectedIndex=0;
+  cidadeEl.innerHTML='<option value="">Selecione o estado primeiro</option>';
+  cidadeEl.disabled=true;
+  ir('s-tipo');
+  // Verifica se veio do cupom da landing page
+  const temCupom = localStorage.getItem('acheisol_cupom');
+  if(temCupom) {
+    setTimeout(()=>toast('🎁 Cupom de 5% aplicado no seu cadastro!','ti-tag','#10B981'), 800);
+  } else {
+    toast('Cadastro salvo! Escolha o tipo de sistema.','ti-check','#10B981');
+  }
+}
+
+// ── CONTATO ────────────────────────────────────────
+function abrirContato(nome,ini,cor){
+  document.getElementById('c-av').textContent=ini;
+  document.getElementById('c-av').style.background=cor;
+  document.getElementById('c-nome').textContent=nome;
+  document.getElementById('c-cnome').value='';
+  document.getElementById('c-tel').value='';
+  abrirModal('m-contato');
+}
+function enviarContato(){
+  const n=document.getElementById('c-cnome').value.trim();
+  const t=document.getElementById('c-tel').value.trim();
+  if(!n){toast('Preencha seu nome.','ti-alert-circle','#EF4444');return;}
+  if(t.length<14){toast('Telefone inválido.','ti-alert-circle','#EF4444');return;}
+  fecharModal('m-contato');
+  toast('Interesse enviado! A empresa entrará em contato em até 2h.','ti-check','#10B981');
+}
+
+// ── TOAST ──────────────────────────────────────────
+function toast(msg,ico,cor){
+  const el=document.getElementById('toast');
+  document.getElementById('t-ico').className='ti ti-'+ico;
+  document.getElementById('t-ico').style.color=cor;
+  document.getElementById('t-msg').textContent=msg;
+  el.style.opacity='1'; el.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(()=>{el.style.opacity='0'; el.style.transform='translateX(-50%) translateY(80px)';},3500);
+}
+
+
+// ── DADOS ESTADOS + CIDADES ──────────────────────
+const estadosCidades = {
+  "AC": { nome: "Acre", cidades: ["Rio Branco","Cruzeiro do Sul","Sena Madureira","Tarauacá","Feijó","Brasileia","Epitaciolândia","Rodrigues Alves","Marechal Thaumaturgo","Porto Walter","Jordão","Santa Rosa do Purus","Manoel Urbano","Acrelândia","Bujari","Plácido de Castro","Porto Acre","Xapuri","Capixaba","Assis Brasil","Mâncio Lima","Senador Guiomard"] },
+  "AL": { nome: "Alagoas", cidades: ["Maceió","Arapiraca","Palmeira dos Índios","Rio Largo","Penedo","União dos Palmares","São Miguel dos Campos","Delmiro Gouveia","Coruripe","Santana do Ipanema","Murici","Marechal Deodoro","Matriz de Camaragibe","Piranhas","Batalha","Pão de Açúcar","Viçosa","Campo Alegre","Porto Real do Colégio","Girau do Ponciano"] },
+  "AP": { nome: "Amapá", cidades: ["Macapá","Santana","Laranjal do Jari","Oiapoque","Mazagão","Porto Grande","Pedra Branca do Amapari","Tartarugalzinho","Vitória do Jari","Calçoene","Amapá","Cutias","Ferreira Gomes","Itaubal","Pracuúba","Serra do Navio"] },
+  "AM": { nome: "Amazonas", cidades: ["Manaus","Parintins","Itacoatiara","Manacapuru","Coari","Tefé","Tabatinga","Maués","Humaitá","Santarém Novo","Autazes","Borba","Manicoré","São Gabriel da Cachoeira","Presidente Figueiredo","Carauari","Iranduba","Lábrea","Eirunepé","Novo Airão","Japurá","Juruá","Beruri","Alvarães","Urucurituba"] },
+  "BA": { nome: "Bahia", cidades: ["Salvador","Feira de Santana","Vitória da Conquista","Camaçari","Juazeiro","Petrolina","Ilhéus","Itabuna","Lauro de Freitas","Barreiras","Jequié","Teixeira de Freitas","Alagoinhas","Porto Seguro","Paulo Afonso","Simões Filho","Eunápolis","Santo Antônio de Jesus","Valença","Cruz das Almas","Senhor do Bonfim","Jacobina","Brumado","Guanambi","Serrinha","Itapetinga","Irecê","Tucano","Bom Jesus da Lapa","Cipó","Catu","Candeias","Dias d'Ávila","Mata de São João","Madre de Deus","Amélia Rodrigues","Entre Rios","Riachão do Jacuípe","Conceição do Coité","Ribeira do Pombal"] },
+  "CE": { nome: "Ceará", cidades: ["Fortaleza","Caucaia","Juazeiro do Norte","Maracanaú","Sobral","Crato","Itapipoca","Maranguape","Iguatu","Quixadá","Canindé","Aquiraz","Pacatuba","Horizonte","Russas","Tianguá","Acaraú","Cascavel","Crateús","Trairi","Eusébio","São Gonçalo do Amarante","Paracuru","Ico","Camocim","Limoeiro do Norte","Aracoiaba","Quixeramobim","Guaraciaba do Norte","Itarema","Barbalha"] },
+  "DF": { nome: "Distrito Federal", cidades: ["Brasília","Ceilândia","Taguatinga","Samambaia","Planaltina","Gama","Sobradinho","Recanto das Emas","Santa Maria","Guará","Núcleo Bandeirante","Riacho Fundo","Candangolândia","São Sebastião","Lago Norte","Lago Sul","Cruzeiro","Brazlândia","Paranoá","Itapoã","Varjão","SCIA","Vicente Pires","Fercal","Arniqueiras","Sudoeste/Octogonal","Água Clara","Park Way","Jardim Botânico"] },
+  "ES": { nome: "Espírito Santo", cidades: ["Vitória","Serra","Cariacica","Vila Velha","Cachoeiro de Itapemirim","Linhares","São Mateus","Colatina","Guarapari","Aracruz","Viana","Nova Venécia","Barra de São Francisco","Alfredo Chaves","Domingos Martins","Santa Maria de Jetibá","João Neiva","Piúma","Anchieta","Iconha","Marataízes","Itapemirim","Rio Bananal","Ecoporanga","Montanha"] },
+  "GO": { nome: "Goiás", cidades: ["Goiânia","Aparecida de Goiânia","Anápolis","Rio Verde","Luziânia","Águas Lindas de Goiás","Valparaíso de Goiás","Trindade","Formosa","Novo Gama","Itumbiara","Senador Canedo","Catalão","Jataí","Planaltina","Caldas Novas","Santo Antônio do Descoberto","Goianira","Nerópolis","Mineiros","Uruaçu","Morrinhos","Goiás","Inhumas","Porangatu","Quirinópolis","Ceres","Piracanjuba","Pires do Rio","Cristalina"] },
+  "MA": { nome: "Maranhão", cidades: ["São Luís","Imperatriz","São José de Ribamar","Timon","Caxias","Codó","Paço do Lumiar","Açailândia","Bacabal","Balsas","Santa Inês","Barra do Corda","Pinheiro","Chapadinha","Coroatá","Viana","São João dos Patos","Itapecuru Mirim","Presidente Dutra","Zé Doca","Pedreiras","Lago da Pedra","Grajaú","Buriticupu"] },
+  "MT": { nome: "Mato Grosso", cidades: ["Cuiabá","Várzea Grande","Rondonópolis","Sinop","Tangará da Serra","Cáceres","Sorriso","Lucas do Rio Verde","Primavera do Leste","Barra do Garças","Alta Floresta","Guarantã do Norte","Colíder","Juara","Nova Mutum","Campo Verde","Confresa","São Félix do Araguaia","Matupá","Pontes e Lacerda","Peixoto de Azevedo","Água Boa","Diamantino","Paranatinga"] },
+  "MS": { nome: "Mato Grosso do Sul", cidades: ["Campo Grande","Dourados","Três Lagoas","Corumbá","Grande Dourados","Ponta Porã","Naviraí","Nova Andradina","Aquidauana","Sidrolândia","Maracaju","São Gabriel do Oeste","Jardim","Coxim","Paranaíba","Ribas do Rio Pardo","Anastácio","Amambai","Itaquiraí","Glória de Dourados","Bataguassu","Chapadão do Sul","Fátima do Sul","Costa Rica","Dois Irmãos do Buriti"] },
+  "MG": { nome: "Minas Gerais", cidades: ["Belo Horizonte","Uberlândia","Contagem","Juiz de Fora","Betim","Montes Claros","Ribeirão das Neves","Uberaba","Governador Valadares","Ipatinga","Sete Lagoas","Divinópolis","Santa Luzia","Ibirité","Poços de Caldas","Patos de Minas","Pouso Alegre","Teófilo Otoni","Barbacena","Sabará","Vespasiano","Conselheiro Lafaiete","Varginha","Itabira","Araguari","Coronel Fabriciano","Muriaé","Curvelo","Ituiutaba","Ouro Preto","Lavras","Caratinga","Congonhas","Itajubá","Ubá","São João del-Rei","Viçosa","Alfenas","Passos","Patrocínio","Nova Lima","Três Corações","Araxá","Manhuaçu","Pirapora","Timóteo","Brumadinho","Cataguases","Paraisópolis","Bocaiúva"] },
+  "PA": { nome: "Pará", cidades: ["Belém","Ananindeua","Santarém","Marabá","Castanhal","Parauapebas","Altamira","Itaituba","Abaetetuba","Tucuruí","Bragança","Cametá","Barcarena","Paragominas","Marituba","Benevides","Redenção","Moju","Oriximiná","Breves","São Félix do Xingu","Conceição do Araguaia","Tailândia","Soure","Viseu","Tomé-Açu","São Miguel do Guamá","Capanema","Jacundá","Rondon do Pará"] },
+  "PB": { nome: "Paraíba", cidades: ["João Pessoa","Campina Grande","Santa Rita","Patos","Bayeux","Sousa","Cajazeiras","Cabedelo","Guarabira","Sapé","Mamanguape","Queimadas","Pombal","Esperança","Catolé do Rocha","Itaporanga","Picuí","Lagoa Seca","Monteiro","Cuité","Alagoa Grande","Itabaiana","Solânea","Areia","Princesa Isabel"] },
+  "PR": { nome: "Paraná", cidades: ["Curitiba","Londrina","Maringá","Ponta Grossa","Cascavel","São José dos Pinhais","Foz do Iguaçu","Colombo","Guarapuava","Paranaguá","Araucária","Toledo","Apucarana","Pinhais","Campo Largo","Arapongas","Almirante Tamandaré","Umuarama","Piraquara","Cambé","São Carlos","Fazenda Rio Grande","Cianorte","Sarandi","Paranavaí","Francisco Beltrão","Cornélio Procópio","Telêmaco Borba","União da Vitória","Irati","Palmas","Laranjeiras do Sul","Marechal Cândido Rondon","Castro","Rolândia","Campo Mourão"] },
+  "PE": { nome: "Pernambuco", cidades: ["Recife","Olinda","Caruaru","Petrolina","Jaboatão dos Guararapes","Paulista","Camaragibe","Garanhuns","Vitória de Santo Antão","Igarassu","São Lourenço da Mata","Santa Cruz do Capibaribe","Ipojuca","Abreu e Lima","Cabo de Santo Agostinho","Gravatá","Araripina","Serra Talhada","Goiana","Bezerros","Palmares","Lajedo","Pesqueira","Paudalho","Carpina","Floresta"] },
+  "PI": { nome: "Piauí", cidades: ["Teresina","Parnaíba","Picos","Piripiri","Floriano","Campo Maior","Barras","União","Oeiras","São Raimundo Nonato","Uruçuí","Altos","Água Branca","Pedro II","Corrente","Bom Jesus","José de Freitas","Esperantina","Miguel Alves","Batalha"] },
+  "RJ": { nome: "Rio de Janeiro", cidades: ["Rio de Janeiro","São Gonçalo","Duque de Caxias","Nova Iguaçu","Niterói","Belford Roxo","Campos dos Goytacazes","Petrópolis","São João de Meriti","Volta Redonda","Mesquita","Magé","Itaboraí","Angra dos Reis","Nilópolis","Macaé","Nova Friburgo","Barra Mansa","Teresópolis","São Francisco de Itabapoana","Cabo Frio","Queimados","Resende","Itaguaí","Paraíba do Sul","Mangaratiba","Maricá","Rio das Ostras","Seropédica","Japeri","Rio Bonito","Araruama","Saquarema","Iguaba Grande","Casimiro de Abreu","Armação dos Búzios"] },
+  "RN": { nome: "Rio Grande do Norte", cidades: ["Natal","Mossoró","Parnamirim","São Gonçalo do Amarante","Macaíba","Ceará-Mirim","Caicó","Assú","Currais Novos","São José de Mipibu","Santa Cruz","Nova Cruz","Apodi","João Câmara","Pau dos Ferros","Touros","Extremoz","Lagoa Nova","Campo Grande","Areia Branca","Canguaretama"] },
+  "RS": { nome: "Rio Grande do Sul", cidades: ["Porto Alegre","Caxias do Sul","Pelotas","Canoas","Santa Maria","Novo Hamburgo","São Leopoldo","Gravataí","Viamão","Alvorada","Passo Fundo","Sapucaia do Sul","Rio Grande","Santa Cruz do Sul","Cachoeirinha","Bagé","Bento Gonçalves","Erechim","Sapiranga","São Borja","Santa Rosa","Guaíba","Carazinho","Charqueadas","Lajeado","Cachoeira do Sul","Uruguaiana","Santana do Livramento","Alegrete","Tramandaí","Torres","Capão da Canoa","Ijuí","Panambi","Frederico Westphalen","Venâncio Aires","Montenegro","Taquara","Osório"] },
+  "RO": { nome: "Rondônia", cidades: ["Porto Velho","Ji-Paraná","Ariquemes","Vilhena","Cacoal","Rolim de Moura","Guajará-Mirim","Jaru","Ouro Preto do Oeste","Pimenta Bueno","Espigão d'Oeste","Cerejeiras","Colorado do Oeste","Presidente Médici","Candeias do Jamari","Nova Mamoré","Machadinho d'Oeste","Buritis","Vale do Anari"] },
+  "RR": { nome: "Roraima", cidades: ["Boa Vista","Rorainópolis","Caracaraí","Alto Alegre","Mucajaí","Cantá","Bonfim","Normandia","Pacaraima","Iracema","Caroebe","Uiramutã","São Luiz","São João da Baliza","Amajari"] },
+  "SC": { nome: "Santa Catarina", cidades: ["Florianópolis","Joinville","Blumenau","São José","Criciúma","Chapecó","Itajaí","Lages","Jaraguá do Sul","Palhoça","Balneário Camboriú","Biguaçu","Brusque","Tubarão","São Bento do Sul","Caçador","Camboriú","Concórdia","Navegantes","Indaial","Araranguá","Mafra","Rio do Sul","Canoinhas","Videira","Içara","Imbituba","Orleans","Gaspar","São Miguel do Oeste","Xanxerê","Ibirama","Fraiburgo","Barra Velha","Itapema","Penha","Porto Belo"] },
+  "SP": { nome: "São Paulo", cidades: ["São Paulo","Guarulhos","Campinas","São Bernardo do Campo","Santo André","Osasco","Ribeirão Preto","São José dos Campos","Sorocaba","Mauá","São José do Rio Preto","Santos","Mogi das Cruzes","Diadema","Jundiaí","Piracicaba","Carapicuíba","Bauru","Itaquaquecetuba","São Vicente","Franca","Guarujá","Taubaté","Limeira","Praia Grande","Suzano","Taboão da Serra","Sumaré","Barueri","Embu das Artes","São Carlos","Indaiatuba","Cotia","Americana","Marília","Itu","Araraquara","Jacareí","Hortolândia","Presidente Prudente","Rio Claro","Araçatuba","Ferraz de Vasconcelos","Santa Bárbara d'Oeste","Paulínia","Piracicaba","Várzea Paulista","Itapevi","Ourinhos","Pindamonhangaba","São Caetano do Sul","Londrina","Mogi Guaçu","Botucatu","Bragança Paulista","Itapecerica da Serra","Atibaia","Caieiras","Caçapava","São Roque","Birigui","Lençóis Paulista","Jaú","Catanduva","Votuporanga","Registro","Assis","Itapetininga"] },
+  "SE": { nome: "Sergipe", cidades: ["Aracaju","Nossa Senhora do Socorro","Lagarto","Itabaiana","São Cristóvão","Estância","Tobias Barreto","Simão Dias","Nossa Senhora das Dores","Própria","Poço Verde","Itaporanga d'Ajuda","Boquim","Carmópolis","Neópolis","Laranjeiras","Canindé de São Francisco","Gararu","Porto da Folha","Maruim"] },
+  "TO": { nome: "Tocantins", cidades: ["Palmas","Araguaína","Gurupi","Porto Nacional","Paraíso do Tocantins","Colinas do Tocantins","Guaraí","Tocantinópolis","Miracema do Tocantins","Dianópolis","Formoso do Araguaia","Arraias","Natividade","Pedro Afonso","Alvorada","Augustinópolis","Araguatins","Wanderlândia","Xambioá","Cristalândia"] }
+};
+
+// Populando select de estados
+function initEstados(){
+  const sel=document.getElementById('l-estado');
+  if(!sel) return;
+  const estados=Object.keys(estadosCidades).sort((a,b)=>estadosCidades[a].nome.localeCompare(estadosCidades[b].nome));
+  estados.forEach(uf=>{
+    const opt=document.createElement('option');
+    opt.value=estadosCidades[uf].nome;
+    opt.setAttribute('data-sigla',uf);
+    opt.textContent=estadosCidades[uf].nome+' ('+uf+')';
+    sel.appendChild(opt);
+  });
+}
+document.addEventListener('DOMContentLoaded', initEstados);
+
+async function carregarCidades(uf, nomeEstado){
+  const cidSel=document.getElementById('l-cidade');
+  if(!uf){
+    cidSel.innerHTML='<option value="">Selecione o estado primeiro</option>';
+    cidSel.disabled=true;
+    return;
+  }
+
+  cidSel.innerHTML='<option value="">Carregando cidades...</option>';
+  cidSel.disabled=true;
+
+  try {
+    // Busca TODAS as cidades do estado via API do IBGE
+    const resp = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios?orderBy=nome`);
+    const data = await resp.json();
+    cidSel.innerHTML='<option value="">Selecione a cidade...</option>';
+    data.forEach(c=>{
+      const opt=document.createElement('option');
+      opt.value=c.nome; opt.textContent=c.nome;
+      cidSel.appendChild(opt);
+    });
+    cidSel.disabled=false;
+    cidSel.style.color='#111827';
+    const chev=document.getElementById('cidade-chev');
+    if(chev) chev.style.color='#94A3B8';
+  } catch(e) {
+    // fallback para lista local se IBGE falhar
+    const cidades=estadosCidades[uf].cidades.sort();
+    cidSel.innerHTML='<option value="">Selecione a cidade...</option>';
+    cidades.forEach(c=>{
+      const opt=document.createElement('option');
+      opt.value=c; opt.textContent=c;
+      cidSel.appendChild(opt);
+    });
+    cidSel.disabled=false;
+  }
+}
+
+
+
+// ── SESSÃO & RETORNO ──────────────────────────────
+async function verificarSessao(){
+  // Verifica se integrador está logado
+  const { data: { session } } = await db.auth.getSession();
+  if(session){
+    // Buscar dados do integrador logado
+    const { data: intData } = await db.from('integradores')
+      .select('nome_empresa')
+      .eq('user_id', session.user.id)
+      .single();
+    if(intData){
+      const nome = intData.nome_empresa.split(' ')[0];
+      document.getElementById('dash-nome').textContent = nome;
+      ir('s-dashboard');
+      return;
+    }
+  }
+
+  // Verifica se cliente já se cadastrou antes (localStorage)
+  const leadSalvo = localStorage.getItem('acheisol_lead');
+  if(leadSalvo){
+    const lead = JSON.parse(leadSalvo);
+    // Atualiza contador de acessos no banco
+    await db.from('leads')
+      .update({ total_acessos: lead.total_acessos + 1 })
+      .eq('id', lead.id);
+    lead.total_acessos += 1;
+    localStorage.setItem('acheisol_lead', JSON.stringify(lead));
+
+    // Mostra toast de boas-vindas
+    toast('Bem-vindo de volta, ' + lead.nome.split(' ')[0] + '!', 'ti-sun', '#F59E0B');
+
+    // Preenche cidade na tela de empresas e vai direto
+    document.getElementById('emp-cidade').textContent = lead.cidade + ', ' + lead.estado;
+    tipoSel = lead.tipo_sistema || 'on';
+
+    // Mostra botão "Entrar" no header ao invés do cadastro
+    mostrarBotaoRetorno(lead.nome.split(' ')[0]);
+  }
+}
+
+function mostrarBotaoRetorno(primeiroNome){
+  // Troca o botão principal por "Continuar como [nome]"
+  const btnPrincipal = document.querySelector('#s-home .btn');
+  if(btnPrincipal){
+    btnPrincipal.innerHTML = '<i class="ti ti-user-check" style="font-size:18px"></i> Continuar como ' + primeiroNome;
+    btnPrincipal.onclick = function(){ ir('s-tipo'); };
+  }
+  // Mostra badge de retorno
+  const badge = document.getElementById('retorno-badge');
+  const nomeEl = document.getElementById('retorno-nome');
+  if(badge){ badge.style.display='flex'; }
+  if(nomeEl){ nomeEl.textContent = 'Olá, ' + primeiroNome + '!'; }
+}
+
+function sairSessaoCliente(){
+  localStorage.removeItem('acheisol_lead');
+  location.reload();
+}
+
+async function sairSessaoIntegrador(){
+  await db.auth.signOut();
+  localStorage.removeItem('acheisol_lead');
+  ir('s-home');
+  toast('Você saiu da conta.', 'ti-logout', '#64748B');
+}
+
+
+function atualizarDescricaoRaio(v){
+  const desc=document.getElementById('raio-int-desc');
+  if(!desc) return;
+  v=parseInt(v);
+  let txt='';
+  if(v<=30) txt='Atendimento local — cidade sede e arredores';
+  else if(v<=80) txt='Atendimento regional — cidades vizinhas próximas';
+  else if(v<=150) txt='Atendimento amplo — cobre toda a região metropolitana';
+  else if(v<=300) txt='Atendimento estadual — grande parte do estado';
+  else txt='Atendimento nacional — múltiplos estados';
+  desc.querySelector('span').textContent='Cobre cidades num raio de '+v+' km da sua sede — '+txt;
+}
+
+
+function checkTermos(){
+  const all=['termo1','termo2','termo3'].every(id=>{
+    const el=document.getElementById(id);
+    return el && el.checked;
+  });
+  const btn=document.getElementById('btn-criar');
+  if(btn){
+    btn.disabled=!all;
+    btn.style.opacity=all?'1':'0.5';
+    btn.style.cursor=all?'pointer':'not-allowed';
+  }
+}
+function abrirContatoGeral(){
+  // Pega a primeira empresa ou abre modal genérico
+  abrirContato('sua região','','#1A56DB');
+}
+function abrirTermos(){
+  document.getElementById('modal-termos').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function fecharTermos(){
+  document.getElementById('modal-termos').style.display='none';
+  document.body.style.overflow='';
+}
+
+// ── INTEGRADOR ────────────────────────────────────
+let planoAtual='pro';
+const planoPrecos={basico:'R$59,90/mês',pro:'R$199,90/mês',enterprise:'R$399,00/mês'};
+const planoNomes={basico:'Plano Básico',pro:'Plano Pro',enterprise:'Plano Enterprise'};
+
+function selPlano(p){
+  planoAtual=p;
+  ['basico','pro','enterprise'].forEach(id=>{
+    const card=document.getElementById('pl-'+id);
+    const sel=document.getElementById('sel-'+id);
+    if(id===p){
+      if(id==='enterprise'){card.style.borderColor='rgba(96,165,250,.6)';sel.style.display='block';}
+      else{card.style.borderColor='#1A56DB';sel.style.display='block';}
+    } else {
+      if(id==='enterprise') card.style.borderColor='rgba(255,255,255,.1)';
+      else card.style.borderColor='#E2E8F0';
+      sel.style.display='none';
+    }
+  });
+  // Update label on cadastro screen
+  const lbl=document.getElementById('plano-selecionado-label');
+  if(lbl) lbl.textContent=planoNomes[p]+' — 7 dias grátis';
+  const rp=document.getElementById('resumo-plano');
+  const rpr=document.getElementById('resumo-preco');
+  if(rp) rp.textContent=planoNomes[p];
+  if(rpr) rpr.textContent=planoPrecos[p];
+}
+
+// Tipos de sistema toggle para cadastro integrador
+const tiposSel=new Set(['on']);
+function toggleTipo(t){
+  const el=document.getElementById('tp-'+t);
+  const icons={on:'ti-solar-panel',hi:'ti-battery-charging',mn:'ti-tool',ru:'ti-tractor'};
+  const labels={on:'On-grid',hi:'Híbrido',mn:'Manutenção',ru:'Rural'};
+  if(tiposSel.has(t)){
+    tiposSel.delete(t);
+    el.style.background='#fff'; el.style.borderColor='#E2E8F0';
+    el.querySelector('i').style.color='#CBD5E1';
+    el.querySelector('div').style.color='#94A3B8';
+  } else {
+    tiposSel.add(t);
+    el.style.background='#EFF6FF'; el.style.borderColor='#1A56DB';
+    el.querySelector('i').style.color='#1A56DB';
+    el.querySelector('div').style.color='#1D4ED8';
+  }
+}
+
+async function carregarCidadesInt(estado){
+  const cidSel=document.getElementById('ci-cidade');
+  if(!estado){ cidSel.innerHTML='<option value="">Selecione o estado primeiro</option>'; cidSel.disabled=true; return; }
+  const uf=estado.match(/\(([A-Z]{2})\)/)?.[1];
+  if(!uf){ cidSel.disabled=false; return; }
+
+  cidSel.innerHTML='<option value="">Carregando cidades...</option>';
+  cidSel.disabled=true;
+
+  try {
+    const resp = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios?orderBy=nome`);
+    const data = await resp.json();
+    cidSel.innerHTML='<option value="">Selecione a cidade...</option>';
+    data.forEach(c=>{
+      const o=document.createElement('option');
+      o.value=c.nome; o.textContent=c.nome;
+      cidSel.appendChild(o);
+    });
+    cidSel.disabled=false;
+  } catch(e) {
+    if(estadosCidades[uf]){
+      const cidades=[...estadosCidades[uf].cidades].sort();
+      cidSel.innerHTML='<option value="">Selecione a cidade...</option>';
+      cidades.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; cidSel.appendChild(o); });
+      cidSel.disabled=false;
+    }
+  }
+}
+
+// Cadastro steps
+function cadStep2(){
+  const n=document.getElementById('ci-nome').value.trim();
+  const cnpj=document.getElementById('ci-cnpj').value.trim();
+  const tel=document.getElementById('ci-tel').value.trim();
+  if(!n){ toast('Informe o nome da empresa.','ti-alert-circle','#EF4444'); return; }
+  if(cnpj.length<18){ toast('CNPJ inválido.','ti-alert-circle','#EF4444'); return; }
+  if(tel.length<14){ toast('Telefone inválido.','ti-alert-circle','#EF4444'); return; }
+  document.getElementById('cad-step1').style.display='none';
+  document.getElementById('cad-step2').style.display='block';
+  document.getElementById('cad-pb3').style.background='rgba(255,255,255,.1)';
+}
+function cadStep3(){
+  const estado=document.getElementById('ci-estado').value;
+  const cidade=document.getElementById('ci-cidade').value;
+  if(!estado){ toast('Selecione o estado.','ti-alert-circle','#EF4444'); return; }
+  if(!cidade){ toast('Selecione a cidade.','ti-alert-circle','#EF4444'); return; }
+  if(tiposSel.size===0){ toast('Selecione ao menos um tipo de sistema.','ti-alert-circle','#EF4444'); return; }
+  document.getElementById('cad-step2').style.display='none';
+  document.getElementById('cad-step3').style.display='block';
+  document.getElementById('cad-pb3').style.background='#1A56DB';
+}
+async function finalizarCadastro(){
+  const email=document.getElementById('ci-email').value.trim();
+  const senha=document.getElementById('ci-senha').value;
+  if(!email.includes('@')){ toast('E-mail inválido.','ti-alert-circle','#EF4444'); return; }
+  if(senha.length<8){ toast('Senha deve ter no mínimo 8 caracteres.','ti-alert-circle','#EF4444'); return; }
+
+  const btnF=document.querySelector('#cad-step3 .btn');
+  if(btnF){btnF.innerHTML='<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Criando conta...';btnF.disabled=true;}
+
+  try {
+    // 1. Criar usuário no Supabase Auth
+    const {data:authData, error:authErr} = await db.auth.signUp({email, password:senha});
+    if(authErr) throw authErr;
+
+    // 2. Salvar dados da empresa
+    const estadoInt=document.getElementById('ci-estado').value;
+    const cidadeInt=document.getElementById('ci-cidade').value;
+    const raioInt = parseInt(document.getElementById('raio-int-slider')?.value||100);
+    const {error:intErr} = await db.from('integradores').insert({
+      user_id: authData.user.id,
+      nome_empresa: document.getElementById('ci-nome').value.trim(),
+      cnpj: document.getElementById('ci-cnpj').value.trim(),
+      telefone: document.getElementById('ci-tel').value.trim(),
+      email: email,
+      site: document.getElementById('ci-site').value.trim()||null,
+      instagram: document.getElementById('ci-insta').value.trim()||null,
+      cidade: cidadeInt,
+      estado: estadoInt,
+      tipos_sistema: [...tiposSel],
+      raio_atendimento: raioInt,
+      plano: planoAtual,
+      plano_status: 'trial'
+    });
+    if(intErr) throw intErr;
+
+    const nome=document.getElementById('ci-nome').value.trim().split(' ')[0];
+    document.getElementById('dash-nome').textContent=nome||'Integrador';
+    if(btnF){btnF.innerHTML='<i class="ti ti-rocket"></i> Criar conta e começar';btnF.disabled=false;}
+    ir('s-dashboard');
+    toast('Conta criada! Bem-vindo ao AcheiSol.','ti-check','#10B981');
+  } catch(err){
+    if(btnF){btnF.innerHTML='<i class="ti ti-rocket"></i> Criar conta e começar';btnF.disabled=false;}
+    const msg=err.message||'Erro ao criar conta.';
+    toast(msg.includes('already')? 'E-mail já cadastrado.' : msg,'ti-alert-circle','#EF4444');
+    console.error(err);
+  }
+}
+
+async function fazerLogin(){
+  const email=document.getElementById('lg-email').value.trim();
+  const senha=document.getElementById('lg-senha').value;
+  if(!email.includes('@')){ toast('E-mail inválido.','ti-alert-circle','#EF4444'); return; }
+  if(senha.length<4){ toast('Informe a senha.','ti-alert-circle','#EF4444'); return; }
+
+  const btnL=document.querySelector('#s-login-int .btn');
+  if(btnL){btnL.innerHTML='<i class="ti ti-loader" style="animation:spin 1s linear infinite"></i> Entrando...';btnL.disabled=true;}
+
+  try {
+    const {data, error} = await db.auth.signInWithPassword({email, password:senha});
+    if(error) throw error;
+
+    // Buscar dados do integrador
+    const {data:intData} = await db.from('integradores')
+      .select('nome_empresa')
+      .eq('user_id', data.user.id)
+      .single();
+
+    const nome=(intData?.nome_empresa||'Integrador').split(' ')[0];
+    document.getElementById('dash-nome').textContent=nome;
+
+    if(btnL){btnL.innerHTML='<i class="ti ti-login"></i> Entrar';btnL.disabled=false;}
+    ir('s-dashboard');
+    toast('Login realizado!','ti-check','#10B981');
+  } catch(err){
+    if(btnL){btnL.innerHTML='<i class="ti ti-login"></i> Entrar';btnL.disabled=false;}
+    toast('E-mail ou senha incorretos.','ti-alert-circle','#EF4444');
+    console.error(err);
+  }
+}
+
+function dashTab(t){
+  ['leads','perfil','plano'].forEach(id=>{
+    document.getElementById('da-'+id).style.display=id===t?'block':'none';
+    const btn=document.getElementById('dt-'+id);
+    if(id===t){ btn.style.background='#1A56DB'; btn.style.color='#fff'; btn.style.borderColor='#1A56DB'; }
+    else { btn.style.background='rgba(255,255,255,.06)'; btn.style.color='rgba(255,255,255,.5)'; btn.style.borderColor='rgba(255,255,255,.08)'; }
+  });
+}
+
+// CNPJ mask
+function mCnpj(el){
+  let v=el.value.replace(/\D/g,'').slice(0,14);
+  if(v.length>12) v=v.slice(0,2)+'.'+v.slice(2,5)+'.'+v.slice(5,8)+'/'+v.slice(8,12)+'-'+v.slice(12);
+  else if(v.length>8) v=v.slice(0,2)+'.'+v.slice(2,5)+'.'+v.slice(5,8)+'/'+v.slice(8);
+  else if(v.length>5) v=v.slice(0,2)+'.'+v.slice(2,5)+'.'+v.slice(5);
+  else if(v.length>2) v=v.slice(0,2)+'.'+v.slice(2);
+  el.value=v;
+}
+
+// ── INIT ───────────────────────────────────────────
+// init
+document.querySelectorAll('.screen').forEach(s=>s.style.display='none');
+// App wrapper começa escondido — LP é exibida
+document.getElementById('app-wrapper').style.display='none';
+
+</script>
+
 </body>
 </html>
