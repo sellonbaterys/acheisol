@@ -1820,57 +1820,120 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
     <!-- ABA LEADS -->
     <div id="da-leads">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px">
+
+      <!-- STATS RESUMO -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
         <div style="background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:12px;text-align:center">
-          <div style="font-size:20px;font-weight:800;color:#1A56DB">8</div>
+          <div style="font-size:20px;font-weight:800;color:#1A56DB" id="stat-novos">8</div>
           <div style="font-size:10px;color:#94A3B8;margin-top:2px">Novos</div>
         </div>
         <div style="background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:12px;text-align:center">
-          <div style="font-size:20px;font-weight:800;color:#F59E0B">3</div>
+          <div style="font-size:20px;font-weight:800;color:#F59E0B" id="stat-contato">3</div>
           <div style="font-size:10px;color:#94A3B8;margin-top:2px">Em contato</div>
         </div>
         <div style="background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:12px;text-align:center">
-          <div style="font-size:20px;font-weight:800;color:#10B981">2</div>
+          <div style="font-size:20px;font-weight:800;color:#10B981" id="stat-fechados">2</div>
           <div style="font-size:10px;color:#94A3B8;margin-top:2px">Fechados</div>
         </div>
       </div>
 
+      <!-- LEGENDA SCORE -->
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:700;color:#64748B;letter-spacing:.3px">SCORE DO LEAD:</div>
+        <div style="display:flex;align-items:center;gap:5px"><span style="font-size:14px">🔥</span><span style="font-size:11px;font-weight:600;color:#DC2626">Quente</span><span style="font-size:10px;color:#94A3B8">Conta &gt;R$500 ou Híbrido</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><span style="font-size:14px">🌡️</span><span style="font-size:11px;font-weight:600;color:#D97706">Morno</span><span style="font-size:10px;color:#94A3B8">Conta R$300-500</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><span style="font-size:14px">❄️</span><span style="font-size:11px;font-weight:600;color:#2563EB">Frio</span><span style="font-size:10px;color:#94A3B8">Conta &lt;R$300</span></div>
+      </div>
+
+      <!-- FILTROS -->
+      <div style="display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none">
+        <button onclick="filtrarLeads('todos')" id="f-todos" style="flex-shrink:0;padding:5px 12px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;background:#1A56DB;color:#fff;border:1px solid #1A56DB">Todos</button>
+        <button onclick="filtrarLeads('quente')" id="f-quente" style="flex-shrink:0;padding:5px 12px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;background:#fff;color:#64748B;border:1px solid #E2E8F0">🔥 Quentes</button>
+        <button onclick="filtrarLeads('morno')" id="f-morno" style="flex-shrink:0;padding:5px 12px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;background:#fff;color:#64748B;border:1px solid #E2E8F0">🌡️ Mornos</button>
+        <button onclick="filtrarLeads('frio')" id="f-frio" style="flex-shrink:0;padding:5px 12px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;background:#fff;color:#64748B;border:1px solid #E2E8F0">❄️ Frios</button>
+      </div>
+
       <!-- LEAD CARDS -->
       <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px">Leads recentes</div>
+      <div id="lista-leads-dash">
 
-      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:12px">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1A56DB,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">JM</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:700;color:#111827">João Mendes</div>
-          <div style="font-size:11px;color:#64748B;margin-top:1px">On-grid · BH, MG · Conta: R$450/mês</div>
+      <!-- LEAD 1 — QUENTE -->
+      <div class="lead-card" data-score="quente" style="background:#fff;border:1.5px solid #FEE2E2;border-radius:14px;padding:14px;margin-bottom:9px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#1A56DB,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">JM</div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+              <span style="font-size:13px;font-weight:700;color:#111827">João Mendes</span>
+              <span style="font-size:13px" title="Lead Quente">🔥</span>
+            </div>
+            <div style="font-size:11px;color:#64748B">On-grid · BH, MG · <strong style="color:#DC2626">R$450/mês</strong></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0">
+            <div style="background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px">Novo</div>
+            <div style="font-size:10px;color:#94A3B8">há 2h</div>
+          </div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
-          <div style="background:#DCFCE7;color:#166534;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;text-align:center">Novo</div>
-          <div style="font-size:10px;color:#94A3B8;text-align:center">há 2h</div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #F1F5F9;display:flex;gap:7px">
+          <div style="flex:1;background:#FEF2F2;border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:#94A3B8">Por que é quente?</div>
+            <div style="font-size:11px;font-weight:600;color:#DC2626;margin-top:1px">💡 Conta alta — retorno rápido do investimento</div>
+          </div>
+          <a href="https://wa.me/55?text=Olá João, vi seu interesse em energia solar pelo AcheiSol!" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:5px;flex-shrink:0">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Contatar
+          </a>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:12px">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#F59E0B,#FBBF24);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">CS</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:700;color:#111827">Carla Silva</div>
-          <div style="font-size:11px;color:#64748B;margin-top:1px">Híbrido · Contagem, MG · Conta: R$680/mês</div>
+      <!-- LEAD 2 — QUENTE (híbrido) -->
+      <div class="lead-card" data-score="quente" style="background:#fff;border:1.5px solid #FEE2E2;border-radius:14px;padding:14px;margin-bottom:9px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#F59E0B,#FBBF24);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">CS</div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+              <span style="font-size:13px;font-weight:700;color:#111827">Carla Silva</span>
+              <span style="font-size:13px" title="Lead Quente">🔥</span>
+            </div>
+            <div style="font-size:11px;color:#64748B">Híbrido · Contagem, MG · <strong style="color:#DC2626">R$680/mês</strong></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0">
+            <div style="background:#FEF9C3;color:#854D0E;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px">Contato</div>
+            <div style="font-size:10px;color:#94A3B8">há 5h</div>
+          </div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
-          <div style="background:#FEF9C3;color:#854D0E;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;text-align:center">Contato</div>
-          <div style="font-size:10px;color:#94A3B8;text-align:center">há 5h</div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #F1F5F9;display:flex;gap:7px">
+          <div style="flex:1;background:#FEF2F2;border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:#94A3B8">Por que é quente?</div>
+            <div style="font-size:11px;font-weight:600;color:#DC2626;margin-top:1px">🔋 Quer híbrido + conta altíssima — ticket &gt;R$35k</div>
+          </div>
+          <a href="https://wa.me/55?text=Olá Carla, vi seu interesse em sistema híbrido pelo AcheiSol!" target="_blank" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:5px;flex-shrink:0">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Contatar
+          </a>
         </div>
       </div>
 
-      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px;margin-bottom:9px;display:flex;align-items:center;gap:12px;opacity:.7">
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">RL</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:700;color:#111827">Roberto Lima</div>
-          <div style="font-size:11px;color:#64748B;margin-top:1px">On-grid · Nova Lima, MG · Conta: R$320/mês</div>
+      <!-- LEAD 3 — MORNO -->
+      <div class="lead-card" data-score="morno" style="background:#fff;border:1.5px solid #FDE68A;border-radius:14px;padding:14px;margin-bottom:9px;opacity:.85">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0">RL</div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+              <span style="font-size:13px;font-weight:700;color:#111827">Roberto Lima</span>
+              <span style="font-size:13px" title="Lead Morno">🌡️</span>
+            </div>
+            <div style="font-size:11px;color:#64748B">On-grid · Nova Lima, MG · <strong style="color:#D97706">R$320/mês</strong></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0">
+            <div style="background:#ECFDF5;color:#065F46;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px">Fechado</div>
+            <div style="font-size:10px;color:#94A3B8">há 2d</div>
+          </div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
-          <div style="background:#ECFDF5;color:#065F46;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;text-align:center">Fechado</div>
-          <div style="font-size:10px;color:#94A3B8;text-align:center">há 2d</div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #F1F5F9;display:flex;gap:7px">
+          <div style="flex:1;background:#FFFBEB;border-radius:8px;padding:7px 10px">
+            <div style="font-size:10px;color:#94A3B8">Por que é morno?</div>
+            <div style="font-size:11px;font-weight:600;color:#D97706;margin-top:1px">⚡ Conta média — bom potencial mas negocie bem</div>
+          </div>
         </div>
       </div>
 
@@ -1888,6 +1951,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
           </div>
         </div>
       </div>
+
+      </div><!-- /lista-leads-dash -->
     </div>
 
     <!-- ABA PERFIL -->
@@ -3115,6 +3180,34 @@ async function fazerLogin(){
     toast('E-mail ou senha incorretos.','ti-alert-circle','#EF4444');
     console.error(err);
   }
+}
+
+function calcularScore(valorConta, tipoSistema) {
+  const conta = parseFloat(valorConta) || 0;
+  const tipo = tipoSistema || '';
+  if (tipo === 'hi' || tipo === 'hibrido' || conta >= 500) {
+    return { score: 'quente', emoji: '🔥', label: 'Quente', cor: '#DC2626', bg: '#FEF2F2', border: '#FEE2E2',
+      motivo: tipo === 'hi' ? '🔋 Quer híbrido — ticket alto, cliente decidido' : '💡 Conta alta — retorno rápido do investimento' };
+  } else if (conta >= 300) {
+    return { score: 'morno', emoji: '🌡️', label: 'Morno', cor: '#D97706', bg: '#FFFBEB', border: '#FDE68A',
+      motivo: '⚡ Conta média — bom potencial, negocie bem' };
+  } else {
+    return { score: 'frio', emoji: '❄️', label: 'Frio', cor: '#2563EB', bg: '#EFF6FF', border: '#BFDBFE',
+      motivo: '📋 Conta baixa — foque em economia a longo prazo' };
+  }
+}
+
+function filtrarLeads(filtro) {
+  ['todos','quente','morno','frio'].forEach(f => {
+    const btn = document.getElementById('f-'+f);
+    if (!btn) return;
+    if (f === filtro) { btn.style.background='#1A56DB'; btn.style.color='#fff'; btn.style.borderColor='#1A56DB'; }
+    else { btn.style.background='#fff'; btn.style.color='#64748B'; btn.style.borderColor='#E2E8F0'; }
+  });
+  document.querySelectorAll('.lead-card').forEach(card => {
+    const score = card.getAttribute('data-score');
+    card.style.display = (filtro === 'todos' || score === filtro) ? 'block' : 'none';
+  });
 }
 
 function dashTab(t){
