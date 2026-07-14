@@ -135,6 +135,43 @@ header{position:sticky;top:0;z-index:50;background:rgba(238,241,240,.92);backdro
 .empty-state{border:1.5px dashed var(--line);border-radius:8px;padding:26px;text-align:center;color:var(--ink-soft);font-size:.92rem;margin-top:28px}
 
 /* Calculadora de autonomia */
+.mode-switch{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.mode-btn{flex:1;min-width:220px;padding:16px 18px;border-radius:10px;border:1.5px solid var(--line);background:#fff;text-align:left;font-weight:600;font-size:.92rem;color:var(--ink-soft);transition:border-color .1s}
+.mode-btn small{display:block;font-weight:400;font-family:var(--font-mono);font-size:.7rem;margin-top:4px;color:var(--ink-soft)}
+.mode-btn[aria-selected="true"]{border-color:var(--soc);background:#F4FBF7;color:var(--ink)}
+.mode-btn[aria-selected="true"] small{color:var(--soc)}
+.step-label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:var(--soc);font-weight:500;text-transform:uppercase;display:block;margin:26px 0 12px}
+.calc-how{background:#F6F9F8;border:1px dashed var(--line);border-radius:8px;padding:12px 16px;font-family:var(--font-mono);font-size:.74rem;color:var(--ink-soft);margin-top:14px;line-height:1.7}
+.add-load{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:22px;background:#F6F9F8;border:1px dashed var(--line);border-radius:8px;padding:14px 16px}
+.add-load .field{margin:0;flex:1;min-width:160px}
+.add-load button{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:12px 18px;font-weight:600;font-size:.88rem;white-space:nowrap}
+.presets{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-bottom:22px}
+.preset{border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:18px;text-align:left;cursor:pointer;transition:border-color .1s, transform .1s}
+.preset:hover{transform:translateY(-2px)}
+.preset[aria-pressed="true"]{border-color:var(--soc);background:#F4FBF7;box-shadow:0 2px 4px rgba(31,167,108,.08),0 10px 26px rgba(31,167,108,.14)}
+.preset .pr-kwh{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;color:var(--soc);font-weight:500}
+.preset h5{font-family:var(--font-display);font-weight:800;font-size:1rem;margin:5px 0 6px}
+.preset p{font-size:.78rem;color:var(--ink-soft);line-height:1.5}
+.qty{display:inline-flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.qty button{width:24px;height:24px;border-radius:6px;border:1.5px solid var(--line);background:#fff;font-weight:700;color:var(--blue);font-size:.9rem;line-height:1;padding:0}
+.qty button:hover{border-color:var(--soc);color:var(--soc)}
+.qty b{font-family:var(--font-mono);font-size:.82rem;min-width:18px;text-align:center}
+.load-item{flex-wrap:wrap}
+.live-note{font-family:var(--font-mono);font-size:.72rem;color:var(--soc);margin-bottom:14px}
+.rg-num.warn{color:#FF8A6E}
+.pr-hours{display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:.78rem;font-weight:500;background:var(--soc-dim);color:var(--blue-deep);padding:5px 12px;border-radius:999px}
+.preset[aria-pressed="true"] .pr-hours{background:var(--soc);color:#fff}
+.batt-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:14px 18px;margin:20px 0 4px}
+.batt-row .br-label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;color:#7E93A0;text-transform:uppercase}
+.batt-ctl{display:flex;align-items:center;gap:10px}
+.batt-ctl button{width:34px;height:34px;border-radius:8px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:1.15rem;font-weight:700;line-height:1;padding:0}
+.batt-ctl button:hover{border-color:var(--soc);color:#6FD8A8}
+.batt-ctl .bc-num{font-family:var(--font-display);font-weight:900;font-size:1.5rem;color:#6FD8A8;min-width:30px;text-align:center}
+.batt-row .br-detail{font-family:var(--font-mono);font-size:.78rem;color:#B9C6CE}
+.batt-row .br-reset{font-family:var(--font-mono);font-size:.72rem;color:#E8A13C;background:none;border:none;text-decoration:underline;cursor:pointer;padding:0}
+
+
+
 .loads{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px;margin-bottom:22px}
 .load-item{border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;background:#fff;transition:border-color .1s}
 .load-item:has(input:checked){border-color:var(--soc);background:#F4FBF7}
@@ -593,40 +630,101 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
     <!-- ---- FERRAMENTA 2: AUTONOMIA ---- -->
     <div class="tool-panel" id="panel-autonomia" role="tabpanel">
       <h3>Calculadora de autonomia de backup</h3>
-      <p class="tool-desc">Marque as cargas essenciais do cliente, escolha o banco de baterias e mostre — na frente dele — quantas horas o sistema segura durante uma queda de rede.</p>
-      <div class="field"><label>Cargas essenciais durante a falta de energia</label></div>
-      <div class="loads" id="loadsList"></div>
-      <div class="grid-3">
-        <div class="field">
-          <label for="battKwh">Capacidade do banco (kWh)</label>
-          <select id="battKwh">
-            <option value="5">5 kWh (1 módulo típico)</option>
-            <option value="10" selected>10 kWh (2 módulos)</option>
-            <option value="15">15 kWh (3 módulos)</option>
-            <option value="20">20 kWh (4 módulos)</option>
-            <option value="30">30 kWh</option>
-          </select>
+      <p class="tool-desc">"Quanto tempo a bateria segura a casa?" — responda com número, na frente do cliente. Você informa as cargas (ou o consumo da fatura) e <b>a ferramenta já recomenda quantas baterias o projeto precisa</b>.</p>
+
+      <span class="step-label">Como você quer calcular?</span>
+      <div class="mode-switch" role="tablist">
+        <button class="mode-btn" role="tab" aria-selected="true" id="mb-kwh" onclick="autoMode('kwh')">⚡ Pelo consumo (kWh)<small>Direto da fatura — 10 segundos</small></button>
+        <button class="mode-btn" role="tab" aria-selected="false" id="mb-cargas" onclick="autoMode('cargas')">🔋 Por kits de backup<small>Kits prontos e editáveis, cálculo ao vivo</small></button>
+      </div>
+
+      <!-- MODO KWH -->
+      <div id="mode-kwh">
+        <div class="grid-2">
+          <div class="field">
+            <label for="autoKwhMes">Consumo mensal da fatura (kWh)</label>
+            <input type="number" id="autoKwhMes" min="50" placeholder="Ex.: 450">
+            <p class="hint">O número principal da conta de luz do cliente</p>
+          </div>
+          <div class="field">
+            <label for="autoBackupPerfil">O que o backup vai alimentar?</label>
+            <select id="autoBackupPerfil">
+              <option value="0.35" selected>Só o essencial — geladeira, luz, internet (~35% da casa)</option>
+              <option value="0.55">Meia casa — essencial + TV, escritório (~55%)</option>
+              <option value="1">Casa inteira (100% — exige inversor robusto)</option>
+            </select>
+          </div>
         </div>
-        <div class="field">
-          <label for="extraW">Carga extra (W) — opcional</label>
-          <input type="number" id="extraW" min="0" placeholder="Ex.: 800">
-          <p class="hint">Algum equipamento fora da lista</p>
+        <div class="calc-how">// como calculamos: consumo mensal ÷ 720h = potência média da casa → × fração do backup = potência que a bateria sustenta → a ferramenta recomenda o banco pra atravessar a noite (12h)</div>
+        <button class="run-btn" onclick="runAutonomy()">Calcular autonomia e banco</button>
+      </div>
+
+      <!-- MODO KITS -->
+      <div id="mode-cargas" style="display:none">
+        <div class="field"><label>1 · Escolha um kit — a autonomia média já está no card</label></div>
+        <div class="presets" role="group" aria-label="Kits de backup">
+          <button type="button" class="preset" id="pr-basico" aria-pressed="false" onclick="applyPreset('basico')">
+            <span class="pr-kwh">BACKUP BÁSICO</span>
+            <h5>O indispensável</h5>
+            <p>10 lâmpadas · geladeira · internet · 1 ar 9k BTU</p>
+            <span class="pr-hours" id="ph-basico">≈ — h</span>
+          </button>
+          <button type="button" class="preset" id="pr-essencial" aria-pressed="false" onclick="applyPreset('essencial')">
+            <span class="pr-kwh">BACKUP ESSENCIAL</span>
+            <h5>Conforto de verdade</h5>
+            <p>Básico + TV · freezer · câmeras · portão · notebook</p>
+            <span class="pr-hours" id="ph-essencial">≈ — h</span>
+          </button>
+          <button type="button" class="preset" id="pr-avancado" aria-pressed="false" onclick="applyPreset('avancado')">
+            <span class="pr-kwh">BACKUP AVANÇADO</span>
+            <h5>A casa quase toda</h5>
+            <p>Essencial + 2º ar (12k) · bomba d'água · micro-ondas</p>
+            <span class="pr-hours" id="ph-avancado">≈ — h</span>
+          </button>
         </div>
-        <div class="field">
-          <label for="simult">Fator de simultaneidade</label>
-          <select id="simult">
-            <option value="1">100% — tudo ligado junto</option>
-            <option value="0.7" selected>70% — uso realista</option>
-            <option value="0.5">50% — uso econômico</option>
-          </select>
+        <div class="field" style="margin-top:26px"><label>2 · Ajuste à vontade — o resultado e o banco recomendado atualizam sozinhos</label></div>
+        <p class="live-note">⚡ Adicione um 2º ar-condicionado e veja: a autonomia cai e a ferramenta já pede mais bateria.</p>
+        <div class="loads" id="loadsList"></div>
+        <div class="add-load">
+          <div class="field">
+            <label for="customLoadName">Faltou algum equipamento? Adicione aqui</label>
+            <input type="text" id="customLoadName" placeholder="Ex.: Cerca elétrica, aquário, CPAP...">
+          </div>
+          <div class="field" style="max-width:140px">
+            <label for="customLoadW">Potência (W)</label>
+            <input type="number" id="customLoadW" min="1" placeholder="Ex.: 90">
+          </div>
+          <button type="button" onclick="addCustomLoad()">+ Adicionar</button>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="simult">Fator de simultaneidade</label>
+            <select id="simult" onchange="recalcLive()">
+              <option value="1">100% — tudo ligado ao mesmo tempo</option>
+              <option value="0.7" selected>70% — uso realista (recomendado)</option>
+              <option value="0.5">50% — uso econômico durante a falta</option>
+            </select>
+            <p class="hint">Nem tudo fica ligado junto o tempo todo</p>
+          </div>
         </div>
       </div>
-      <button class="run-btn" onclick="runAutonomy()">Calcular autonomia</button>
+
       <div class="result-box" id="autoResult">
-        <div class="result-label">Autonomia estimada com as cargas selecionadas</div>
+        <div class="result-label">Autonomia estimada durante a falta de energia</div>
         <div class="result-num" id="autoHours">—</div>
+        <div class="batt-row">
+          <span class="br-label">Banco de baterias</span>
+          <div class="batt-ctl">
+            <button type="button" onclick="battBump(-1)" aria-label="menos uma bateria">−</button>
+            <span class="bc-num" id="battN">2</span>
+            <button type="button" onclick="battBump(1)" aria-label="mais uma bateria">+</button>
+          </div>
+          <span class="br-detail" id="battDetail">baterias de 5 kWh = 10 kWh</span>
+          <span class="br-detail" id="battRecomNote"></span>
+          <button type="button" class="br-reset" id="battReset" style="display:none" onclick="battAuto()">↺ usar recomendado</button>
+        </div>
         <div class="result-grid">
-          <div><div class="rg-num" id="autoLoad">—</div><div class="rg-lab">Potência média demandada</div></div>
+          <div><div class="rg-num" id="autoLoad">—</div><div class="rg-lab">Potência sustentada pela bateria</div></div>
           <div><div class="rg-num" id="autoUsable">—</div><div class="rg-lab">Energia útil do banco</div></div>
           <div><div class="rg-num" id="autoNight">—</div><div class="rg-lab">Atravessa uma noite (12h)?</div></div>
         </div>
@@ -1360,48 +1458,178 @@ function runCompatReverse(){
 /* ============================================================
    CALCULADORA DE AUTONOMIA
    ============================================================ */
+/* Cargas: potência POR UNIDADE; multi = aceita quantidade */
 const LOADS = [
-  {name:"Geladeira",            w:150, hint:"média em ciclo"},
-  {name:"Freezer",              w:130, hint:"média em ciclo"},
-  {name:"Internet + roteador",  w:25,  hint:""},
-  {name:"Iluminação LED (casa)",w:120, hint:"~12 pontos"},
-  {name:"TV + streaming",       w:120, hint:""},
-  {name:"Notebook / home office",w:80, hint:""},
-  {name:"Ventilador (2×)",      w:130, hint:""},
-  {name:"Bomba d'água ½ CV",    w:370, hint:"partida exige inversor dimensionado"},
-  {name:"Micro-ondas",          w:1100,hint:"uso pontual"},
-  {name:"Ar-condicionado 9k BTU inverter", w:800, hint:"média em regime"},
-  {name:"Portão + interfone",   w:60,  hint:"standby + acionamentos"},
-  {name:"Câmeras / alarme",     w:40,  hint:""}
+  {key:"lamp",     name:"Lâmpada LED",                w:10,  multi:true,  qty:10, hint:"10 W cada"},
+  {key:"geladeira",name:"Geladeira",                  w:150, multi:false, qty:1,  hint:"média em ciclo"},
+  {key:"freezer",  name:"Freezer",                    w:130, multi:false, qty:1,  hint:"média em ciclo"},
+  {key:"wifi",     name:"Internet + roteador",        w:25,  multi:false, qty:1,  hint:""},
+  {key:"tv",       name:"TV + streaming",             w:120, multi:true,  qty:1,  hint:""},
+  {key:"note",     name:"Notebook / home office",     w:80,  multi:true,  qty:1,  hint:""},
+  {key:"vent",     name:"Ventilador",                 w:65,  multi:true,  qty:2,  hint:"65 W cada"},
+  {key:"ar9",      name:"Ar-cond. 9k BTU inverter",   w:800, multi:true,  qty:1,  hint:"média em regime"},
+  {key:"ar12",     name:"Ar-cond. 12k BTU inverter",  w:1100,multi:true,  qty:1,  hint:"média em regime"},
+  {key:"bomba",    name:"Bomba d'água ½ CV",          w:370, multi:false, qty:1,  hint:"partida exige inversor ok"},
+  {key:"micro",    name:"Micro-ondas",                w:1100,multi:false, qty:1,  hint:"uso pontual"},
+  {key:"portao",   name:"Portão + interfone",         w:60,  multi:false, qty:1,  hint:""},
+  {key:"cam",      name:"Câmeras / alarme",           w:40,  multi:false, qty:1,  hint:""},
+  {key:"chuveiro", name:"Chuveiro elétrico",          w:5500,multi:false, qty:1,  hint:"⚠ evite no backup — derruba tudo"}
 ];
+const PRESETS = {
+  basico:   {loads:{lamp:10, geladeira:1, wifi:1, ar9:1}},
+  essencial:{loads:{lamp:10, geladeira:1, wifi:1, ar9:1, tv:1, freezer:1, cam:1, portao:1, note:1}},
+  avancado: {loads:{lamp:10, geladeira:1, wifi:1, ar9:1, tv:1, freezer:1, cam:1, portao:1, note:1, ar12:1, bomba:1, micro:1}}
+};
+const DOD=0.9, EFF=0.94, MODULE_KWH=5, TARGET_H=12;
 const loadsList = document.getElementById('loadsList');
-LOADS.forEach((l,idx)=>{
-  const el = document.createElement('label');
-  el.className='load-item';
-  el.innerHTML = `<input type="checkbox" data-w="${l.w}" ${idx<4?'checked':''}>
-    <span><span class="li-name">${l.name}</span><br><span class="li-w">${l.w} W ${l.hint?'· '+l.hint:''}</span></span>`;
+
+function loadItemHTML(l, checked){
+  const qtyCtl = l.multi
+    ? `<span class="qty"><button type="button" onclick="bumpQty(this,-1)" aria-label="menos">−</button><b>${l.qty}</b><button type="button" onclick="bumpQty(this,1)" aria-label="mais">+</button></span>`
+    : '';
+  return `<input type="checkbox" data-w="${l.w}" ${checked?'checked':''} onchange="presetOff();recalcLive()">
+    <span style="flex:1"><span class="li-name">${l.name}</span><br><span class="li-w">${l.w} W ${l.hint?'· '+l.hint:''}</span></span>${qtyCtl}`;
+}
+function appendLoad(l, checked){
+  const el=document.createElement('label');
+  el.className='load-item'; el.dataset.key=l.key||''; 
+  el.innerHTML=loadItemHTML(l, checked);
   loadsList.appendChild(el);
-});
-function runAutonomy(){
-  const checked = [...loadsList.querySelectorAll('input:checked')];
-  const extra = parseFloat(document.getElementById('extraW').value)||0;
-  const simult = parseFloat(document.getElementById('simult').value);
-  const kwh = parseFloat(document.getElementById('battKwh').value);
-  const totalW = (checked.reduce((s,c)=>s+parseFloat(c.dataset.w),0)+extra)*simult;
-  if(totalW<=0){alert('Selecione ao menos uma carga.');return;}
-  const DOD=0.9, EFF=0.94; // LFP: profundidade de descarga 90%, eficiência do inversor 94%
-  const usable = kwh*DOD*EFF;
-  const hours = usable*1000/totalW;
+}
+LOADS.forEach(l=>appendLoad(l,false));
+
+function bumpQty(btn, delta){
+  const b=btn.parentElement.querySelector('b');
+  b.textContent=Math.max(1, parseInt(b.textContent)+delta);
+  btn.closest('.load-item').querySelector('input[type=checkbox]').checked=true;
+  presetOff(); recalcLive();
+}
+function itemWatts(item){
+  const cb=item.querySelector('input[type=checkbox]');
+  if(!cb.checked) return 0;
+  const qEl=item.querySelector('.qty b');
+  return parseFloat(cb.dataset.w)*(qEl?parseInt(qEl.textContent):1);
+}
+function addCustomLoad(){
+  const nameEl=document.getElementById('customLoadName');
+  const wEl=document.getElementById('customLoadW');
+  const name=(nameEl.value||'').trim();
+  const w=parseFloat(wEl.value);
+  if(!name || !w || w<=0){ alert('Preencha o nome do equipamento e a potência em watts.'); return; }
+  appendLoad({name:name, w:Math.round(w), multi:true, qty:1, hint:'adicionado por você'}, true);
+  nameEl.value=''; wEl.value='';
+  presetOff(); recalcLive();
+}
+
+/* ---------- Banco: recomendado automático + ajuste fino ---------- */
+let battOverride=null;      /* null = automático (recomendado) */
+let lastTotalW=0, lastNote='';
+function recomBatteries(totalW){
+  return Math.max(1, Math.ceil(totalW*TARGET_H/1000/(MODULE_KWH*DOD*EFF)));
+}
+function battBump(d){
+  const cur=battOverride!==null?battOverride:recomBatteries(lastTotalW);
+  battOverride=Math.max(1, cur+d);
+  if(battOverride===recomBatteries(lastTotalW)) battOverride=null;
+  renderResult();
+}
+function battAuto(){ battOverride=null; renderResult(); }
+
+function presetSum(p){
+  return Object.entries(PRESETS[p].loads).reduce((s,[k,q])=>{
+    const l=LOADS.find(x=>x.key===k); return s+l.w*q;
+  },0);
+}
+/* badges de horas nos cards dos kits (com banco recomendado + 70%) */
+function fillKitBadges(){
+  Object.keys(PRESETS).forEach(p=>{
+    const totalW=presetSum(p)*0.7;
+    const n=recomBatteries(totalW);
+    const h=n*MODULE_KWH*DOD*EFF*1000/totalW;
+    document.getElementById('ph-'+p).textContent='≈ '+Math.round(h)+' h com '+n+' bateria'+(n>1?'s':'');
+  });
+}
+fillKitBadges();
+
+let activePreset=null;
+function applyPreset(p){
+  activePreset=p; battOverride=null;
+  const def=PRESETS[p];
+  [...loadsList.children].forEach(item=>{
+    const key=item.dataset.key;
+    const cb=item.querySelector('input[type=checkbox]');
+    const qEl=item.querySelector('.qty b');
+    if(key && def.loads[key]!==undefined){
+      cb.checked=true;
+      if(qEl) qEl.textContent=def.loads[key];
+    } else if(key){
+      cb.checked=false;
+      if(qEl){ const base=LOADS.find(x=>x.key===key); if(base) qEl.textContent=base.qty; }
+    }
+  });
+  ['basico','essencial','avancado'].forEach(k=>document.getElementById('pr-'+k).setAttribute('aria-pressed', k===p));
+  recalcLive();
+}
+function presetOff(){
+  if(!activePreset) return;
+  activePreset=null; battOverride=null;
+  ['basico','essencial','avancado'].forEach(k=>document.getElementById('pr-'+k).setAttribute('aria-pressed','false'));
+}
+
+let autoModeSel='kwh';
+function autoMode(m){
+  autoModeSel=m;
+  document.getElementById('mode-kwh').style.display = m==='kwh'?'block':'none';
+  document.getElementById('mode-cargas').style.display = m==='cargas'?'block':'none';
+  document.getElementById('mb-kwh').setAttribute('aria-selected', m==='kwh');
+  document.getElementById('mb-cargas').setAttribute('aria-selected', m==='cargas');
+  if(m==='cargas' && !activePreset) applyPreset('basico'); /* nunca começa vazio */
+}
+
+function renderResult(){
+  if(lastTotalW<=0){ document.getElementById('autoResult').classList.remove('show'); return; }
+  const recom=recomBatteries(lastTotalW);
+  const n=battOverride!==null?battOverride:recom;
+  const kwhBank=n*MODULE_KWH;
+  const usable=kwhBank*DOD*EFF;
+  const hours=usable*1000/lastTotalW;
+
   document.getElementById('autoHours').textContent =
     hours>=48 ? '48h+' : hours>=1 ? hours.toFixed(1).replace('.',',')+' horas' : Math.round(hours*60)+' minutos';
-  document.getElementById('autoLoad').textContent = Math.round(totalW)+' W';
+  document.getElementById('battN').textContent=n;
+  document.getElementById('battDetail').textContent='bateria'+(n>1?'s':'')+' de '+MODULE_KWH+' kWh = '+kwhBank+' kWh';
+  document.getElementById('battRecomNote').textContent = battOverride===null
+    ? '✓ recomendado pra atravessar a noite'
+    : 'recomendado: '+recom+' bateria'+(recom>1?'s':'');
+  document.getElementById('battReset').style.display = battOverride===null?'none':'inline';
+  document.getElementById('autoLoad').textContent = Math.round(lastTotalW)+' W';
   document.getElementById('autoUsable').textContent = usable.toFixed(1).replace('.',',')+' kWh';
-  document.getElementById('autoNight').textContent = hours>=12 ? 'Sim ✓' : 'Não — sugerir +módulo';
-  const pct = Math.max(0, Math.min(10, Math.round((hours/24)*10)));
+  const night=document.getElementById('autoNight');
+  night.textContent = hours>=TARGET_H ? 'Sim ✓' : 'Não — falta bateria';
+  night.classList.toggle('warn', hours<TARGET_H);
+  const pct=Math.max(0, Math.min(10, Math.round((hours/24)*10)));
   [...document.getElementById('autoSocBar').children].forEach((s,i)=>s.classList.toggle('on', i<pct));
   document.getElementById('autoAssump').textContent =
-    `// premissas: LFP com DoD 90% · eficiência de conversão 94% · simultaneidade ${(simult*100)}% · sem recarga solar durante a falta (cenário noturno conservador). Com sol, a autonomia se estende.`;
+    '// '+lastNote+' · módulos LFP de '+MODULE_KWH+' kWh (DoD 90%, eficiência 94%) · sem recarga solar durante a falta (cenário noturno conservador — com sol, a autonomia se estende)';
   document.getElementById('autoResult').classList.add('show');
+}
+function recalcLive(){
+  if(autoModeSel!=='cargas') return;
+  const simult=parseFloat(document.getElementById('simult').value);
+  const raw=[...loadsList.children].reduce((s,it)=>s+itemWatts(it),0);
+  lastTotalW=raw*simult;
+  const kit=activePreset ? {basico:'kit Básico',essencial:'kit Essencial',avancado:'kit Avançado'}[activePreset] : 'seleção personalizada';
+  lastNote=kit+' · simultaneidade '+(simult*100)+'%';
+  renderResult();
+}
+function runAutonomy(){
+  const cons=parseFloat(document.getElementById('autoKwhMes').value);
+  if(!cons || cons<=0){ alert('Informe o consumo mensal da fatura (kWh).'); return; }
+  const frac=parseFloat(document.getElementById('autoBackupPerfil').value);
+  const avgW=cons*1000/720;
+  lastTotalW=avgW*frac; battOverride=null;
+  lastNote='consumo '+cons+' kWh/mês → potência média da casa '+Math.round(avgW)+' W → backup alimentando '+Math.round(frac*100)+'% da casa';
+  renderResult();
   document.getElementById('autoResult').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
